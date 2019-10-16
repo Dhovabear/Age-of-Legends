@@ -61,18 +61,12 @@ namespace Prototype.Camera
             { 
                 FreeMove();
             }
-
-            
         }
 
       
 
         private void LateUpdate()
         {
-            
-            //On verifie que la caméra ne follow rien
-            
-            
             //On applique le mouvement calculer precedement
             transform.position += _nextCameraMovements*Time.fixedDeltaTime;
         }

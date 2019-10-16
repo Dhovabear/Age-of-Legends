@@ -10,6 +10,9 @@ namespace Prototype.Camera
     {
     
 
+        /**
+         * TODO: Utiliser un système de rayon pour selectionner ou non les Focusable.
+         */
         private void OnMouseDown()
         {
             CameraMover.currentInstance.setFocus(transform);
