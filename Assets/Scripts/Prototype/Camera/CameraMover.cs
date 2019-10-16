@@ -1,5 +1,6 @@
 ﻿using System;
 using Cinemachine;
+using Prototype.Unitees;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
@@ -54,7 +55,7 @@ namespace Prototype.Camera
              * TODO: Optimier cette merde
              */
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
                 RaycastHit hit;
                 if (Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition),
@@ -71,6 +72,8 @@ namespace Prototype.Camera
                     
                 }
             }
+
+            
             
             if (isFocusSomething)
             {
@@ -99,7 +102,7 @@ namespace Prototype.Camera
            
             _nextCameraMovements = Vector3.zero; //Par défaut la caméra ne bouge pas
 
-            _nextCameraMovements += scrollSpeed * Input.GetAxis("Mouse ScrollWheel") * transform.forward;
+            _nextCameraMovements += scrollSpeed * Input.GetAxis("Mouse ScrollWheel") * 10f*transform.forward;
 
 
             //Les champs suivants vont regarder si la souris est dans une zine morte
@@ -128,7 +131,7 @@ namespace Prototype.Camera
 
         private void FocusZoom()
         {
-            _transposer.m_CameraDistance += Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
+            _transposer.m_CameraDistance -= Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
             
         }
 
