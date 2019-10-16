@@ -53,6 +53,25 @@ namespace Prototype.Camera
             /**
              * TODO: Optimier cette merde
              */
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition),
+                    out hit, float.PositiveInfinity))
+                {
+                    Debug.Log(hit.transform.name);
+                    IFocusable obj = hit.transform.gameObject.GetComponent<IFocusable>();
+                    if ( obj != null)
+                    {
+                        setFocus(hit.transform);
+                        return;
+                    }
+                    if(isFocusSomething) stopFocus();
+                    
+                }
+            }
+            
             if (isFocusSomething)
             {
                 FocusZoom();
