@@ -4,6 +4,7 @@ namespace Prototype.Camera
 {
     public interface IFocusable
     {
-        new void Focus(CinemachineVirtualCamera cam);
+        void Focus(CameraMover cam);
+        void EndFocus(CameraMover cam);
     }
 }

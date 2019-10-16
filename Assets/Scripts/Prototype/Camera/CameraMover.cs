@@ -8,6 +8,9 @@ namespace Prototype.Camera
     [RequireComponent(typeof(CinemachineVirtualCamera))]
     public class CameraMover : MonoBehaviour
     {
+
+        public static CameraMover currentInstance;
+        
         #region Variables publiques
 
         
@@ -30,6 +33,8 @@ namespace Prototype.Camera
 
         private Vector3 _nextCameraMovements;
         private CinemachineVirtualCamera _camera;
+        private CinemachineFramingTransposer _transposer;
+        private bool isFocusSomething = false;
 
         #endregion
 
@@ -38,6 +43,8 @@ namespace Prototype.Camera
         void Start()
         {
             _camera = GetComponent<CinemachineVirtualCamera>();
+            _transposer = _camera.GetCinemachineComponent<CinemachineFramingTransposer>();
+            if (!currentInstance) currentInstance = this;
         }
 
         // Update is called once per frame
@@ -46,14 +53,38 @@ namespace Prototype.Camera
             /**
              * TODO: Optimier cette merde
              */
-            if (_camera.Follow) return;
-            FreeMove();
+            if (isFocusSomething)
+            {
+                FocusZoom();
+            }
+            else
+            { 
+                FreeMove();
+            }
+
+            
         }
+
+      
+
+        private void LateUpdate()
+        {
+            
+            //On verifie que la caméra ne follow rien
+            
+            
+            //On applique le mouvement calculer precedement
+            transform.position += _nextCameraMovements*Time.fixedDeltaTime;
+        }
+
+        #endregion
+
+        #region Autres méthodes
 
         private void FreeMove()
         {
+           
             _nextCameraMovements = Vector3.zero; //Par défaut la caméra ne bouge pas
-
 
             _nextCameraMovements += scrollSpeed * Input.GetAxis("Mouse ScrollWheel") * transform.forward;
 
@@ -82,17 +113,23 @@ namespace Prototype.Camera
             }
         }
 
-        private void LateUpdate()
+        private void FocusZoom()
         {
+            _transposer.m_CameraDistance += Input.GetAxis("Mouse ScrollWheel") * scrollSpeed;
             
-            //On verifie que la caméra ne follow rien
-            
-            
-            //On applique le mouvement calculer precedement
-            transform.position += _nextCameraMovements*Time.fixedDeltaTime;
         }
 
+        public void setFocus(Transform t)
+        {
+            isFocusSomething = true;
+            _camera.Follow = t;
+        }
+
+        public void stopFocus()
+        {
+            isFocusSomething = false;
+            _camera.Follow = null;
+        }
         #endregion
-        
     }
 }
