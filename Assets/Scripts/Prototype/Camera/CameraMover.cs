@@ -1,9 +1,11 @@
 ﻿using System;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
 namespace Prototype.Camera
 {
+    [RequireComponent(typeof(CinemachineVirtualCamera))]
     public class CameraMover : MonoBehaviour
     {
         #region Variables publiques
@@ -27,45 +29,70 @@ namespace Prototype.Camera
         #region Variables privées
 
         private Vector3 _nextCameraMovements;
+        private CinemachineVirtualCamera _camera;
 
         #endregion
-        // Start is called before the first frame update
+
+        #region MonoBehaviour Callbacks
+
         void Start()
         {
+            _camera = GetComponent<CinemachineVirtualCamera>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            _nextCameraMovements = Vector3.zero;
-            
+            /**
+             * TODO: Optimier cette merde
+             */
+            if (_camera.Follow) return;
+            FreeMove();
+        }
+
+        private void FreeMove()
+        {
+            _nextCameraMovements = Vector3.zero; //Par défaut la caméra ne bouge pas
+
+
+            _nextCameraMovements += scrollSpeed * Input.GetAxis("Mouse ScrollWheel") * transform.forward;
+
+
+            //Les champs suivants vont regarder si la souris est dans une zine morte
+            //de l'écran et calculer un vecteur de déplacement en conséquence
+
             if (Input.mousePosition.x < 0 + deadZone)
             {
-                _nextCameraMovements -= transform.right*moveSpeed;
+                _nextCameraMovements -= transform.right * moveSpeed;
             }
 
             if (Input.mousePosition.x > Screen.width - deadZone)
             {
-                _nextCameraMovements += transform.right*moveSpeed;
+                _nextCameraMovements += transform.right * moveSpeed;
             }
 
             if (Input.mousePosition.y < 0 + deadZone)
             {
-                _nextCameraMovements += Vector3.back*moveSpeed;
+                _nextCameraMovements += Vector3.back * moveSpeed;
             }
 
             if (Input.mousePosition.y > Screen.height - deadZone)
             {
-                _nextCameraMovements += Vector3.forward*moveSpeed;
+                _nextCameraMovements += Vector3.forward * moveSpeed;
             }
-
-            _nextCameraMovements += scrollSpeed * Input.GetAxis("Mouse ScrollWheel") * transform.forward;
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
-            //la on va mettre les mouvements
+            
+            //On verifie que la caméra ne follow rien
+            
+            
+            //On applique le mouvement calculer precedement
             transform.position += _nextCameraMovements*Time.fixedDeltaTime;
         }
+
+        #endregion
+        
     }
 }
