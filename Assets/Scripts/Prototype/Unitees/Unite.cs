@@ -1,6 +1,7 @@
 ﻿using Prototype.Camera;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 namespace Prototype.Unitees
 {
@@ -25,7 +26,8 @@ namespace Prototype.Unitees
         // Update is called once per frame
         void Update()
         {
-            if (_agent.remainingDistance <= 2f && currentOrder != null)
+            //Debug.Log(_agent.remainingDistance);
+            if (_agent.remainingDistance <= 2f && currentOrder != null && !_agent.pathPending)
             {
                 currentOrder = null;
                 _agent.SetDestination(gameObject.transform.position);
@@ -37,7 +39,14 @@ namespace Prototype.Unitees
         {
             currentOrder = ordre;
             _agent.SetDestination(currentOrder.location);
+            
             Debug.Log("ok ! my destination is " + currentOrder.location);
+            StartCoroutine(remainingDistance());
+        }
+
+        IEnumerator remainingDistance(){
+            if(_agent.pathPending)yield return null;
+            Debug.Log("il me reste " + _agent.remainingDistance);
         }
     }
 }
