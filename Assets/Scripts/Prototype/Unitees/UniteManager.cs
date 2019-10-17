@@ -70,6 +70,19 @@ namespace Prototype.Unitees
                     /**
                      * TODO: Action a faire en cas de simple clique
                      */
+                    if (Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition), out hit,
+                        float.PositiveInfinity))
+                    {
+                        if (Input.GetButton("MultiSelect"))
+                        {
+                            selectedUnites.Add((hit.transform.GetComponent<Unite>()));
+                            CreateIndicator(hit.transform.GetComponent<Unite>());
+                        }
+                        else
+                        {
+                            
+                        }
+                    }
                 }
                 
                 //SourisMaintenu = false;
