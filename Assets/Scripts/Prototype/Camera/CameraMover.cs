@@ -26,6 +26,7 @@ namespace Prototype.Camera
          */
         public int deadZone;
         
+        public bool canMove = true;
         
         
         #endregion
@@ -90,6 +91,7 @@ namespace Prototype.Camera
         private void LateUpdate()
         {
             //On applique le mouvement calculer precedement
+            if (!canMove) return;
             transform.position += _nextCameraMovements*Time.fixedDeltaTime;
         }
 
