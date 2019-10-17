@@ -54,7 +54,7 @@ namespace Prototype.Unitees
 
             if (Input.GetMouseButton(0))
             {
-                UIselectionSquare.SetActive(false);
+                
                 if (Time.time - clickTime >= clickDelay)
                 {
                     SourisMaintenu = true;
@@ -63,6 +63,7 @@ namespace Prototype.Unitees
 
             if (Input.GetMouseButtonUp(0))
             {
+                UIselectionSquare.SetActive(false);
                 if (Time.time - clickTime <= clickDelay)
                 {
                     /**
