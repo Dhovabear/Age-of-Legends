@@ -37,3 +37,6 @@ sysinfo.txt
 
 # pour les utilisateurs de Rider
 .idea
+
+# pour les utilisateurs de Visual studio code
+.vscode
