@@ -41,7 +41,7 @@ namespace Prototype.Unitees
             if (Input.GetMouseButtonDown(0))
             {
                 clickTime = Time.time;//On stocke le temps de click
-                UIselectionSquare.SetActive(true);
+                
                 UiSelSquareFirstPos = Input.mousePosition;
                 /*if (Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition), out hit,
                     float.PositiveInfinity))
@@ -58,6 +58,7 @@ namespace Prototype.Unitees
                 if (Time.time - clickTime >= clickDelay)
                 {
                     SourisMaintenu = true;
+                    UIselectionSquare.SetActive(true);
                 }
             }
 
@@ -71,7 +72,7 @@ namespace Prototype.Unitees
                      */
                 }
                 
-                SourisMaintenu = false;
+                //SourisMaintenu = false;
                 CameraMover.currentInstance.canMove = true;
                 clickTime = 0f;
                 /*if (Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition), out hit,
