@@ -64,6 +64,8 @@ namespace Prototype.Unitees
 
             if (Input.GetMouseButtonUp(0))
             {
+                CameraMover.currentInstance.canMove = true;
+                SourisMaintenu = false;
                 UIselectionSquare.SetActive(false);
                 if (Time.time - clickTime <= clickDelay)
                 {
@@ -73,6 +75,17 @@ namespace Prototype.Unitees
                     if (Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition), out hit,
                         float.PositiveInfinity))
                     {
+                        if (hit.transform.name.Equals("Plane"))
+                        {
+                            Objectif ordre = new Objectif(hit.point,"Go here");
+                            foreach (Unite unite in selectedUnites)
+                            {
+                                unite.giveOrder(ordre);
+                            }
+
+                            return;
+                        }
+                        
                         if (Input.GetButton("MultiSelect"))
                         {
                             selectedUnites.Add((hit.transform.GetComponent<Unite>()));
@@ -80,13 +93,17 @@ namespace Prototype.Unitees
                         }
                         else
                         {
-                            
+                            foreach (GameObject ind in selectionIndics){ Destroy(ind,0.01f);}
+                            selectionIndics.Clear();
+                            selectedUnites.Clear();
+                            selectedUnites.Add(hit.transform.GetComponent<Unite>());
+                            CreateIndicator(hit.transform.GetComponent<Unite>());
                         }
                     }
                 }
                 
                 //SourisMaintenu = false;
-                CameraMover.currentInstance.canMove = true;
+                
                 clickTime = 0f;
                 /*if (Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition), out hit,
                     float.PositiveInfinity))
