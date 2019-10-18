@@ -17,7 +17,9 @@ namespace Prototype.Unitees
         private Vector2 UiSelSquareFirstPos;
 
         private Vector3 selRectOrigin;
-        private Vector3 selRectSecondPoint;
+        private Vector3 selRectBasDroite;
+
+        private Vector3 TL,TR,BR,BL;
 
         private float clickTime = 0f;
         private float clickDelay = 0.2f;
@@ -43,11 +45,6 @@ namespace Prototype.Unitees
                 clickTime = Time.time;//On stocke le temps de click
                 
                 UiSelSquareFirstPos = Input.mousePosition;
-                /*if (Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition), out hit,
-                    float.PositiveInfinity))
-                {
-                    selRectOrigin = hit.point;
-                }*/
             }
 
 
@@ -126,10 +123,35 @@ namespace Prototype.Unitees
                 //On calcule la taille du carré, on met une valeur absolue car sinon ca bug
                 float tailleX = Mathf.Abs(UiSelSquareFirstPos.x - UISelSquareLastPos.x);
                 float tailleY = Mathf.Abs(UiSelSquareFirstPos.y - UISelSquareLastPos.y);
-
-                
                 rt.sizeDelta = new Vector2(tailleX,tailleY);
+
+                TL = new Vector3(milieuRect.x-(tailleX/2),milieuRect.y-(tailleY/2),0);
+                TR = new Vector3(milieuRect.x + (tailleX/2),milieuRect.y - (tailleY/2),0);
+                BR = new Vector3(milieuRect.x + (tailleX/2), milieuRect.y + (tailleY/2),0);
+                BL = new Vector3(milieuRect.x - (tailleX/2),milieuRect.y - (tailleY/2),0);
                 
+                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(TL),out hit,float.PositiveInfinity,11)){
+                    TL = hit.point;
+                }
+
+                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(TR),out hit,float.PositiveInfinity,11)){
+                    TR = hit.point;
+                }
+
+                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(BR),out hit,float.PositiveInfinity,11)){
+                    BR = hit.point;
+                }
+
+                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(BL),out hit,float.PositiveInfinity,11)){
+                    BL = hit.point;
+                }
+
+            
+
+                foreach(Unite unite in Unite.AllUnites){
+        
+
+                }
 
             }
         }
