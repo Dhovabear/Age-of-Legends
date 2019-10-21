@@ -22,6 +22,7 @@ namespace Prototype.Unitees
         
         void Start()
         {
+            if(AllUnites == null) AllUnites = new List<Unite>();
             _agent = GetComponent<NavMeshAgent>();
             AllUnites.Add(this);
         }

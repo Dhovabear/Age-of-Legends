@@ -25,6 +25,11 @@ namespace Prototype.Unitees
         private float clickDelay = 0.2f;
 
         private bool SourisMaintenu = false;
+
+        public GameObject indTL;
+        public GameObject indTR;
+        public GameObject indBR;
+        public GameObject indBL;
         
         private void Start()
         {
@@ -66,9 +71,7 @@ namespace Prototype.Unitees
                 UIselectionSquare.SetActive(false);
                 if (Time.time - clickTime <= clickDelay)
                 {
-                    /**
-                     * TODO: Action a faire en cas de simple clique
-                     */
+                    
                     if (Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition), out hit,
                         float.PositiveInfinity))
                     {
@@ -125,35 +128,62 @@ namespace Prototype.Unitees
                 float tailleY = Mathf.Abs(UiSelSquareFirstPos.y - UISelSquareLastPos.y);
                 rt.sizeDelta = new Vector2(tailleX,tailleY);
 
-                TL = new Vector3(milieuRect.x-(tailleX/2),milieuRect.y-(tailleY/2),0);
-                TR = new Vector3(milieuRect.x + (tailleX/2),milieuRect.y - (tailleY/2),0);
-                BR = new Vector3(milieuRect.x + (tailleX/2), milieuRect.y + (tailleY/2),0);
+                TL = new Vector3(milieuRect.x-(tailleX/2),milieuRect.y+(tailleY/2),0);
+                TR = new Vector3(milieuRect.x + (tailleX/2),milieuRect.y + (tailleY/2),0);
+                BR = new Vector3(milieuRect.x + (tailleX/2), milieuRect.y - (tailleY/2),0);
                 BL = new Vector3(milieuRect.x - (tailleX/2),milieuRect.y - (tailleY/2),0);
                 
-                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(TL),out hit,float.PositiveInfinity,11)){
+                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(TL),out hit,float.PositiveInfinity,1 << 11)){
                     TL = hit.point;
+                    indTL.transform.position = TL;
                 }
 
-                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(TR),out hit,float.PositiveInfinity,11)){
+                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(TR),out hit,float.PositiveInfinity,1 << 11)){
                     TR = hit.point;
+                    indTR.transform.position = TR;
                 }
 
-                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(BR),out hit,float.PositiveInfinity,11)){
+                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(BR),out hit,float.PositiveInfinity,1 << 11)){
                     BR = hit.point;
+                    indBR.transform.position = BR;
                 }
 
-                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(BL),out hit,float.PositiveInfinity,11)){
+                if(Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(BL),out hit,float.PositiveInfinity,1 << 11)){
                     BL = hit.point;
+                    indBL.transform.position = BL;
                 }
 
             
 
                 foreach(Unite unite in Unite.AllUnites){
-        
-
+                    if (!selectedUnites.Contains(unite))
+                    {
+                        if (isInRectangle(unite.transform.position))
+                        {
+                            selectedUnites.Add(unite);
+                            CreateIndicator(unite);
+                        }
+                    }
+                    else
+                    {
+                        if (!isInRectangle(unite.transform.position))
+                        {
+                            selectedUnites.Remove(unite);
+                            if ( unite.transform.Find("SelectIndicator(Clone)"))
+                            {
+                                Destroy( unite.transform.Find("SelectIndicator(Clone)").gameObject,0.001f);
+                                //Debug.Log(unite.transform.name);
+                            }
+                        }
+                    }
                 }
 
             }
+        }
+
+        private bool isInRectangle(Vector3 pt)
+        {
+            return (pt.x > TL.x && pt.x < BR.x) && (pt.z < TL.z && pt.z > BR.z);
         }
 
         private void CreateIndicator(Unite obj)
