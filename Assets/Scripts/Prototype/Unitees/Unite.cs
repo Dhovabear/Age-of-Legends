@@ -2,12 +2,15 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Prototype.Unitees
 {
 
     public class Unite : MonoBehaviour , IFocusable
     {
+
+        public static List<Unite> AllUnites;
 
         public Objectif currentOrder;
         
@@ -19,7 +22,9 @@ namespace Prototype.Unitees
         
         void Start()
         {
+            if(AllUnites == null) AllUnites = new List<Unite>();
             _agent = GetComponent<NavMeshAgent>();
+            AllUnites.Add(this);
         }
 
         // Update is called once per frame
