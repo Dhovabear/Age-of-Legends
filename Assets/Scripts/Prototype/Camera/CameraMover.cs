@@ -15,10 +15,10 @@ namespace Prototype.Camera
         #region Variables publiques
 
         
-        [Range(0.5f,50f)]
+        [Range(0.5f,10f)]
         public float moveSpeed;
 
-        [Range(1f,100f)]
+        [Range(1f,20f)]
         public float scrollSpeed;
         /*
          *la variable deadzone va stocker la distance de la
