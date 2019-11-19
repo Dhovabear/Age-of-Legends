@@ -40,3 +40,6 @@ sysinfo.txt
 
 # pour les utilisateurs de Visual studio code
 .vscode
+
+# pour éviter les conflits de versions
+ProjectSettings/ProjectVersion.txt
