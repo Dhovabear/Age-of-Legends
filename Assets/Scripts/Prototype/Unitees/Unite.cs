@@ -17,6 +17,7 @@ namespace Prototype.Unitees
         #region Private fields
 
         private NavMeshAgent _agent;
+        private float distanceFromPoint;
 
         #endregion
         
@@ -24,6 +25,7 @@ namespace Prototype.Unitees
         {
             if(AllUnites == null) AllUnites = new List<Unite>();
             _agent = GetComponent<NavMeshAgent>();
+            distanceFromPoint = Random.Range(0.1f,3f);
             AllUnites.Add(this);
         }
 
@@ -31,7 +33,7 @@ namespace Prototype.Unitees
         void Update()
         {
             //Debug.Log(_agent.remainingDistance);
-            if (_agent.remainingDistance <= 2f && currentOrder != null && !_agent.pathPending)
+            if (_agent.remainingDistance <= distanceFromPoint && currentOrder != null && !_agent.pathPending)
             {
                 currentOrder = null;
                 _agent.SetDestination(gameObject.transform.position);
@@ -43,7 +45,7 @@ namespace Prototype.Unitees
         {
             currentOrder = ordre;
             _agent.SetDestination(currentOrder.location);
-            
+            distanceFromPoint = Random.Range(0.1f,4f);
             Debug.Log("ok ! my destination is " + currentOrder.location);
             StartCoroutine(remainingDistance());
         }
