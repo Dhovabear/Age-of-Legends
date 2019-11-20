@@ -78,8 +78,11 @@ namespace Prototype.Unitees
                         if (hit.transform.name.Equals("Plane"))
                         {
                             Objectif ordre = new Objectif(hit.point,"Go here");
+                            
+                            
                             foreach (Unite unite in selectedUnites)
                             {
+                                if (unite == null) continue;
                                 unite.giveOrder(ordre);
                             }
 
