@@ -41,9 +41,6 @@ namespace Prototype.Unitees
 
         public void Update()
         {
-            /**
-             * TODO: Implémenter le nouveau système de selection des unitées
-             */
             RaycastHit hit;
             if (Input.GetMouseButtonDown(0))
             {
@@ -105,14 +102,8 @@ namespace Prototype.Unitees
                     }
                 }
                 
-                //SourisMaintenu = false;
                 
                 clickTime = 0f;
-                /*if (Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition), out hit,
-                    float.PositiveInfinity))
-                {
-                    selRectSecondPoint = hit.point;
-                }*/
             }
 
             if (SourisMaintenu)
