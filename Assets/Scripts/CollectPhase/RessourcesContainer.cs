@@ -23,9 +23,9 @@ public class RessourcesContainer : MonoBehaviour, IFocusable
     [SerializeField]private int resPerSecondPerUnit = 0;
     [SerializeField] private int regenRes;
     [SerializeField] private int maxRes;
-    [SerializeField]private Text infoToDisplay;
+    [SerializeField] private Text infoToDisplay;
     private int ResCount;
-    private TypeRes _typeRes;
+    [SerializeField] private TypeRes _typeRes;
     
     #endregion
 
