@@ -86,6 +86,16 @@ namespace Prototype.Unitees
 
                             return;
                         }
+
+                        ObjectifContainer obj;
+                        if ((obj = hit.transform.gameObject.GetComponent<ObjectifContainer>()) != null)
+                        {
+                            foreach (Unite unite in selectedUnites)
+                            {
+                                if (unite == null) continue;
+                                unite.giveOrder(obj.GetObjectif());
+                            }
+                        }
                         
                         if (Input.GetButton("MultiSelect"))
                         {

@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
         //A voir quand y'aura le online
         _PlayerManager.InitPlayers();
         current = this;
+        
+        //on lance la boucle d'update du jeu
+        StartCoroutine(TimeLoop());
     }
 
     // Update is called once per frame
@@ -25,5 +28,20 @@ public class GameManager : MonoBehaviour
     public PlayerManager GetPlayerManager()
     {
         return _PlayerManager;
+    }
+    
+    
+    IEnumerator TimeLoop()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.5f);
+            //trucs a 1.5Sec
+            yield return new WaitForSeconds(0.5f);
+            foreach (RessourcesContainer rc in RessourcesContainer.instances)
+            {
+                rc.UpdateRessources();
+            }
+        }
     }
 }

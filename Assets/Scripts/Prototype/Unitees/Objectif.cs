@@ -2,11 +2,12 @@
 
 namespace Prototype.Unitees
 {
+    
     public class Objectif
     {
 
-        public string name { get; }
-        public Vector3 location { get; }
+        public string name;
+        public Vector3 location;
         
         public Objectif(Vector3 location , string name)
         {
