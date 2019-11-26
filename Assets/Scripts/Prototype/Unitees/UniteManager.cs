@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Prototype.Camera;
 using UnityEngine;
+using UnityEngine.Diagnostics;
 
 namespace Prototype.Unitees
 {
@@ -177,7 +178,36 @@ namespace Prototype.Unitees
 
         private bool isInRectangle(Vector3 pt)
         {
-            return (pt.x > TL.x && pt.x < BR.x) && (pt.z < TL.z && pt.z > BR.z);
+
+            if (isInTriangle(pt, TL,BL,TR))
+            {
+                return true;
+            }
+
+            if (isInTriangle(pt, BL, BR, TR))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool isInTriangle(Vector3 p,Vector3 p1, Vector3 p2 , Vector3 p3)
+        {
+            bool estDansTriangle = false;
+
+            float denom = ((p2.z - p3.z) * (p1.x - p3.x) + (p3.x - p2.x) * (p1.z - p3.z));
+            
+            float a = ((p2.z - p3.z) * (p.x - p3.x) + (p3.x - p2.x) * (p.z - p3.z)) / denom;
+            float b = ((p3.z - p1.z) * (p.x - p3.x) + (p1.x - p3.x) * (p.z - p3.z)) / denom;
+            float c = 1 - a - b;
+            
+            if (a >= 0f && a <= 1f && b >= 0f && b <= 1f && c >= 0f && c <= 1f)
+            {
+                estDansTriangle = true;
+            }
+            
+            return estDansTriangle;
         }
 
         private void CreateIndicator(Unite obj)
