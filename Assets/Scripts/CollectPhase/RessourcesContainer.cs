@@ -5,6 +5,13 @@ using UnityEngine.UI;
 using Prototype.Unitees;
 using Prototype.Camera;
 
+
+enum TypeRes
+{
+    Cristal,
+    Mana
+}
+
 [RequireComponent(typeof(Collider))]
 public class RessourcesContainer : MonoBehaviour, IFocusable
 {
@@ -13,7 +20,10 @@ public class RessourcesContainer : MonoBehaviour, IFocusable
 
     [SerializeField]private int resPerSecondPerUnit = 0;
     [SerializeField]private Text infoToDisplay;
-        
+
+    [SerializeField]
+    private TypeRes _typeRes;
+    
     #endregion
 
     #region private Fields
@@ -42,6 +52,10 @@ public class RessourcesContainer : MonoBehaviour, IFocusable
         Unite un;
         if(!(un = other.gameObject.GetComponent<Unite>())){return;}
         pInZone.Add(un);
+        if (pInZone.Count == 0)
+        {
+            StartCoroutine(EarnRessources());
+        }
     }
 
     void OnTriggerExit(Collider other){
@@ -70,4 +84,20 @@ public class RessourcesContainer : MonoBehaviour, IFocusable
     }
 
     #endregion
+
+    private IEnumerator EarnRessources()
+    {
+        while (pInZone.Count > 0)
+        {
+            yield return new WaitForSeconds(1f);//On attend une seconde
+            if (_typeRes == TypeRes.Mana)
+            {
+                GameManager.current.GetPlayerManager().EarnMana(resPerSecondPerUnit);
+            }
+            else
+            {
+                GameManager.current.GetPlayerManager().EarnCristal(resPerSecondPerUnit);
+            }
+        }
+    }
 }

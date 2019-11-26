@@ -73,7 +73,7 @@ namespace Prototype.Unitees
                     if (Physics.Raycast(UnityEngine.Camera.main.ScreenPointToRay(Input.mousePosition), out hit,
                         float.PositiveInfinity))
                     {
-                        if (hit.transform.name.Equals("Plane"))
+                        if (hit.transform.tag.Equals("sol"))
                         {
                             Objectif ordre = new Objectif(hit.point,"Go here");
                             
