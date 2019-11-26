@@ -1,48 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.UIElements;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Light))]
-public class FireLight : MonoBehaviour
+namespace ComseticScripts
 {
-    // Start is called before the first frame update
-
-    #region Private Fields
-
-    private Light _light;
-
-    
-    
-    #endregion
-
-    #region Public fields
-
-    public float minVal = 7f;
-    public float maxVal = 25f;
-    public float pas = 1f;
-    
-    #endregion
-    
-    void Start()
+    [RequireComponent(typeof(Light))]
+    public class FireLight : MonoBehaviour
     {
-        _light = GetComponent<Light>();
-    }
+        // Start is called before the first frame update
 
-    // Update is called once per frame
-    void Update()
-    {
-        float variation;//variable qui va déterminer le 'mouvement' de l'intensité
+        #region Private Fields
 
-        if (Random.Range(0, 2)==1)//condition bête, 1 chance sur 2
+        private Light _light;
+
+    
+    
+        #endregion
+
+        #region Public fields
+
+        public float minVal = 7f;
+        public float maxVal = 25f;
+        public float pas = 1f;
+    
+        #endregion
+    
+        void Start()
         {
-            variation = (_light.intensity <= maxVal) ? pas : -pas;//expression ternaire pour gerer le dépassement
+            _light = GetComponent<Light>();
         }
-        else
+
+        // Update is called once per frame
+        void Update()
         {
-            variation = (_light.intensity > minVal) ? -pas : pas;
-        }
+            float variation;//variable qui va déterminer le 'mouvement' de l'intensité
+
+            if (Random.Range(0, 2)==1)//condition bête, 1 chance sur 2
+            {
+                variation = (_light.intensity <= maxVal) ? pas : -pas;//expression ternaire pour gerer le dépassement
+            }
+            else
+            {
+                variation = (_light.intensity > minVal) ? -pas : pas;
+            }
         
-        _light.intensity += variation;//on applique la variation
+            _light.intensity += variation;//on applique la variation
+        }
     }
 }
