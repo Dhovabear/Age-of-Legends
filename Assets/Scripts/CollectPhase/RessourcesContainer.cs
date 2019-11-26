@@ -25,7 +25,7 @@ public class RessourcesContainer : MonoBehaviour, IFocusable
     [SerializeField] private int maxRes;
     [SerializeField]private Text infoToDisplay;
     private int ResCount;
-    private TypeRes _typeRes;
+    [SerializeField]private TypeRes _typeRes;
     
     #endregion
 
