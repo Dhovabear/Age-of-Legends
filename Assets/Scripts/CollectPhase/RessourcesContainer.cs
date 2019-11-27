@@ -141,4 +141,16 @@ public class RessourcesContainer : MonoBehaviour, IFocusable
             GameManager.current.GetPlayerManager().EarnCristal(resToEarn);
         }
     }
+
+    #region getter and setter
+
+    public int GetMaxRes(){
+        return maxRes;
+    }
+
+    public int GetResCount(){
+        return ResCount;
+    }
+
+    #endregion
 }
