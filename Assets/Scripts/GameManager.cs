@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             foreach (RessourcesContainer rc in RessourcesContainer.instances)
             {
-                rc.UpdateRessources();
+                rc.UpdateRessourcesV2();
             }
         }
     }

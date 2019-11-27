@@ -142,6 +142,15 @@ public class RessourcesContainer : MonoBehaviour, IFocusable
         }
     }
 
+    public void UpdateRessourcesV2(){
+
+        foreach(Unite u in pInZone){
+            int resToEarn = Math.Min(u.CanCarry(),Math.Min(resPerSecondPerUnit,ResCount));
+            ResCount -= resToEarn;
+            u.EarnRessources((_typeRes == TypeRes.Cristaux),resToEarn);
+        }
+    }
+
     #region getter and setter
 
     public int GetMaxRes(){
