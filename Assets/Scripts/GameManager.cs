@@ -6,6 +6,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public PlayerManager _PlayerManager;
+    
+    public ObjectifContainer cristRepo;
+    public ObjectifContainer manaRepo;
 
     public static GameManager current; //pour y acceder de n'importe ou
     // Start is called before the first frame update
@@ -44,4 +47,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+
 }

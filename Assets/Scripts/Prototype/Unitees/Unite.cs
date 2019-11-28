@@ -42,10 +42,11 @@ namespace Prototype.Unitees
         // Update is called once per frame
         void Update()
         {
-            if(resCount == maxRes){
-                if(currentOrder == null){
-                    Debug.Log("Fini !");
-                    giveOrder(new Objectif(Vector3.zero,"rentre"));
+            if(resCount == maxRes && currentOrder == null){
+                if(type == TypeRes.Cristaux){
+                    giveOrder(GameManager.current.cristRepo.GetObjectif());
+                }else{
+                    giveOrder(GameManager.current.manaRepo.GetObjectif());
                 }
                 return;
             }
