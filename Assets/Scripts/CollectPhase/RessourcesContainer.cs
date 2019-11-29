@@ -7,14 +7,8 @@ using Prototype.Unitees;
 using Prototype.Camera;
 
 
-enum TypeRes
-{
-    Cristaux,
-    Mana
-}
-
 [RequireComponent(typeof(Collider))]
-public class RessourcesContainer : MonoBehaviour, IFocusable
+public class RessourcesContainer : Container
 {
 
     public static List<RessourcesContainer> instances;
@@ -23,131 +17,54 @@ public class RessourcesContainer : MonoBehaviour, IFocusable
     [SerializeField]private int resPerSecondPerUnit = 0;
     [SerializeField] private int regenRes;
     [SerializeField] private int maxRes;
-    [SerializeField]private Text infoToDisplay;
     private int ResCount;
     [SerializeField]private TypeRes _typeRes;
     
     #endregion
 
-    #region private Fields
-
-    private List<Unite> pInZone;
-    private bool collect = false;
-
-        
-    #endregion
-
     // Start is called before the first frame update
-    void Start()
+    public override void initialise()
     {
-        pInZone = new List<Unite>();
-        ResCount = maxRes;
-
+        //Si la liste des instances est nulle alors on la crée
         if (instances == null)
         {
             instances = new List<RessourcesContainer>();
         }
+
+        //On s'ajoute a la liste des instances
         instances.Add(this);
+
+        //On initialise les ressources
+        ResCount = maxRes;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    #region OnTriggerCallbacks
-
-    void OnTriggerEnter(Collider other)
-    {
-        Unite un;
-        if(!(un = other.gameObject.GetComponent<Unite>())){return;}
-        pInZone.Add(un);
-        
-        if (collect == false)
-        {
-            collect = true;
-        }
-        
-    }
-
-    void OnTriggerExit(Collider other){
-        Unite un;
-        if(!(un = other.gameObject.GetComponent<Unite>())){return;}
-        pInZone.Remove(un);
-        if (pInZone.Count == 0)
-        {
-            collect = false;
-        }
-    }
-
-    #endregion
+    
 
     #region OnMouseCallbacks     
     
-    void OnMouseEnter(){
-        infoToDisplay.gameObject.SetActive(true);
-        
-    }
 
-    void OnMouseOver()
-    {
-        infoToDisplay.text = "";
-        RectTransform rt = infoToDisplay.gameObject.GetComponent<RectTransform>();
+    public override void displayInfo(Text text){
+        text.text = "";
+        RectTransform rt = text.gameObject.GetComponent<RectTransform>();
         rt.anchoredPosition = new Vector2(Input.mousePosition.x + 80,Input.mousePosition.y);
 
         
 
-        if (ResCount > 1000)
-        {
-            int nbK = ResCount / 1000;
-            infoToDisplay.text += nbK + "k " + _typeRes.ToString() + " restants\n";
-        }
-        else
-        {
-            infoToDisplay.text += ResCount + " " + _typeRes.ToString() + " restants\n";
-        }
-        
-        infoToDisplay.text += resPerSecondPerUnit + " " + _typeRes.ToString() + "/s\n" + pInZone.Count + "collecting";
-    }
-
-    void OnMouseExit(){
-        infoToDisplay.gameObject.SetActive(false);
+        text.text += (ResCount >= 1000)? ResCount/1000 + "," + (ResCount % 1000) / 100 + "k" : ResCount.ToString();
+        text.text += " " + _typeRes.ToString()+"\n";
+        text.text += resPerSecondPerUnit + " " + _typeRes.ToString() + "/s\n" + uniteInZone.Count + "collecting";
     }
 
     #endregion
 
-    public void UpdateRessources()
-    {
-
-        if ((ResCount + regenRes) < maxRes)
-        {
-            ResCount += regenRes;
-        }
-        
-        if (!collect) return;
-        
-
-        int resToEarn = resPerSecondPerUnit * pInZone.Count;
-        resToEarn = (ResCount - resToEarn > 0) ? resToEarn : Math.Min(ResCount,resToEarn);
-        ResCount -= resToEarn;
-
-        if (_typeRes == TypeRes.Mana)
-        {
-            GameManager.current.GetPlayerManager().EarnMana(resToEarn);
-        }
-        else
-        {
-            GameManager.current.GetPlayerManager().EarnCristal(resToEarn);
-        }
-    }
-
     public void UpdateRessourcesV2(){
 
-        foreach(Unite u in pInZone){
+        ResCount = (ResCount + regenRes < maxRes)? ResCount+regenRes : ResCount + (maxRes - ResCount);
+
+        foreach(Unite u in uniteInZone){
             int resToEarn = Math.Min(u.CanCarry(),Math.Min(resPerSecondPerUnit,ResCount));
             ResCount -= resToEarn;
             u.EarnRessources((_typeRes == TypeRes.Cristaux),resToEarn);
+            u.CheckIfImFull();
         }
     }
 

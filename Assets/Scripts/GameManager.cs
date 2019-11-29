@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CollectPhase;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     
     public ObjectifContainer cristRepo;
     public ObjectifContainer manaRepo;
+    
+    public Text infoField;
 
     public static GameManager current; //pour y acceder de n'importe ou
     // Start is called before the first frame update
