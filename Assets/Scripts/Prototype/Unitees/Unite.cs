@@ -9,7 +9,7 @@ namespace Prototype.Unitees
 
     public class Unite : MonoBehaviour , IFocusable
     {
-        const int maxRes = 150;
+        public const int maxRes = 150;
 
         public static List<Unite> AllUnites;
 
@@ -17,6 +17,9 @@ namespace Prototype.Unitees
         public Objectif lastOrder;
         public GameObject container;
         
+
+
+
         #region Private fields
 
         private NavMeshAgent _agent;
@@ -86,10 +89,15 @@ namespace Prototype.Unitees
             if(!isCristal && type == TypeRes.Mana){
                 resCount += amount;
             }
+
         }
 
         public int CanCarry(){
             return maxRes - resCount;
+        }
+
+        public TypeRes GetResType(){
+            return type;
         }
     }
 }

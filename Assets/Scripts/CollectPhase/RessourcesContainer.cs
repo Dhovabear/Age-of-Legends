@@ -25,11 +25,9 @@ public class RessourcesContainer : Container
     // Start is called before the first frame update
     public override void initialise()
     {
+        Debug.Log("ResContInit");
         //Si la liste des instances est nulle alors on la crée
-        if (instances == null)
-        {
-            instances = new List<RessourcesContainer>();
-        }
+        if (instances == null){instances = new List<RessourcesContainer>();}
 
         //On s'ajoute a la liste des instances
         instances.Add(this);
@@ -47,7 +45,6 @@ public class RessourcesContainer : Container
         RectTransform rt = text.gameObject.GetComponent<RectTransform>();
         rt.anchoredPosition = new Vector2(Input.mousePosition.x + 80,Input.mousePosition.y);
 
-        
 
         text.text += (ResCount >= 1000)? ResCount/1000 + "," + (ResCount % 1000) / 100 + "k" : ResCount.ToString();
         text.text += " " + _typeRes.ToString()+"\n";

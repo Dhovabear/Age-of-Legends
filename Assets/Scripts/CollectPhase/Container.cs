@@ -11,13 +11,15 @@ public abstract class Container : MonoBehaviour , IFocusable
 {
 
     protected List<Unite> uniteInZone;
-    [SerializeField]protected Text infoDisp;
+    protected Text infoDisp;
 
 
     #region MonoBehaviour callbacks
+    
     void Start(){
         uniteInZone = new List<Unite>();
         infoDisp = GameManager.current.infoField;
+        Debug.Log("Le Daron est la !");
         initialise();
     }
 
