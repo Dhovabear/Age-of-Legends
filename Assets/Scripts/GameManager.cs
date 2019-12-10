@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         //A voir quand y'aura le online
         _PlayerManager.InitPlayers();
         current = this;
+        Debug.Log("Je suis init !");
         
         //on lance la boucle d'update du jeu
         StartCoroutine(TimeLoop());
@@ -45,14 +46,14 @@ public class GameManager : MonoBehaviour
             //trucs a 1.5Sec
             yield return new WaitForSeconds(0.5f);
 
-            if(RessourcesContainer.instances == null){
+            /*if(RessourcesContainer.instances == null){
                 Debug.Log("Test");
             }
             
             foreach(RessourcesStorage rs in RessourcesStorage.instances){
                 
-                rs.UpdateRessources();
-            }
+                //rs.UpdateRessources();
+            }*/
             
             
 
