@@ -99,5 +99,10 @@ namespace Prototype.Unitees
         public TypeRes GetResType(){
             return type;
         }
+
+        public int GetResCount()
+        {
+            return resCount;
+        }
     }
 }

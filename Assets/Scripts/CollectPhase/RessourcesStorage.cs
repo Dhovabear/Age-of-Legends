@@ -26,7 +26,7 @@ public class RessourcesStorage : Container
         instances.Add(this);
 
         //On initialise les ressources
-        ResCount = MaxRessources;
+        ResCount = 0;
     }
 
     
@@ -35,13 +35,16 @@ public class RessourcesStorage : Container
 
         Debug.Log("On passe la ");
         foreach(Unite u in uniteInZone ){
-
-            int resToGain = Math.Min(u.CanCarry(),Math.Min(resPerSec , ResCount));
-            ResCount += resToGain;
             
             if(u.GetResType() != type){
                 return;
             }
+            
+            int resToGain = Math.Min( (MaxRessources - ResCount),Math.Min(resPerSec , u.GetResCount()));
+            Debug.Log("resto gain: " + resToGain);
+            
+            
+            ResCount += resToGain;
 
             //pas très optmisé
             if(type == TypeRes.Cristaux){
@@ -55,8 +58,15 @@ public class RessourcesStorage : Container
         }
     }
 
-    public override void displayInfo(Text text){
+    public override void displayInfo(Text text)
+    {
         text.text = "";
+        RectTransform rt = text.gameObject.GetComponent<RectTransform>();
+        rt.anchoredPosition = new Vector2(Input.mousePosition.x + 80,Input.mousePosition.y);
+        
+        text.text += (ResCount >= 1000)? ResCount/1000 + "," + (ResCount % 1000) / 100 + "k" : ResCount.ToString();
+        text.text += " " + type.ToString()+"\n";
+        text.text += resPerSec + " " + type.ToString() + "/s\n" + uniteInZone.Count + " deposit";
     }
 
 }

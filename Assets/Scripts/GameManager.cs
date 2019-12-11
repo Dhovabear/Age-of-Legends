@@ -46,16 +46,18 @@ public class GameManager : MonoBehaviour
             //trucs a 1.5Sec
             yield return new WaitForSeconds(0.5f);
 
-            /*if(RessourcesContainer.instances == null){
+            if(RessourcesContainer.instances == null){
                 Debug.Log("Test");
             }
             
-            foreach(RessourcesStorage rs in RessourcesStorage.instances){
-                
-                //rs.UpdateRessources();
-            }*/
-            
-            
+            foreach(RessourcesContainer rc in RessourcesContainer.instances){
+                rc.UpdateRessourcesV2();
+            }
+
+            foreach (RessourcesStorage rs in RessourcesStorage.instances)
+            {
+                rs.UpdateRessources();
+            }
 
             
         }
