@@ -16,9 +16,9 @@ namespace Prototype.Unitees
         public Objectif currentOrder;
         public Objectif lastOrder;
         public GameObject container;
-        
 
 
+        public bool collecting = false;
 
         #region Private fields
 

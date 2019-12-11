@@ -35,12 +35,16 @@ public abstract class Container : MonoBehaviour , IFocusable
     void OnTriggerEnter(Collider other){
         Unite un;
         if(!(un = other.gameObject.GetComponent<Unite>())){return;}
+
+        un.collecting = true;
         uniteInZone.Add(un);
     }
 
     void OnTriggerExit(Collider other){
         Unite un;
         if(!(un = other.gameObject.GetComponent<Unite>())){return;}
+
+        un.collecting = false;
         uniteInZone.Remove(un);
     }
 
