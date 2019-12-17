@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChampionController : MonoBehaviour, IComparable
+public abstract class ChampionController : MonoBehaviour, IComparable
 {
 
     [SerializeField] public string Name;
@@ -48,5 +48,7 @@ public class ChampionController : MonoBehaviour, IComparable
         ChampionController champion = (ChampionController) obj;
         return Compare(this, champion);
     }
-    
+
+    public abstract void spell1(ChampionController champion);
+
 }

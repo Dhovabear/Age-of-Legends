@@ -57,7 +57,7 @@ public class UkkirasController : ChampionController
     {
     }
 
-    public void spell1(ChampionController champion)
+    public override void spell1(ChampionController champion)
     {
         float dégats = Attaque * 2.1f - champion.Defense;
         champion.Hp = champion.Hp - dégats;

@@ -58,7 +58,7 @@ public class AshaarjController : ChampionController
     {
     }
 
-    public void spell1(ChampionController target)
+    public override void spell1(ChampionController target)
     {
         target.Defense = target.Defense * 0.9f;
     }

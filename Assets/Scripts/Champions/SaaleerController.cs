@@ -58,7 +58,7 @@ public class SaaleerController : ChampionController
     {
     }
 
-    public void spell1()
+    public override void spell1(ChampionController champion)
     {
         foreach (ChampionController ally in allies)
         {

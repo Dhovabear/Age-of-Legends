@@ -57,8 +57,7 @@ public class ChypsettController : ChampionController
     void Update()
     {
     }
-
-    public void spell1(ChampionController champion)
+    public override void spell1(ChampionController champion)
     {
         champion.Hp = champion.Hp + Heal;
     }
