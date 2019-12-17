@@ -59,16 +59,16 @@ public class DohmaController : ChampionController
 
     public override void spell1(ChampionController target)
     {
-        target.Hp = target.Hp - (Attaque* 1.3f - target.Defense);
-        int choice = Random.Range(0,2);
-        /*if (choice == 2) full bugué ça mec
+        target.Hp = target.Hp - (Attaque * 1.3f - target.Defense);
+        int choice = Random.Range(0, 2);
+        if (choice == 2)
         {
             Marques++;
         }
         else
         {
             allies[choice].Marques++;
-        }*/
+        }
     }
 
     public void spell2(ChampionController target)

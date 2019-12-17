@@ -17,19 +17,32 @@ public class DisplayController : MonoBehaviour
     public Text champ4Name;
     public Text champ4Health;
     public FightManager fightmanager;
-    public GameObject pane;
+    //public GameObject pane;
     public Button button;
+
+    private List<ChampionController> champions;
 
     private void testAttack()
     {
-        fightmanager.getTeam1()[0].spell1(fightmanager.getTeam2()[0]);
+        /*fightmanager.getTeam1()[0].spell1(fightmanager.getTeam2()[0]);
+        if (fightmanager.getIndiceChampionCourant() < 5)
+        {
+            fightmanager.setIndiceChampionCourant(fightmanager.getIndiceChampionCourant()+1);
+        }
+        else
+        {
+            fightmanager.setIndiceChampionCourant(0);
+            fightmanager.champions.Sort(Comparer<ChampionController>.Default);
+        }
+        
         updateInfos();
-        pane.SetActive(true);
-        button.interactable = false;
+        pane.SetActive(true);*/
+        //button.interactable = false;
     }
 
     private void updateInfos()
-    {
+    {/*
+
         champ1Name.text =fightmanager.getTeam1()[0].Name;
         champ1Health.text = "Vie :" + fightmanager.getTeam1()[0].Hp;
         champ1Ult.text = " Ult : " + fightmanager.getTeam1()[0].Ultime + "/100";
@@ -44,12 +57,28 @@ public class DisplayController : MonoBehaviour
         
         champ4Name.text =fightmanager.getTeam2()[0].Name;
         champ4Health.text = "Vie :" + fightmanager.getTeam2()[0].Hp;
+        
+        if (champions[fightmanager.getIndiceChampionCourant()].Name == fightmanager.getTeam1()[0].Name)
+        {
+            champ1Name.text ="-->" + fightmanager.getTeam1()[0].Name;
+        }
+        if (champions[fightmanager.getIndiceChampionCourant()].Name == fightmanager.getTeam1()[1].Name)
+        {
+            champ2Name.text ="-->" + fightmanager.getTeam1()[1].Name;
+        }
+        if (champions[fightmanager.getIndiceChampionCourant()].Name == fightmanager.getTeam1()[2].Name)
+        {
+            champ3Name.text ="-->" + fightmanager.getTeam1()[2].Name;
+        }
+        */
+        
     }
     // Start is called before the first frame update
     void Start()
     {
+        champions = fightmanager.champions;
         updateInfos();
-        pane.SetActive(false);
+        //pane.SetActive(false);
         
         button.onClick.AddListener(testAttack);
     }
@@ -57,6 +86,5 @@ public class DisplayController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

@@ -23,10 +23,12 @@ public abstract class ChampionController : MonoBehaviour, IComparable
     [SerializeField] protected GameObject[] team2;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         team1 = GameObject.FindGameObjectsWithTag("team1");
         team2 = GameObject.FindGameObjectsWithTag("team2");
+        Debug.Log("sale pute" + team1);
+        Debug.Log(team2);
     }
 
     // Update is called once per frame
