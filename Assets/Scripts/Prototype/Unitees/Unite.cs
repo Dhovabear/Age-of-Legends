@@ -60,30 +60,37 @@ namespace Prototype.Unitees
         }
 
         public void CheckIfImFull(){
+            
+            //je dois rien faire et je suis plein
             if(resCount == maxRes && currentOrder == null){
-                giveOrder(getNearStorage(type));
+                giveOrder(getNearStorage(type)); //donc je cherche le conteneur le plus proche
             }
 
             
+            
+
             RessourcesContainer rc = currentPlace.gameObject.GetComponent<RessourcesContainer>();
+
+            //Si actuellement on est sur un endroit de récolte
             if(rc != null){
+                //et si y'a plus rien a prendre
                 if(rc.GetResCount() == 0){
-                    giveOrder(getNearStorage(type));
+                    giveOrder(getNearStorage(type));//alors on s'en va au stockage
                 }
             }
 
 
             RessourcesStorage rs = currentPlace.gameObject.GetComponent<RessourcesStorage>();
-            if(rs != null){
-                if(resCount > 0 && !rs.HasSpaceFor()){
-                giveOrder(getNearStorage(type));
-            }
+            if(rs != null){ //si actuellement on est sur un ressources storage
+
+                if(resCount > 0 && !rs.HasSpaceFor()){// Si on a encore des ressources et que y'a plus d'espace pour mettre des ressources
+                    giveOrder(getNearStorage(type));//alors on cherche un nouvel endroit ou poser
+                }
+                
             }
             
 
-            if(resCount == 0 && lastOrder != null){
-                giveOrder(lastOrder);
-            }
+            
         }
 
         public void giveOrder(Objectif ordre)
@@ -155,6 +162,10 @@ namespace Prototype.Unitees
         public int GetResCount()
         {
             return resCount;
+        }
+
+        public void SetTypeRes(TypeRes t){
+            type = t;
         }
         #endregion
     }

@@ -1,34 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using CollectPhase;
 public class FarmBehavior : MonoBehaviour
 {
 
     public GameObject pannelCreerPaysan;
-    public GameObject bouttonCreerPaysan;
+    public Button bouttonCreerPaysan;
     
     public GameObject paysan;
 
-    public float cooldown;
-    public float timer;
+    //public float cooldown;
+    public float timer = 0.1f;
+    public bool finCol = true;
     // Start is called before the first frame update
     void Start()
     {
-        bouttonCreerPaysan.SetActive(false);
+        bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Pas assez de mana!";
+        bouttonCreerPaysan.interactable = false;
+        finCol = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer = (float) (timer - 0.01);
-        Debug.Log("Timer = "+timer);
-        if (timer <= 0)
+        /*if (timer <= 0)
         {
             timer = 0;
             if (GameManager.current.GetPlayerManager().GetCurrentPlayer().mana > 200)
             {
-                bouttonCreerPaysan.SetActive(true);
+                bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Créer";
+                bouttonCreerPaysan.interactable = true;
+            }
+        }*/
+        if(finCol){
+            GameManager gm = GameManager.current;
+            PlayerManager pm = gm.GetPlayerManager();
+            PlayerData pd = pm.GetCurrentPlayer();
+
+            if (pd.mana > 200)
+            {
+                bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Créer";
+                bouttonCreerPaysan.interactable = true;
             }
         }
     }
@@ -37,8 +51,14 @@ public class FarmBehavior : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         { 
-            pannelCreerPaysan.SetActive(true);
-            bouttonCreerPaysan.SetActive(false);
+            if (GameManager.current.GetPlayerManager().GetCurrentPlayer().mana > 200){
+                pannelCreerPaysan.SetActive(true);
+                bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Créer";
+                bouttonCreerPaysan.interactable = true;
+            }else{
+                bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Pas assez de mana!";
+                bouttonCreerPaysan.interactable = false;
+            }
         }
         
     }
@@ -60,8 +80,15 @@ public class FarmBehavior : MonoBehaviour
             
             paysan = GameObject.Instantiate(Resources.Load<GameObject>("Paysan"), gameObject.transform.position + Vector3.back*3, Quaternion.identity);
             GameManager.current.GetPlayerManager().GetCurrentPlayer().mana -= 200;
-            bouttonCreerPaysan.SetActive(false);
-            timer = 5;
+            //bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Pas assez de mana!";
+            bouttonCreerPaysan.interactable = false;
+            finCol = false;
+            StartCoroutine(coldown());
         }
+    }
+
+    public IEnumerator coldown(){
+        yield return new WaitForSeconds(timer);
+        finCol = true;
     }
 }
