@@ -16,6 +16,7 @@ public abstract class ChampionController : MonoBehaviour, IComparable
     [SerializeField] public List<Effet> effets;
     [SerializeField] public int Marques = 0;
     [SerializeField] public bool peutJouerCeTour = true;
+    [SerializeField] public bool aJoue = false;
 
 
     [SerializeField] protected GameObject[] team1;
