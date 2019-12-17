@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +18,6 @@ public class FightManager : MonoBehaviour
         team1 = GameObject.FindGameObjectsWithTag("team1");
         team2 = GameObject.FindGameObjectsWithTag("team2");
 
-
         foreach (GameObject champion in team1)
         {
             champions.Add(champion.GetComponent<ChampionController>());
@@ -27,7 +27,12 @@ public class FightManager : MonoBehaviour
             champions.Add(champion.GetComponent<ChampionController>());
         }
         
-        champions.Sort();
+        champions.Sort(Comparer<ChampionController>.Default);
+
+        foreach (ChampionController champion in champions)
+        {
+            Debug.Log(champion.Name +" : "+ champion.Vitesse);
+        }
     }
 
     // Update is called once per frame
