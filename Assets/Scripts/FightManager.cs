@@ -11,6 +11,7 @@ public class FightManager : MonoBehaviour
     [SerializeField] protected GameObject[] team1;
     [SerializeField] protected GameObject[] team2;
 
+    [SerializeField] public int indiceChampionCourant;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +29,22 @@ public class FightManager : MonoBehaviour
         }
         
         champions.Sort(Comparer<ChampionController>.Default);
-
-        foreach (ChampionController champion in champions)
-        {
-            Debug.Log(champion.Name +" : "+ champion.Vitesse);
-        }
+        
+        indiceChampionCourant = 0;
     }
 
+    public int getIndiceChampionCourant()
+    {
+        return indiceChampionCourant;
+    }
+    
+    public void setIndiceChampionCourant(int indice)
+    {
+        indiceChampionCourant = indice;
+    }
+    
+    
+    
     // Update is called once per frame
     void Update()
     {
