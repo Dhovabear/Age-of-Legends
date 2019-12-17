@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ChampionController : MonoBehaviour
+public class ChampionController : MonoBehaviour, IComparable
 {
 
     [SerializeField] public string Name;
@@ -32,4 +33,20 @@ public class ChampionController : MonoBehaviour
     {
 
     }
+
+    public int Compare(ChampionController Champion1, ChampionController Champion2)
+    {
+        if (Champion1.Vitesse > Champion2.Vitesse)
+            return -1;
+        if (Champion1.Vitesse < Champion2.Vitesse)
+            return 1;
+        return 0;
+    }
+
+    public int CompareTo(object obj)
+    {
+        ChampionController champion = (ChampionController) obj;
+        return Compare(this, champion);
+    }
+    
 }
