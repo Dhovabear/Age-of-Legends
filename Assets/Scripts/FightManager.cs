@@ -5,7 +5,7 @@ using UnityEngine;
 public class FightManager : MonoBehaviour
 {
 
-    [SerializeField] private List<ChampionController> champions;
+    [SerializeField] public List<ChampionController> champions;
     
     [SerializeField] protected GameObject[] team1;
     [SerializeField] protected GameObject[] team2;
