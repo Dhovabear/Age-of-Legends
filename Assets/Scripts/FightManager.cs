@@ -35,6 +35,28 @@ public class FightManager : MonoBehaviour
         }
     }
 
+    public List<ChampionController> getTeam1()
+    {
+        List<ChampionController> listTeam1 = new List<ChampionController>();
+        foreach (GameObject champion in team1)
+        {
+            listTeam1.Add(champion.GetComponent<ChampionController>());
+        }
+
+        return listTeam1;
+    }
+    
+    public List<ChampionController> getTeam2()
+    {
+        List<ChampionController> listTeam2 = new List<ChampionController>();
+        foreach (GameObject champion in team2)
+        {
+            listTeam2.Add(champion.GetComponent<ChampionController>());
+        }
+
+        return listTeam2;
+    }
+
     // Update is called once per frame
     void Update()
     {

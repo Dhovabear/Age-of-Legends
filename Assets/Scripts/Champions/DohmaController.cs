@@ -61,14 +61,14 @@ public class DohmaController : ChampionController
     {
         target.Hp = target.Hp - (Attaque* 1.3f - target.Defense);
         int choice = Random.Range(0,2);
-        if (choice == 2)
+        /*if (choice == 2) full bugué ça mec
         {
             Marques++;
         }
         else
         {
             allies[choice].Marques++;
-        }
+        }*/
     }
 
     public void spell2(ChampionController target)
