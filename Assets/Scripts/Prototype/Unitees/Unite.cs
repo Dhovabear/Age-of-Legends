@@ -61,15 +61,17 @@ namespace Prototype.Unitees
 
         public void CheckIfImFull(){
             if(resCount == maxRes && currentOrder == null){
-                /*if(type == TypeRes.Cristaux){
-                    giveOrder(GameManager.current.cristRepo.GetObjectif());
-                }else{
-                    giveOrder(GameManager.current.manaRepo.GetObjectif());
-                }*/
                 giveOrder(getNearStorage(type));
             }
 
             
+            RessourcesContainer rc = currentPlace.gameObject.GetComponent<RessourcesContainer>();
+            if(rc != null){
+                if(rc.GetResCount() == 0){
+                    giveOrder(getNearStorage(type));
+                }
+            }
+
 
             RessourcesStorage rs = currentPlace.gameObject.GetComponent<RessourcesStorage>();
             if(rs != null){
