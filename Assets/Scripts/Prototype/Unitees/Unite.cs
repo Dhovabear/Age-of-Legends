@@ -37,7 +37,7 @@ namespace Prototype.Unitees
             AllUnites.Add(this);
         }
 
-        // Update is called once per frames
+        // Update is called once per frame
         void Update()
         {
             
