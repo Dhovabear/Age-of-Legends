@@ -9,12 +9,15 @@ namespace Prototype.Unitees
 
     public class Unite : MonoBehaviour , IFocusable
     {
-        public const int maxRes = 10;
+        public const int maxRes = 213;
 
         public static List<Unite> AllUnites;
 
         public Objectif currentOrder;
         public Objectif lastOrder;
+
+         
+
         public GameObject container;
 
 
@@ -27,6 +30,9 @@ namespace Prototype.Unitees
         //res
         private TypeRes type;
         private int resCount;
+
+        public Container currentPlace;
+
         #endregion
         
         void Start()
@@ -55,12 +61,23 @@ namespace Prototype.Unitees
 
         public void CheckIfImFull(){
             if(resCount == maxRes && currentOrder == null){
-                if(type == TypeRes.Cristaux){
+                /*if(type == TypeRes.Cristaux){
                     giveOrder(GameManager.current.cristRepo.GetObjectif());
                 }else{
                     giveOrder(GameManager.current.manaRepo.GetObjectif());
-                }
+                }*/
+                giveOrder(getNearStorage(type));
             }
+
+            
+
+            RessourcesStorage rs = currentPlace.gameObject.GetComponent<RessourcesStorage>();
+            if(rs != null){
+                if(resCount > 0 && !rs.HasSpaceFor()){
+                giveOrder(getNearStorage(type));
+            }
+            }
+            
 
             if(resCount == 0 && lastOrder != null){
                 giveOrder(lastOrder);
@@ -94,6 +111,37 @@ namespace Prototype.Unitees
 
         }
 
+        private Objectif getNearStorage(TypeRes type){
+
+            float bestVal = 99999999;
+            ObjectifContainer best = null;
+            List<ObjectifContainer> ls;
+
+            if(type == TypeRes.Mana){
+                ls = GameManager.current.manaRepo;
+            }
+            else{
+                ls = GameManager.current.cristRepo;
+            }
+
+            foreach(ObjectifContainer rs in ls){
+
+                if(!rs.gameObject.GetComponent<RessourcesStorage>().HasSpaceFor()){
+                    continue;
+                }
+
+                float dist = Vector3.Distance(gameObject.transform.position,rs.gameObject.transform.position);
+                if( dist < bestVal){
+                    best = rs;
+                    bestVal = dist;
+                }
+            }
+
+            return best.GetObjectif();
+            
+        }
+
+        #region getter et setter
         public int CanCarry(){
             return maxRes - resCount;
         }
@@ -106,5 +154,6 @@ namespace Prototype.Unitees
         {
             return resCount;
         }
+        #endregion
     }
 }

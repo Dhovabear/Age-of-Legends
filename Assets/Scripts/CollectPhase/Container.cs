@@ -38,6 +38,7 @@ public abstract class Container : MonoBehaviour , IFocusable
 
         un.collecting = true;
         uniteInZone.Add(un);
+        un.currentPlace = this;
     }
 
     void OnTriggerExit(Collider other){

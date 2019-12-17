@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public PlayerManager _PlayerManager;
     
-    public ObjectifContainer cristRepo;
-    public ObjectifContainer manaRepo;
+    public List<ObjectifContainer> cristRepo;
+    public List<ObjectifContainer> manaRepo;
     
     public Text infoField;
 

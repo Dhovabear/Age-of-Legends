@@ -71,4 +71,8 @@ public class RessourcesStorage : Container
         text.text += resPerSec + " " + type.ToString() + "/s\n" + uniteInZone.Count + " deposit";
     }
 
+    public bool HasSpaceFor(){
+        return (ResCount < MaxRessources);
+    }
+
 }
