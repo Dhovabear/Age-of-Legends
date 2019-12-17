@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using CollectPhase;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public PlayerManager _PlayerManager;
+    
+    public ObjectifContainer cristRepo;
+    public ObjectifContainer manaRepo;
+    
+    public Text infoField;
 
     public static GameManager current; //pour y acceder de n'importe ou
     // Start is called before the first frame update
@@ -14,6 +20,7 @@ public class GameManager : MonoBehaviour
         //A voir quand y'aura le online
         _PlayerManager.InitPlayers();
         current = this;
+        Debug.Log("Je suis init !");
         
         //on lance la boucle d'update du jeu
         StartCoroutine(TimeLoop());
@@ -38,10 +45,23 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             //trucs a 1.5Sec
             yield return new WaitForSeconds(0.5f);
-            foreach (RessourcesContainer rc in RessourcesContainer.instances)
-            {
-                rc.UpdateRessources();
+
+            if(RessourcesContainer.instances == null){
+                Debug.Log("Test");
             }
+            
+            foreach(RessourcesContainer rc in RessourcesContainer.instances){
+                rc.UpdateRessourcesV2();
+            }
+
+            foreach (RessourcesStorage rs in RessourcesStorage.instances)
+            {
+                rs.UpdateRessources();
+            }
+
+            
         }
     }
+
+
 }

@@ -9,16 +9,24 @@ namespace Prototype.Unitees
 
     public class Unite : MonoBehaviour , IFocusable
     {
+        public const int maxRes = 10;
 
         public static List<Unite> AllUnites;
 
         public Objectif currentOrder;
-        
+        public Objectif lastOrder;
+        public GameObject container;
+
+
+        public bool collecting = false;
+
         #region Private fields
 
         private NavMeshAgent _agent;
         private float distanceFromPoint;
-
+        //res
+        private TypeRes type;
+        private int resCount;
         #endregion
         
         void Start()
@@ -32,12 +40,30 @@ namespace Prototype.Unitees
         // Update is called once per frame
         void Update()
         {
+            
             //Debug.Log(_agent.remainingDistance);
             if (_agent.remainingDistance <= distanceFromPoint && currentOrder != null && !_agent.pathPending)
             {
+                if(currentOrder.name == "Collecter" ){
+                    lastOrder = currentOrder;
+                }
                 currentOrder = null;
                 _agent.SetDestination(gameObject.transform.position);
-                Debug.Log("je suis arriver !");
+                //Debug.Log("je suis arriver !");
+            }
+        }
+
+        public void CheckIfImFull(){
+            if(resCount == maxRes && currentOrder == null){
+                if(type == TypeRes.Cristaux){
+                    giveOrder(GameManager.current.cristRepo.GetObjectif());
+                }else{
+                    giveOrder(GameManager.current.manaRepo.GetObjectif());
+                }
+            }
+
+            if(resCount == 0 && lastOrder != null){
+                giveOrder(lastOrder);
             }
         }
 
@@ -46,13 +72,39 @@ namespace Prototype.Unitees
             currentOrder = ordre;
             _agent.SetDestination(currentOrder.location);
             distanceFromPoint = Random.Range(0.1f,4f);
-            Debug.Log("ok ! my destination is " + currentOrder.location);
-            StartCoroutine(remainingDistance());
+            //Debug.Log("ok ! my destination is " + currentOrder.location);
         }
 
-        IEnumerator remainingDistance(){
-            if(_agent.pathPending)yield return null;
-            Debug.Log("il me reste " + _agent.remainingDistance);
+    
+
+        public void EarnRessources(bool isCristal,int amount){
+            if(type == null) type = (isCristal)? TypeRes.Cristaux : TypeRes.Mana;
+
+            if(resCount + amount > maxRes){
+                return;
+            }
+
+            if(isCristal && type == TypeRes.Cristaux){
+                resCount += amount;
+            }
+
+            if(!isCristal && type == TypeRes.Mana){
+                resCount += amount;
+            }
+
+        }
+
+        public int CanCarry(){
+            return maxRes - resCount;
+        }
+
+        public TypeRes GetResType(){
+            return type;
+        }
+
+        public int GetResCount()
+        {
+            return resCount;
         }
     }
 }

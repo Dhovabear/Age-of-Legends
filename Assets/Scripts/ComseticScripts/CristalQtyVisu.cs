@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using CollectPhase;
 using UnityEngine;
 
 public class CristalQtyVisu : MonoBehaviour

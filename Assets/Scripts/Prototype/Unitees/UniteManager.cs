@@ -46,7 +46,6 @@ namespace Prototype.Unitees
             if (Input.GetMouseButtonDown(0))
             {
                 clickTime = Time.time;//On stocke le temps de click
-                
                 UiSelSquareFirstPos = Input.mousePosition;
             }
 
