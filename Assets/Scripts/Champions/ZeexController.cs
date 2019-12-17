@@ -58,7 +58,7 @@ public class ZeexController : ChampionController
 
     }
 
-    public void spell1()
+    public override void spell1(ChampionController champion)
     {
 
     }

@@ -57,7 +57,7 @@ public class DohmaController : ChampionController
     {
     }
 
-    public void spell1(ChampionController target)
+    public override void spell1(ChampionController target)
     {
         target.Hp = target.Hp - (Attaque* 1.3f - target.Defense);
         int choice = Random.Range(0,2);
