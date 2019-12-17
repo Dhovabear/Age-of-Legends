@@ -36,6 +36,8 @@ public class RessourcesStorage : Container
         Debug.Log("On passe la ");
         foreach(Unite u in uniteInZone ){
             
+            u.CheckIfImFull();
+
             if(u.GetResType() != type){
                 return;
             }
@@ -54,7 +56,7 @@ public class RessourcesStorage : Container
             }
             
             u.EarnRessources((type == TypeRes.Cristaux),-resToGain);
-            u.CheckIfImFull();
+            
         }
     }
 

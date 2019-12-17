@@ -9,7 +9,7 @@ namespace Prototype.Unitees
 
     public class Unite : MonoBehaviour , IFocusable
     {
-        public const int maxRes = 150;
+        public const int maxRes = 10;
 
         public static List<Unite> AllUnites;
 
@@ -44,7 +44,9 @@ namespace Prototype.Unitees
             //Debug.Log(_agent.remainingDistance);
             if (_agent.remainingDistance <= distanceFromPoint && currentOrder != null && !_agent.pathPending)
             {
-                lastOrder = currentOrder;
+                if(currentOrder.name == "Collecter" ){
+                    lastOrder = currentOrder;
+                }
                 currentOrder = null;
                 _agent.SetDestination(gameObject.transform.position);
                 //Debug.Log("je suis arriver !");
