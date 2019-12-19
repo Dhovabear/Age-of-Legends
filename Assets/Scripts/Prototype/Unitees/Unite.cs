@@ -9,12 +9,15 @@ namespace Prototype.Unitees
 
     public class Unite : MonoBehaviour , IFocusable
     {
-        public const int maxRes = 10;
+        public const int maxRes = 213;
 
         public static List<Unite> AllUnites;
 
         public Objectif currentOrder;
         public Objectif lastOrder;
+
+         
+
         public GameObject container;
 
 
@@ -27,6 +30,9 @@ namespace Prototype.Unitees
         //res
         private TypeRes type;
         private int resCount;
+
+        public Container currentPlace;
+
         #endregion
         
         void Start()
@@ -54,17 +60,37 @@ namespace Prototype.Unitees
         }
 
         public void CheckIfImFull(){
+            
+            //je dois rien faire et je suis plein
             if(resCount == maxRes && currentOrder == null){
-                if(type == TypeRes.Cristaux){
-                    giveOrder(GameManager.current.cristRepo.GetObjectif());
-                }else{
-                    giveOrder(GameManager.current.manaRepo.GetObjectif());
+                giveOrder(getNearStorage(type)); //donc je cherche le conteneur le plus proche
+            }
+
+            
+            
+
+            RessourcesContainer rc = currentPlace.gameObject.GetComponent<RessourcesContainer>();
+
+            //Si actuellement on est sur un endroit de récolte
+            if(rc != null){
+                //et si y'a plus rien a prendre
+                if(rc.GetResCount() == 0){
+                    giveOrder(getNearStorage(type));//alors on s'en va au stockage
                 }
             }
 
-            if(resCount == 0 && lastOrder != null){
-                giveOrder(lastOrder);
+
+            RessourcesStorage rs = currentPlace.gameObject.GetComponent<RessourcesStorage>();
+            if(rs != null){ //si actuellement on est sur un ressources storage
+
+                if(resCount > 0 && !rs.HasSpaceFor()){// Si on a encore des ressources et que y'a plus d'espace pour mettre des ressources
+                    giveOrder(getNearStorage(type));//alors on cherche un nouvel endroit ou poser
+                }
+                
             }
+            
+
+            
         }
 
         public void giveOrder(Objectif ordre)
@@ -94,6 +120,37 @@ namespace Prototype.Unitees
 
         }
 
+        private Objectif getNearStorage(TypeRes type){
+
+            float bestVal = 99999999;
+            ObjectifContainer best = null;
+            List<ObjectifContainer> ls;
+
+            if(type == TypeRes.Mana){
+                ls = GameManager.current.manaRepo;
+            }
+            else{
+                ls = GameManager.current.cristRepo;
+            }
+
+            foreach(ObjectifContainer rs in ls){
+
+                if(!rs.gameObject.GetComponent<RessourcesStorage>().HasSpaceFor()){
+                    continue;
+                }
+
+                float dist = Vector3.Distance(gameObject.transform.position,rs.gameObject.transform.position);
+                if( dist < bestVal){
+                    best = rs;
+                    bestVal = dist;
+                }
+            }
+
+            return best.GetObjectif();
+            
+        }
+
+        #region getter et setter
         public int CanCarry(){
             return maxRes - resCount;
         }
@@ -106,5 +163,10 @@ namespace Prototype.Unitees
         {
             return resCount;
         }
+
+        public void SetTypeRes(TypeRes t){
+            type = t;
+        }
+        #endregion
     }
 }

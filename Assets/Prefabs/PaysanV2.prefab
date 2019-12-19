@@ -107,7 +107,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container: {fileID: 0}
   collecting: 0
+  currentPlace: {fileID: 0}
 --- !u!114 &442024494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,10 +224,6 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: 9f12bb4aea659b9479a7d25286429abb, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 9f12bb4aea659b9479a7d25286429abb, type: 3}
-      propertyPath: m_WarningMessage
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f12bb4aea659b9479a7d25286429abb, type: 3}

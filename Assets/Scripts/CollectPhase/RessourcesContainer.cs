@@ -55,9 +55,13 @@ public class RessourcesContainer : Container
 
     public void UpdateRessourcesV2(){
 
+        
+
         ResCount = (ResCount + regenRes < maxRes)? ResCount+regenRes : ResCount + (maxRes - ResCount);
 
         foreach(Unite u in uniteInZone){
+            if(u.GetResCount() == 0){u.SetTypeRes(_typeRes);} //si il est a 0 on lui donne le type ressources
+            if(u.GetResType() != _typeRes){continue;} //si dans tout les cas on a pas le meme type on s'en va
             int resToEarn = Math.Min(u.CanCarry(),Math.Min(resPerSecondPerUnit,ResCount));
             ResCount -= resToEarn;
             u.EarnRessources((_typeRes == TypeRes.Cristaux),resToEarn);
@@ -74,6 +78,7 @@ public class RessourcesContainer : Container
     public int GetResCount(){
         return ResCount;
     }
+
 
     #endregion
 }
