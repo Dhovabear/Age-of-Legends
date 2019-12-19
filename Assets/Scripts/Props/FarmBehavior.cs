@@ -88,6 +88,7 @@ public class FarmBehavior : MonoBehaviour
             finCol = false;
             
             StartCoroutine(coldown());
+            
         }
     }
 
@@ -99,6 +100,13 @@ public class FarmBehavior : MonoBehaviour
 
     public IEnumerator coldown(){
         yield return new WaitForSeconds(timer);
+        if (GameManager.current.GetPlayerManager().GetCurrentPlayer().mana > 200){
+            bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Créer";
+            bouttonCreerPaysan.interactable = true;
+        }else{
+            bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Pas assez de mana!";
+            bouttonCreerPaysan.interactable = false;
+        }
         finCol = true;
     }
 }
