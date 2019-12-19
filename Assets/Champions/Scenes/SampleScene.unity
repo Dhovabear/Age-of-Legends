@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3777c2609a2482a48a60ef07326b3646, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657993, g: 0.49641424, b: 0.5748182, a: 1}
+  m_IndirectSpecularColor: {r: 0.4489851, g: 0.48946655, b: 0.53264, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -140,7 +140,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.11
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -290,6 +290,7 @@ MonoBehaviour:
   champions: []
   team1: []
   team2: []
+  indiceChampionCourant: 0
 --- !u!4 &195355451
 Transform:
   m_ObjectHideFlags: 0
@@ -1014,10 +1015,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   champ1Name: {fileID: 954580835}
   champ1Health: {fileID: 179215137}
+  champ1Ult: {fileID: 0}
   champ2Name: {fileID: 0}
   champ2Health: {fileID: 0}
+  champ2Ult: {fileID: 0}
   champ3Name: {fileID: 0}
   champ3Health: {fileID: 0}
+  champ3Ult: {fileID: 0}
   champ4Name: {fileID: 493922217}
   champ4Health: {fileID: 2082728827}
   fightmanager: {fileID: 195355450}

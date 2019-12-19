@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using CollectPhase;
+using Prototype.Camera;
+
 public class FarmBehavior : MonoBehaviour
 {
 
@@ -51,8 +53,9 @@ public class FarmBehavior : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         { 
+            pannelCreerPaysan.SetActive(true);
+            CameraMover.currentInstance.canMove = false;
             if (GameManager.current.GetPlayerManager().GetCurrentPlayer().mana > 200){
-                pannelCreerPaysan.SetActive(true);
                 bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Créer";
                 bouttonCreerPaysan.interactable = true;
             }else{
@@ -83,8 +86,15 @@ public class FarmBehavior : MonoBehaviour
             //bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Pas assez de mana!";
             bouttonCreerPaysan.interactable = false;
             finCol = false;
+            
             StartCoroutine(coldown());
         }
+    }
+
+    public void fermerFenetre()
+    {
+        pannelCreerPaysan.SetActive(false);
+        CameraMover.currentInstance.canMove = true;
     }
 
     public IEnumerator coldown(){
