@@ -71,7 +71,6 @@ public class DisplayController : MonoBehaviour
 
     private void updateInfos()
     {
-        champ4Name.text = "";
 
         champ1Name.text =fightmanager.getTeam1()[0].Name;
         champ1Health.text = "Vie : " + fightmanager.getTeam1()[0].Hp;
@@ -129,10 +128,11 @@ public class DisplayController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        champ4Name.text = "";
         champions = fightmanager.champions;
         paneEnnemy.SetActive(false);
         updateInfos();
-        button.onClick.AddListener(nextTurn);
+        //button.onClick.AddListener(nextTurn);
         currentEnnemyInfo.text = "";
         champ4Name.text = "";
     }
