@@ -59,6 +59,8 @@ public class DisplayController : MonoBehaviour
 
     private ChampionController currentChamp;
 
+    private Animator anim;
+
     private void nextTurn()
     {
 
@@ -139,6 +141,7 @@ public class DisplayController : MonoBehaviour
         champ4Name.text = "";
         champions = fightmanager.champions;
         paneEnnemy.SetActive(false);
+        anim = fightmanager.getTeam1()[2].GetComponent<Animator>();
         updateInfos();
         //button.onClick.AddListener(nextTurn);
         currentEnnemyInfo.text = "";
@@ -191,6 +194,7 @@ public class DisplayController : MonoBehaviour
                 }
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].name +
                                   " a lancé son sort 1 sur " + targetName;
+                anim.SetBool("isAttacking", true);
                 break;
             case 1:
 
