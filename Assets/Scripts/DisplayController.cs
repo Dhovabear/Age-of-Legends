@@ -55,8 +55,13 @@ public class DisplayController : MonoBehaviour
 
     private List<ChampionController> champions;
 
+    public GameObject playerPointer;
+
+    private ChampionController currentChamp;
+
     private void nextTurn()
     {
+
         if (fightmanager.getIndiceChampionCourant() < 5)
         {
             fightmanager.setIndiceChampionCourant(fightmanager.getIndiceChampionCourant()+1);
@@ -72,6 +77,11 @@ public class DisplayController : MonoBehaviour
     private void updateInfos()
     {
 
+    	currentChamp = fightmanager.champions[fightmanager.getIndiceChampionCourant()];
+
+        playerPointer.transform.position = currentChamp.gameObject.transform.position +
+                                           Vector3.up * currentChamp.gameObject.transform.localScale.y * 1.3f;
+
         champ1Name.text =fightmanager.getTeam1()[0].Name;
         champ1Health.text = "Vie : " + fightmanager.getTeam1()[0].Hp;
         champ1Ult.text = " Ult : " + fightmanager.getTeam1()[0].Ultime + "/100";
@@ -85,10 +95,10 @@ public class DisplayController : MonoBehaviour
         champ3Ult.text = " Ult : " + fightmanager.getTeam1()[2].Ultime + "/100";
         
         enemy1Name.text =fightmanager.getTeam2()[0].Name;
-        enemy1Health.text = "Vie : " + fightmanager.getTeam1()[0].Hp;
+        enemy1Health.text = "Vie : " + fightmanager.getTeam2()[0].Hp;
         enemy1Ult.text = " Ult : " + fightmanager.getTeam1()[0].Ultime + "/100";
         
-        enemy2Name.text =fightmanager.getTeam1()[1].Name;
+        enemy2Name.text =fightmanager.getTeam2()[1].Name;
         enemy2Health.text = "Vie : " + fightmanager.getTeam2()[1].Hp;
         enemy2Ult.text = " Ult : " + fightmanager.getTeam2()[1].Ultime + "/100";
         
@@ -96,8 +106,6 @@ public class DisplayController : MonoBehaviour
         enemy3Health.text = "Vie : " + fightmanager.getTeam2()[2].Hp;
         enemy3Ult.text = " Ult : " + fightmanager.getTeam2()[2].Ultime + "/100";
         
-        //champ4Name.text =fightmanager.getTeam2()[0].Name;
-        //champ4Health.text = "Vie : " + fightmanager.getTeam2()[0].Hp;
 
         if (champions[fightmanager.getIndiceChampionCourant()].Name == fightmanager.getTeam1()[0].Name)
         {
