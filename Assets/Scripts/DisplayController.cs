@@ -60,6 +60,7 @@ public class DisplayController : MonoBehaviour
     private ChampionController currentChamp;
 
     private Animator anim;
+    private Animator animEnemy;
 
     private void nextTurn()
     {
@@ -82,7 +83,7 @@ public class DisplayController : MonoBehaviour
     	currentChamp = fightmanager.champions[fightmanager.getIndiceChampionCourant()];
 
         playerPointer.transform.position = currentChamp.gameObject.transform.position +
-                                           Vector3.up * currentChamp.gameObject.transform.localScale.y * 1.3f;
+                                           Vector3.up * currentChamp.gameObject.transform.localScale.y * 2.1f;
 
         champ1Name.text =fightmanager.getTeam1()[0].Name;
         champ1Health.text = "Vie : " + fightmanager.getTeam1()[0].Hp;
@@ -141,7 +142,7 @@ public class DisplayController : MonoBehaviour
         champ4Name.text = "";
         champions = fightmanager.champions;
         paneEnnemy.SetActive(false);
-        anim = fightmanager.getTeam1()[2].GetComponent<Animator>();
+        //anim = fightmanager.getTeam1()[2].GetComponent<Animator>();
         updateInfos();
         //button.onClick.AddListener(nextTurn);
         currentEnnemyInfo.text = "";
@@ -186,15 +187,22 @@ public class DisplayController : MonoBehaviour
                 {
                     fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(fightmanager.getTeam2()[id]);
                     targetName = fightmanager.getTeam2()[id].name;
+                    anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
+                    anim.SetTrigger("launch_spell");
+                    animEnemy = fightmanager.getTeam2()[id].GetComponent<Animator>();
+                    animEnemy.SetTrigger("hurt");
                 }
                 else
                 {
                     fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(fightmanager.getTeam1()[id]);
                     targetName = fightmanager.getTeam1()[id].name;
+                    anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
+                    anim.SetTrigger("launch_spell");
+                    animEnemy = fightmanager.getTeam1()[id].GetComponent<Animator>();
+                    animEnemy.SetTrigger("hurt");
                 }
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].name +
                                   " a lancé son sort 1 sur " + targetName;
-                anim.SetBool("isAttacking", true);
                 break;
             case 1:
 
