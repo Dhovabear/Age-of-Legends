@@ -175,6 +175,19 @@ public class DisplayController : MonoBehaviour
         paneEnnemy.SetActive(true);
     }
 
+    IEnumerator hitEffect()
+    {
+        
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(1f);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        animEnemy.SetTrigger("hurt");
+    }
+
     public void launchSpell(int id)
     {
         String name = fightmanager.champions[fightmanager.getIndiceChampionCourant()].name;
@@ -190,7 +203,7 @@ public class DisplayController : MonoBehaviour
                     anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
                     anim.SetTrigger("launch_spell");
                     animEnemy = fightmanager.getTeam2()[id].GetComponent<Animator>();
-                    animEnemy.SetTrigger("hurt");
+                    StartCoroutine(hitEffect());
                 }
                 else
                 {
@@ -199,7 +212,8 @@ public class DisplayController : MonoBehaviour
                     anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
                     anim.SetTrigger("launch_spell");
                     animEnemy = fightmanager.getTeam1()[id].GetComponent<Animator>();
-                    animEnemy.SetTrigger("hurt");
+                    StartCoroutine(hitEffect());
+
                 }
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].name +
                                   " a lancé son sort 1 sur " + targetName;
