@@ -37,7 +37,7 @@ public abstract class ChampionController : MonoBehaviour, IComparable
 
     }
 
-    public int Compare(ChampionController Champion1, ChampionController Champion2)
+    public int CompareVitesse(ChampionController Champion1, ChampionController Champion2)
     {
         if (Champion1.Vitesse > Champion2.Vitesse)
             return -1;
@@ -49,7 +49,7 @@ public abstract class ChampionController : MonoBehaviour, IComparable
     public int CompareTo(object obj)
     {
         ChampionController champion = (ChampionController) obj;
-        return Compare(this, champion);
+        return CompareVitesse(this, champion);
     }
 
     public abstract void spell1(ChampionController champion);

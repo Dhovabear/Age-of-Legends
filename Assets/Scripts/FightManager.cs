@@ -40,7 +40,6 @@ public class FightManager : MonoBehaviour
         {
             listTeam1.Add(champion.GetComponent<ChampionController>());
         }
-
         return listTeam1;
     }
 
