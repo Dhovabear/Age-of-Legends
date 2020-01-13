@@ -27,8 +27,6 @@ public abstract class ChampionController : MonoBehaviour, IComparable
     {
         team1 = GameObject.FindGameObjectsWithTag("team1");
         team2 = GameObject.FindGameObjectsWithTag("team2");
-        Debug.Log("sale pute" + team1);
-        Debug.Log(team2);
     }
 
     // Update is called once per frame
@@ -37,7 +35,7 @@ public abstract class ChampionController : MonoBehaviour, IComparable
 
     }
 
-    public int CompareVitesse(ChampionController Champion1, ChampionController Champion2)
+    public int Compare(ChampionController Champion1, ChampionController Champion2)
     {
         if (Champion1.Vitesse > Champion2.Vitesse)
             return -1;
@@ -49,7 +47,7 @@ public abstract class ChampionController : MonoBehaviour, IComparable
     public int CompareTo(object obj)
     {
         ChampionController champion = (ChampionController) obj;
-        return CompareVitesse(this, champion);
+        return Compare(this, champion);
     }
 
     public abstract void spell1(ChampionController champion);
