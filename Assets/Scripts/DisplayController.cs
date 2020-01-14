@@ -62,6 +62,8 @@ public class DisplayController : MonoBehaviour
     private Animator anim;
     private Animator animEnemy;
 
+    private GameObject attackUi;
+
     private void nextTurn()
     {
 
@@ -144,6 +146,7 @@ public class DisplayController : MonoBehaviour
         paneEnnemy.SetActive(false);
         //anim = fightmanager.getTeam1()[2].GetComponent<Animator>();
         updateInfos();
+        attackUi = GameObject.Find("UIattack");
         //button.onClick.AddListener(nextTurn);
         currentEnnemyInfo.text = "";
         champ4Name.text = "";
@@ -181,11 +184,15 @@ public class DisplayController : MonoBehaviour
         Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
 
         //After we have waited 5 seconds print the time again.
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         animEnemy.SetTrigger("hurt");
+        yield return new WaitForSeconds(1.2f);
+        nextTurn();
+        updateInfos();
+        attackUi.SetActive(true);
     }
 
     public void launchSpell(int id)
@@ -223,8 +230,7 @@ public class DisplayController : MonoBehaviour
                 break;
         }
 
-        nextTurn();
-        updateInfos();
+        attackUi.SetActive(false);
         paneEnnemy.SetActive(false);
     }
 
