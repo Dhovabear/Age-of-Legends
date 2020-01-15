@@ -60,6 +60,9 @@ public class DisplayController : MonoBehaviour
     private ChampionController currentChamp;
 
     private Animator anim;
+    private Animator animEnemy;
+
+    private GameObject attackUi;
 
     private void nextTurn()
     {
@@ -82,7 +85,7 @@ public class DisplayController : MonoBehaviour
     	currentChamp = fightmanager.champions[fightmanager.getIndiceChampionCourant()];
 
         playerPointer.transform.position = currentChamp.gameObject.transform.position +
-                                           Vector3.up * currentChamp.gameObject.transform.localScale.y * 1.3f;
+                                           Vector3.up * currentChamp.gameObject.transform.localScale.y * 2.1f;
 
         champ1Name.text =fightmanager.getTeam1()[0].Name;
         champ1Health.text = "Vie : " + fightmanager.getTeam1()[0].Hp;
@@ -141,8 +144,9 @@ public class DisplayController : MonoBehaviour
         champ4Name.text = "";
         champions = fightmanager.champions;
         paneEnnemy.SetActive(false);
-        anim = fightmanager.getTeam1()[2].GetComponent<Animator>();
+        //anim = fightmanager.getTeam1()[2].GetComponent<Animator>();
         updateInfos();
+        attackUi = GameObject.Find("UIattack");
         //button.onClick.AddListener(nextTurn);
         currentEnnemyInfo.text = "";
         champ4Name.text = "";
@@ -174,6 +178,23 @@ public class DisplayController : MonoBehaviour
         paneEnnemy.SetActive(true);
     }
 
+    IEnumerator hitEffect()
+    {
+        
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(0.8f);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        animEnemy.SetTrigger("hurt");
+        yield return new WaitForSeconds(1.2f);
+        nextTurn();
+        updateInfos();
+        attackUi.SetActive(true);
+    }
+
     public void launchSpell(int id)
     {
         String name = fightmanager.champions[fightmanager.getIndiceChampionCourant()].name;
@@ -186,23 +207,30 @@ public class DisplayController : MonoBehaviour
                 {
                     fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(fightmanager.getTeam2()[id]);
                     targetName = fightmanager.getTeam2()[id].name;
+                    anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
+                    anim.SetTrigger("launch_spell");
+                    animEnemy = fightmanager.getTeam2()[id].GetComponent<Animator>();
+                    StartCoroutine(hitEffect());
                 }
                 else
                 {
                     fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(fightmanager.getTeam1()[id]);
                     targetName = fightmanager.getTeam1()[id].name;
+                    anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
+                    anim.SetTrigger("launch_spell");
+                    animEnemy = fightmanager.getTeam1()[id].GetComponent<Animator>();
+                    StartCoroutine(hitEffect());
+
                 }
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].name +
                                   " a lancé son sort 1 sur " + targetName;
-                anim.SetBool("isAttacking", true);
                 break;
             case 1:
 
                 break;
         }
 
-        nextTurn();
-        updateInfos();
+        attackUi.SetActive(false);
         paneEnnemy.SetActive(false);
     }
 
