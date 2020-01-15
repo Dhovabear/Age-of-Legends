@@ -60,6 +60,32 @@ public class DisplayController : MonoBehaviour
     private ChampionController currentChamp;
 
     private Animator anim;
+    private Animator animEnemy;
+
+    private GameObject attackUi;
+
+
+    //VIVI VARIABLES
+
+    private bool waitingForClick = false;
+    private ChampionController target;
+    private GameObject aideText;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        aideText = GameObject.Find("aideText");
+        aideText.SetActive(false);
+        champ4Name.text = "";
+        champions = fightmanager.champions;
+        paneEnnemy.SetActive(false);
+        //anim = fightmanager.getTeam1()[2].GetComponent<Animator>();
+        updateInfos();
+        attackUi = GameObject.Find("UIattack");
+        //button.onClick.AddListener(nextTurn);
+        currentEnnemyInfo.text = "";
+        champ4Name.text = "";
+    }
 
     private void nextTurn()
     {
@@ -82,7 +108,7 @@ public class DisplayController : MonoBehaviour
     	currentChamp = fightmanager.champions[fightmanager.getIndiceChampionCourant()];
 
         playerPointer.transform.position = currentChamp.gameObject.transform.position +
-                                           Vector3.up * currentChamp.gameObject.transform.localScale.y * 1.3f;
+                                           Vector3.up * currentChamp.gameObject.transform.localScale.y * 2.1f;
 
         champ1Name.text =fightmanager.getTeam1()[0].Name;
         champ1Health.text = "Vie : " + fightmanager.getTeam1()[0].Hp;
@@ -135,18 +161,7 @@ public class DisplayController : MonoBehaviour
         }
 
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        champ4Name.text = "";
-        champions = fightmanager.champions;
-        paneEnnemy.SetActive(false);
-        anim = fightmanager.getTeam1()[2].GetComponent<Animator>();
-        updateInfos();
-        //button.onClick.AddListener(nextTurn);
-        currentEnnemyInfo.text = "";
-        champ4Name.text = "";
-    }
+    
 
     public void mouseEntered(int id)
     {
@@ -172,6 +187,33 @@ public class DisplayController : MonoBehaviour
     {
         currentSpell = id;
         paneEnnemy.SetActive(true);
+        waitingForClick = true;
+        aideText.SetActive(true);
+    }
+
+
+   
+
+
+
+
+
+
+    IEnumerator hitEffect()
+    {
+        
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(0.8f);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        animEnemy.SetTrigger("hurt");
+        yield return new WaitForSeconds(1.2f);
+        nextTurn();
+        updateInfos();
+        attackUi.SetActive(true);
     }
 
     public void launchSpell(int id)
@@ -186,23 +228,30 @@ public class DisplayController : MonoBehaviour
                 {
                     fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(fightmanager.getTeam2()[id]);
                     targetName = fightmanager.getTeam2()[id].name;
+                    anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
+                    anim.SetTrigger("launch_spell");
+                    animEnemy = fightmanager.getTeam2()[id].GetComponent<Animator>();
+                    StartCoroutine(hitEffect());
                 }
                 else
                 {
                     fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(fightmanager.getTeam1()[id]);
                     targetName = fightmanager.getTeam1()[id].name;
+                    anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
+                    anim.SetTrigger("launch_spell");
+                    animEnemy = fightmanager.getTeam1()[id].GetComponent<Animator>();
+                    StartCoroutine(hitEffect());
+
                 }
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].name +
                                   " a lancé son sort 1 sur " + targetName;
-                anim.SetBool("isAttacking", true);
                 break;
             case 1:
 
                 break;
         }
 
-        nextTurn();
-        updateInfos();
+        attackUi.SetActive(false);
         paneEnnemy.SetActive(false);
     }
 
@@ -223,5 +272,67 @@ public class DisplayController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+               
+                if (hit.collider.tag == "team1" || hit.collider.tag == "team2")
+                {
+                    if (waitingForClick)
+                    {
+                        target = hit.collider.gameObject.GetComponent<ChampionController>();
+                        launchSpellV2(target);
+                    }
+                    
+                }
+
+            }
+        }
+    }
+
+    public void launchSpellV2(ChampionController cc)
+    {
+        String name = fightmanager.champions[fightmanager.getIndiceChampionCourant()].name;
+        String targetName = cc.gameObject.name;
+        switch (currentSpell)
+        {
+            case 0:
+                if (currentChamp.gameObject.tag == "team1" && cc.gameObject.tag=="team2" ||
+                    currentChamp.gameObject.tag == "team2" && cc.gameObject.tag == "team1")
+                {
+                    characterAttack(cc);
+                    champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].name +
+                                  " a lancé son sort 1 sur " + targetName;
+                }
+                
+                break;
+            case 1:
+
+                break;
+        }
+
+        
+    }
+
+    public void characterAttack(ChampionController cc)
+    {
+        
+        
+        fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
+        anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
+        anim.SetTrigger("launch_spell");
+        animEnemy = cc.GetComponent<Animator>();
+        StartCoroutine(hitEffect());
+
+        attackUi.SetActive(false);
+        paneEnnemy.SetActive(false);
+        aideText.SetActive(false);
+        waitingForClick = false;
+
     }
 }

@@ -17,8 +17,8 @@ public class FarmBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Pas assez de mana!";
-        bouttonCreerPaysan.interactable = false;
+        //bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Pas assez de mana!";
+        //bouttonCreerPaysan.interactable = false;
         finCol = true;
     }
 

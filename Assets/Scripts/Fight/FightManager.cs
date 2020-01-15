@@ -21,15 +21,39 @@ public class FightManager : MonoBehaviour
 
         foreach (GameObject champion in team1)
         {
-            champions.Add(champion.GetComponent<ChampionController>());
+            ChampionController champ = champion.GetComponent<ChampionController>();
+            bool isStunned = false;
+            foreach (Effect effet in champ.effets)
+            {
+                if (effet.Equals(gameObject.GetComponent<Stun>()))
+                {
+                    isStunned = true;
+                }
+            }
+            if (!isStunned)
+            {
+                champions.Add(champion.GetComponent<ChampionController>());
+
+            }
         }
         foreach (GameObject champion in team2)
         {
-            champions.Add(champion.GetComponent<ChampionController>());
+            ChampionController champ = champion.GetComponent<ChampionController>();
+            bool isStunned = false;
+            foreach (Effect effet in champ.effets)
+            {
+                if (effet.Equals(gameObject.GetComponent<Stun>()))
+                {
+                    isStunned = true;
+                }
+            }
+            if (!isStunned)
+            {
+                champions.Add(champion.GetComponent<ChampionController>());
+
+            }        
         }
-
         champions.Sort(Comparer<ChampionController>.Default);
-
         indiceChampionCourant = 0;
     }
 
