@@ -85,12 +85,12 @@ public class DohmaController : ChampionController
             {
                 if (target == champion)
                 {
-                    champion.effets.Add(gameObject.AddComponent<Invulnerable>());
+                    champion.effets.Add(gameObject.AddComponent<Invulnerability>());
                 }
 
                 if (target == this)
                 {
-                    this.effets.Add(gameObject.AddComponent<Invulnerable>());
+                    this.effets.Add(gameObject.AddComponent<Invulnerability>());
                 }
             }
 
