@@ -76,30 +76,40 @@ public class FarmBehavior : MonoBehaviour
         
     }
 
+    //Fonction qui va être appelé lors du clic du boutton
     public void creerPaysan()
     {
+        //On verifie simplement que le joueur a assez de mana
         if (GameManager.current.GetPlayerManager().GetCurrentPlayer().mana > 200)
         {
+            //Randomizer pour le spread des unitées qui spawnent
+            float rngY = Random.Range(3.0f, 9.0f);
+            float rngX = Random.Range(3.0f,9.0f);
             
-            paysan = GameObject.Instantiate(Resources.Load<GameObject>("Paysan"), gameObject.transform.position + Vector3.back*3, Quaternion.identity);
+            //instantiation
+            Instantiate(Resources.Load<GameObject>("Paysan"),
+                transform.position + Vector3.back*rngY + Vector3.left*rngX, Quaternion.identity);
+            
+            //On retire le mana du joueur
             GameManager.current.GetPlayerManager().GetCurrentPlayer().mana -= 200;
-            //bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Pas assez de mana!";
-            bouttonCreerPaysan.interactable = false;
-            finCol = false;
+            bouttonCreerPaysan.interactable = false; //On bloque le boutton
+            finCol = false;//On indique que le coldown n'est pas terminé , la coroutine se chargera de remettre a true
             
-            StartCoroutine(coldown());
+            StartCoroutine(coldown());//On lance la corroutine qui gère le coldown
             
         }
     }
 
+    //Fonction qui va fermer la fenêtre
     public void fermerFenetre()
     {
         pannelCreerPaysan.SetActive(false);
         CameraMover.currentInstance.canMove = true;
     }
 
+    //Fonction qui va gérer le coldown
     public IEnumerator coldown(){
-        yield return new WaitForSeconds(timer);
+        yield return new WaitForSeconds(timer);// on attend que le timer soit écoulé
         if (GameManager.current.GetPlayerManager().GetCurrentPlayer().mana > 200){
             bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Créer";
             bouttonCreerPaysan.interactable = true;
