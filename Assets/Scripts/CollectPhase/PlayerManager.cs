@@ -37,7 +37,7 @@ namespace CollectPhase
         }
 
         
-
+        //retourne les données du joueur local (utile pour le jeu en ligne)
         public PlayerData GetCurrentPlayer()
         {
             return _joueurs[_currentPlayer]; // oui oui on peut faire ca sur les listes en C#
@@ -53,15 +53,52 @@ namespace CollectPhase
             GetCurrentPlayer().mana += amount;
         }
 
+        //Fonction TRES importante , utiliser pour payer (ou simplement retirer du mana)
+        //de facon saine, c'est a dire que l'on va retirer des ressources aussi dans les dépots
+        //ce que les autres fonctions ne font pas, de plus elle renvoi la réussite de la transaction
+        public bool Pay(int amount, TypeRes type)
+        {
+            //TODO: améliorer la liste en utilisant un tri en odre croissant sur la capacité de stockage
+
+            //On regarde si la transaction est possible suivant la ressource choisi
+            if ( type == TypeRes.Mana && amount > GetCurrentPlayer().mana){return false;}
+            if(type == TypeRes.Cristaux && amount > GetCurrentPlayer().cristaux)return false;
+            
+            
+
+            if (type == TypeRes.Mana) GetCurrentPlayer().mana -= amount;
+            else GetCurrentPlayer().cristaux -= amount;
+            
+            int montantRestant = amount;//on stocke le montant restant
+            List<RessourcesStorage> listRepo;
+                
+            //on prend la liste de mana ou de cristaux suivant le choix
+            if(type == TypeRes.Mana)listRepo = GameManager.current.getManaRepositories();
+            else listRepo = GameManager.current.getCritalRepositories();
+
+            foreach (RessourcesStorage storage in listRepo)
+            {
+                //peut être étrange mais le montant restant prend la valeur 
+                //de ce qu'on a pas pu enlever au storage concerné (grossièrement ce qu'il reste a retirer)
+                montantRestant = storage.takeRessources(montantRestant);
+                if (montantRestant <= 0) break; //donc si il ne nous reste plus rien a retirer alors on arrete
+            }
+
+            return true;
+        }
+
         private void Update()
         {
+            //on obtient le joueur local
             PlayerData pd = GetCurrentPlayer();
             
-            Debug.Log("C: " + pd.cristaux + "   M: " + pd.mana);
+            //Debug.Log("C: " + pd.cristaux + "   M: " + pd.mana);
             
+            //mise a jour de l'interface qui affiche le nombre de cristaux
             string cristTxt = (pd.cristaux >= 1000)?pd.cristaux/1000 + "," + (pd.cristaux % 1000) / 100 + "k" : pd.cristaux.ToString();
             cristIndic.text = "x " + cristTxt;
             
+            //idem pour le nombre de ressources de mana
             string manaTxt = (pd.mana >= 1000)?pd.mana/1000 + "," + (pd.mana % 1000) / 100 + "k" : pd.mana.ToString();
             manaIndic.text = "x " + manaTxt;
         }

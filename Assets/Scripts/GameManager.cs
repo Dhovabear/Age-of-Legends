@@ -63,5 +63,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //créer et renvoi une liste des 'RessourcesStorage'
+    //des dépots de mana
+    public List<RessourcesStorage> getManaRepositories()
+    {
+        //on fait une nouvelle liste
+        List<RessourcesStorage> list = new List<RessourcesStorage>();
+        
+        //on parcours la liste des depots de mana
+        //pour récupérer leurs script RessourcesStorage
+        foreach (ObjectifContainer container in manaRepo)
+        {
+            list.Add(container.GetComponent<RessourcesStorage>());
+        }
 
+        return list;
+    }
+    
+    //meme chose que la fonction ci dessus, mais pour les cristaux
+    public List<RessourcesStorage> getCritalRepositories()
+    {
+        //on fait une nouvelle liste
+        List<RessourcesStorage> list = new List<RessourcesStorage>();
+        
+        //on parcours la liste des depots de mana
+        //pour récupérer leurs script RessourcesStorage
+        foreach (ObjectifContainer container in cristRepo)
+        {
+            list.Add(container.GetComponent<RessourcesStorage>());
+        }
+
+        return list;
+    }
 }

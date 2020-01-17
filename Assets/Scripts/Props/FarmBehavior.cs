@@ -92,7 +92,7 @@ public class FarmBehavior : MonoBehaviour
                 transform.position + Vector3.back*rngY + Vector3.left*rngX, Quaternion.identity);
             
             //On retire le mana du joueur
-            GameManager.current.GetPlayerManager().GetCurrentPlayer().mana -= 200;
+            GameManager.current.GetPlayerManager().Pay(200, TypeRes.Mana);
             bouttonCreerPaysan.interactable = false; //On bloque le boutton
             finCol = false;//On indique que le coldown n'est pas terminé , la coroutine se chargera de remettre a true
             
