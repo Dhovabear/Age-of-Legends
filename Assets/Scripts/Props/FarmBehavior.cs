@@ -54,7 +54,8 @@ public class FarmBehavior : MonoBehaviour
         if (Input.GetMouseButton(0))
         { 
             pannelCreerPaysan.SetActive(true);
-            CameraMover.currentInstance.canMove = false;
+            CameraMover.currentInstance.startUIComportement();
+            Debug.Log("Blocage de la caméra");
             if (GameManager.current.GetPlayerManager().GetCurrentPlayer().mana > 200){
                 bouttonCreerPaysan.GetComponentInChildren<Text>().text = "Créer";
                 bouttonCreerPaysan.interactable = true;
@@ -104,7 +105,7 @@ public class FarmBehavior : MonoBehaviour
     public void fermerFenetre()
     {
         pannelCreerPaysan.SetActive(false);
-        CameraMover.currentInstance.canMove = true;
+        CameraMover.currentInstance.stopUIComportement();
     }
 
     //Fonction qui va gérer le coldown
