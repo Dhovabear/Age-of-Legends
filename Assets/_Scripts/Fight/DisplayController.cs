@@ -321,8 +321,23 @@ public class DisplayController : MonoBehaviour
 
     public void characterAttack(ChampionController cc)
     {
-        
-        
+
+        /*switch (currentSpell)
+        {
+            case 0:
+                fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
+
+                break;
+            case 1:
+                fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell2(cc);
+
+                break;
+            case 2:
+                fightmanager.champions[fightmanager.getIndiceChampionCourant()].ultimate(cc);
+                break;
+        }*/
+        fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
+
         fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
         anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
         anim.SetTrigger("launch_spell");
