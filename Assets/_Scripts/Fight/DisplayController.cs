@@ -9,28 +9,29 @@ using UnityEngine.UI;
 public class DisplayController : MonoBehaviour
 {
     public Text champ1Name;
-    public Text champ1Health;
-    public Text champ1Ult;
+    private Slider champ1Slider;
+   /* public Text champ1Health;
+    public Text champ1Ult;*/
     
     public Text champ2Name;
-    public Text champ2Health;
-    public Text champ2Ult;
+   /* public Text champ2Health;
+    public Text champ2Ult;*/
     
     public Text champ3Name;
-    public Text champ3Health;
-    public Text champ3Ult;
+   /* public Text champ3Health;
+    public Text champ3Ult;*/
     
     public Text enemy1Name;
-    public Text enemy1Health;
-    public Text enemy1Ult;
+   /* public Text enemy1Health;
+    public Text enemy1Ult;*/
     
     public Text enemy2Name;
-    public Text enemy2Health;
-    public Text enemy2Ult;
+   /* public Text enemy2Health;
+    public Text enemy2Ult;*/
     
     public Text enemy3Name;
-    public Text enemy3Health;
-    public Text enemy3Ult;
+    /*public Text enemy3Health;
+    public Text enemy3Ult;*/
     
     public Text champ4Name;
     public Text champ4Health;
@@ -72,6 +73,32 @@ public class DisplayController : MonoBehaviour
     private GameObject aideText;
 
     // Start is called before the first frame update
+
+    private GameObject leftTeam;
+    private GameObject rightTeam;
+
+
+
+    private Text leftChamp1Name;
+    private Text leftChamp2Name;
+    private Text leftChamp3Name;
+
+   
+
+
+
+    private Text rightChamp1Name;
+    private Text rightChamp2Name;
+    private Text rightChamp3Name;
+
+
+    Slider[] leftChampsHealth = new Slider[3];
+    Slider[] leftChampsUlt = new Slider[3];
+
+    Slider[] rightChampsHealth = new Slider[3];
+    Slider[] rightChampsUlt = new Slider[3];
+
+
     void Start()
     {
         aideText = GameObject.Find("aideText");
@@ -80,12 +107,104 @@ public class DisplayController : MonoBehaviour
         champions = fightmanager.champions;
         paneEnnemy.SetActive(false);
         //anim = fightmanager.getTeam1()[2].GetComponent<Animator>();
-        updateInfos();
         attackUi = GameObject.Find("UIattack");
         //button.onClick.AddListener(nextTurn);
         currentEnnemyInfo.text = "";
         champ4Name.text = "";
+        initChampionInfo();
+        updateInfos();
+
     }
+    public void initChampionInfo()
+    {
+        leftTeam = GameObject.Find("PanelLeftTeam");
+        rightTeam = GameObject.Find("PanelRightTeam");
+
+        GameObject leftChamp1 = leftTeam.transform.Find("CadreChampion1").gameObject;
+        GameObject leftChamp2 = leftTeam.transform.Find("CadreChampion2").gameObject;
+        GameObject leftChamp3 = leftTeam.transform.Find("CadreChampion3").gameObject;
+
+        leftChamp1Name = leftChamp1.transform.Find("rightHolder/ChampName").GetComponent<Text>();
+        leftChamp2Name = leftChamp2.transform.Find("rightHolder/ChampName").GetComponent<Text>();
+        leftChamp3Name = leftChamp3.transform.Find("rightHolder/ChampName").GetComponent<Text>();
+
+        leftChamp1Name.text = fightmanager.getTeam1()[0].Name;
+        leftChamp2Name.text = fightmanager.getTeam1()[1].Name;
+        leftChamp3Name.text = fightmanager.getTeam1()[2].Name;
+
+
+        Slider leftChamp1Health = leftChamp1.transform.Find("rightHolder/ChampHealthSlider").GetComponent<Slider>();
+        Slider leftChamp2Health = leftChamp2.transform.Find("rightHolder/ChampHealthSlider").GetComponent<Slider>();
+        Slider leftChamp3Health = leftChamp3.transform.Find("rightHolder/ChampHealthSlider").GetComponent<Slider>();
+
+        leftChampsHealth[0] = leftChamp1Health;
+        leftChampsHealth[1] = leftChamp2Health;
+        leftChampsHealth[2] = leftChamp3Health;
+
+
+        Slider leftChamp1Ult = leftChamp1.transform.Find("rightHolder/ChampUltimateSlider").GetComponent<Slider>();
+        Slider leftChamp2Ult = leftChamp2.transform.Find("rightHolder/ChampUltimateSlider").GetComponent<Slider>();
+        Slider leftChamp3Ult = leftChamp3.transform.Find("rightHolder/ChampUltimateSlider").GetComponent<Slider>();
+
+        leftChampsUlt[0] = leftChamp1Ult;
+        leftChampsUlt[1] = leftChamp2Ult;
+        leftChampsUlt[2] = leftChamp3Ult;
+
+        GameObject rightChamp1 = rightTeam.transform.Find("CadreChampion1").gameObject;
+        GameObject rightChamp2 = rightTeam.transform.Find("CadreChampion2").gameObject;
+        GameObject rightChamp3 = rightTeam.transform.Find("CadreChampion3").gameObject;
+
+        rightChamp1Name = rightChamp1.transform.Find("rightHolder/ChampName").GetComponent<Text>();
+        rightChamp2Name = rightChamp2.transform.Find("rightHolder/ChampName").GetComponent<Text>();
+        rightChamp3Name = rightChamp3.transform.Find("rightHolder/ChampName").GetComponent<Text>();
+
+        rightChamp1Name.text = fightmanager.getTeam2()[0].Name;
+        rightChamp2Name.text = fightmanager.getTeam2()[1].Name;
+        rightChamp3Name.text = fightmanager.getTeam2()[2].Name;
+
+
+        Slider rightChamp1Health = rightChamp1.transform.Find("rightHolder/ChampHealthSlider").GetComponent<Slider>();
+        Slider rightChamp2Health = rightChamp2.transform.Find("rightHolder/ChampHealthSlider").GetComponent<Slider>();
+        Slider rightChamp3Health = rightChamp3.transform.Find("rightHolder/ChampHealthSlider").GetComponent<Slider>();
+
+        rightChampsHealth[0] = rightChamp1Health;
+        rightChampsHealth[1] = rightChamp2Health;
+        rightChampsHealth[2] = rightChamp3Health;
+        
+
+        Slider rightChamp1Ult = rightChamp1.transform.Find("rightHolder/ChampUltimateSlider").GetComponent<Slider>();
+        Slider rightChamp2Ult = rightChamp2.transform.Find("rightHolder/ChampUltimateSlider").GetComponent<Slider>();
+        Slider rightChamp3Ult = rightChamp3.transform.Find("rightHolder/ChampUltimateSlider").GetComponent<Slider>();
+
+        rightChampsUlt[0] = rightChamp1Ult;
+        rightChampsUlt[1] = rightChamp2Ult;
+        rightChampsUlt[2] = rightChamp3Ult;
+
+        for(int i = 0 ; i<3 ; i++)
+        {
+            leftChampsHealth[i].maxValue = fightmanager.getTeam1()[i].Hp;
+            leftChampsHealth[i].value = leftChampsHealth[i].maxValue;
+            //print(fightmanager.getTeam1()[i].name);
+
+            rightChampsHealth[i].maxValue = fightmanager.getTeam2()[i].Hp;
+            rightChampsHealth[i].value = rightChampsHealth[i].maxValue;
+            print(fightmanager.getTeam2()[i].Hp);
+
+
+
+            leftChampsUlt[i].maxValue = 100f;
+            leftChampsUlt[i].value = 0f;
+
+            rightChampsUlt[i].maxValue = 100f;
+            rightChampsUlt[i].value = 0f;
+        }
+
+
+    }
+
+
+
+    
 
     private void nextTurn()
     {
@@ -109,33 +228,43 @@ public class DisplayController : MonoBehaviour
 
         playerPointer.transform.position = currentChamp.gameObject.transform.position +
                                            Vector3.up * currentChamp.gameObject.transform.localScale.y * 2.1f;
+        //UPDATE DES SLIDER DE VIE DE TOUT LE MONDE 
+        for (int i = 0; i < 3; i++)
+        {
+            //leftChampsHealth[i].value = fightmanager.getTeam1()[i].Hp;
+            leftChampsHealth[i].value = fightmanager.getTeam1()[i].Hp;
 
-        champ1Name.text =fightmanager.getTeam1()[0].Name;
+            rightChampsHealth[i].value = fightmanager.getTeam2()[i].Hp;
+        }
+
+        #region ancien code
+
+        /*champ1Name.text =fightmanager.getTeam1()[0].Name;
         champ1Health.text = "Vie : " + fightmanager.getTeam1()[0].Hp;
         champ1Ult.text = " Ult : " + fightmanager.getTeam1()[0].Ultime + "/100";
-        
+
         champ2Name.text =fightmanager.getTeam1()[1].Name;
         champ2Health.text = "Vie : " + fightmanager.getTeam1()[1].Hp;
         champ2Ult.text = " Ult : " + fightmanager.getTeam1()[1].Ultime + "/100";
-        
+
         champ3Name.text =fightmanager.getTeam1()[2].Name;
         champ3Health.text = "Vie : " + fightmanager.getTeam1()[2].Hp;
         champ3Ult.text = " Ult : " + fightmanager.getTeam1()[2].Ultime + "/100";
-        
+
         enemy1Name.text =fightmanager.getTeam2()[0].Name;
         enemy1Health.text = "Vie : " + fightmanager.getTeam2()[0].Hp;
         enemy1Ult.text = " Ult : " + fightmanager.getTeam1()[0].Ultime + "/100";
-        
+
         enemy2Name.text =fightmanager.getTeam2()[1].Name;
         enemy2Health.text = "Vie : " + fightmanager.getTeam2()[1].Hp;
         enemy2Ult.text = " Ult : " + fightmanager.getTeam2()[1].Ultime + "/100";
-        
+
         enemy3Name.text =fightmanager.getTeam2()[2].Name;
         enemy3Health.text = "Vie : " + fightmanager.getTeam2()[2].Hp;
-        enemy3Ult.text = " Ult : " + fightmanager.getTeam2()[2].Ultime + "/100";
-        
+        enemy3Ult.text = " Ult : " + fightmanager.getTeam2()[2].Ultime + "/100";*/
 
-        if (champions[fightmanager.getIndiceChampionCourant()].Name == fightmanager.getTeam1()[0].Name)
+
+        /*if (champions[fightmanager.getIndiceChampionCourant()].Name == fightmanager.getTeam1()[0].Name)
         {
             champ1Name.text ="-->" + fightmanager.getTeam1()[0].Name;
         }
@@ -158,10 +287,10 @@ public class DisplayController : MonoBehaviour
         if (champions[fightmanager.getIndiceChampionCourant()].Name == fightmanager.getTeam2()[2].Name)
         {
             enemy3Name.text ="-->" + fightmanager.getTeam2()[2].Name;
-        }
-
+        }*/
+        #endregion
     }
-    
+
 
     public void mouseEntered(int id)
     {
@@ -192,11 +321,7 @@ public class DisplayController : MonoBehaviour
     }
 
 
-   
-
-
-
-
+  
 
 
     IEnumerator hitEffect()
