@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Experimental.PlayerLoop;
 using UnityEngine.UI;
@@ -14,7 +15,13 @@ namespace CollectPhase
         private int _currentPlayer;
         private Text cristIndic;
         private Text manaIndic;
-
+        
+        private bool wantToBuild;
+        private int idToBuild;
+        
+        public GameObject buildPrefab;
+        private CinemachineClearShot cl;
+        #region MonobehaviourCallbacks
         public void Awake()
         {
             _joueurs = new List<PlayerData>();
@@ -26,6 +33,36 @@ namespace CollectPhase
             manaIndic = GameObject.Find("manaLine").GetComponentInChildren<Text>();
         }
 
+        private void Update()
+        {
+            //on obtient le joueur local
+            PlayerData pd = GetCurrentPlayer();
+            
+            //Debug.Log("C: " + pd.cristaux + "   M: " + pd.mana);
+            
+            //mise a jour de l'interface qui affiche le nombre de cristaux
+            string cristTxt = (pd.cristaux >= 1000)?pd.cristaux/1000 + "," + (pd.cristaux % 1000) / 100 + "k" : pd.cristaux.ToString();
+            cristIndic.text = "x " + cristTxt;
+            
+            //idem pour le nombre de ressources de mana
+            string manaTxt = (pd.mana >= 1000)?pd.mana/1000 + "," + (pd.mana % 1000) / 100 + "k" : pd.mana.ToString();
+            manaIndic.text = "x " + manaTxt;
+
+            if (wantToBuild && Input.GetMouseButtonDown(0))
+            {
+                RaycastHit res;
+                //Ray ray = new Ray(Camera.main.ScreenPointToRay(Input.mousePosition),Camera.main.transform.forward);
+                Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out res, 1000f);
+                var buildPoint = GameObject.Instantiate(buildPrefab,res.point,new Quaternion(0,0,0,0));
+                buildPoint.transform.position = res.point;
+                buildPoint.GetComponent<Builder>().setBuildingID(idToBuild);
+                //buildPoint.transform.Translate(0,5f,0);
+                wantToBuild = false;
+                
+            }
+        }
+        #endregion
+        
         // Start is called before the first frame update
         public void InitPlayers()
         {
@@ -86,21 +123,20 @@ namespace CollectPhase
 
             return true;
         }
-
-        private void Update()
+        
+        /*
+         * Fonction qui va permettre la construction de batiments
+         * pour le jeu , le batiment a créer sera identifié par un build ID
+         * qui lui sera propre les buildId seront:
+         * - CristalRepo: 0
+         * - ManaRepo: 1
+         */
+        public void BuildStorage(int buildId)
         {
-            //on obtient le joueur local
-            PlayerData pd = GetCurrentPlayer();
-            
-            //Debug.Log("C: " + pd.cristaux + "   M: " + pd.mana);
-            
-            //mise a jour de l'interface qui affiche le nombre de cristaux
-            string cristTxt = (pd.cristaux >= 1000)?pd.cristaux/1000 + "," + (pd.cristaux % 1000) / 100 + "k" : pd.cristaux.ToString();
-            cristIndic.text = "x " + cristTxt;
-            
-            //idem pour le nombre de ressources de mana
-            string manaTxt = (pd.mana >= 1000)?pd.mana/1000 + "," + (pd.mana % 1000) / 100 + "k" : pd.mana.ToString();
-            manaIndic.text = "x " + manaTxt;
+            idToBuild = buildId;
+            wantToBuild = true;
         }
     }
+    
+    
 }
