@@ -31,8 +31,7 @@ public class Builder : Container
     public override void initialise()
     {
         //check si il créer la liste donc wola
-        if (builderList == null) {builderList = new List<Builder>();}
-        if(toRemove == null) toRemove = new List<Builder>();
+        
         builderList.Add(this);
         
         buildPercent = 0f;
@@ -79,6 +78,15 @@ public class Builder : Container
     {
         //if(id >= buildingList.Count) faut juste pas etre con
         idToBuild = id;
+    }
+
+    /*
+     * Fonction incroyable qui va permettre au player manager d'initialiser la liste et de pas tout casser
+     */
+    public static void initLists()
+    {
+        if (builderList == null) {builderList = new List<Builder>();}
+        if(toRemove == null) toRemove = new List<Builder>();
     }
 
     #endregion

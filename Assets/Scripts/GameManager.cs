@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
             //zone de debug quand on supprime un builder
             //Cela sert a supprimer comme il faut les instances
             //pour ne pas faire crash la corroutine et ne pas casser le jeu
+            
             foreach (Builder build in Builder.toRemove)
             {
                 Builder.builderList.Remove(build);

@@ -31,6 +31,7 @@ namespace CollectPhase
         {
             cristIndic = GameObject.Find("cristauxLine").GetComponentInChildren<Text>();
             manaIndic = GameObject.Find("manaLine").GetComponentInChildren<Text>();
+            Builder.initLists();
         }
 
         private void Update()
