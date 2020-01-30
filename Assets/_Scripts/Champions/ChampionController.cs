@@ -12,13 +12,16 @@ public abstract class ChampionController : MonoBehaviour, IComparable
     [SerializeField] public float Pouvoir;
     [SerializeField] public float Vitesse;
     [SerializeField] public float Heal;
-    [SerializeField] public int Ultime;
+    [Range(0,100)] [SerializeField] public int Ultime;
     [SerializeField] public List<Effect> effets;
     [SerializeField] public int Marques = 0;
 
 
     [SerializeField] protected GameObject[] team1;
     [SerializeField] protected GameObject[] team2;
+
+    public String[] spellsTarget = new String[3];
+    public String[] descSpell = new String[3];
 
     // Start is called before the first frame update
     void Awake()
@@ -48,6 +51,17 @@ public abstract class ChampionController : MonoBehaviour, IComparable
         return Compare(this, champion);
     }
 
+    public void chargeUltime(int improve)
+    {
+        Ultime += improve;
+    }
+    public void videUltime()
+    {
+        Ultime = 0;
+    }
+
     public abstract void spell1(ChampionController champion);
+    public abstract void spell2(ChampionController champion);
+    public abstract void ultimate(ChampionController champion);
 
 }

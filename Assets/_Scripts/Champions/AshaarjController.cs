@@ -61,17 +61,20 @@ public class AshaarjController : ChampionController
     public override void spell1(ChampionController target)
     {
         target.Defense = target.Defense * 0.9f;
+        chargeUltime((int)target.Defense / 10);
+
     }
 
-    public void spell2()
+    public override void spell2(ChampionController champion)
     {
         foreach (ChampionController ally in allies)
         {
             ally.Defense = ally.Defense * 1.2f;
         }
+        chargeUltime(40);
     }
 
-    public void ultimate()
+    public override void ultimate(ChampionController champion)
     {
         int stunProbability = 7;
         int chance; 
@@ -84,5 +87,6 @@ public class AshaarjController : ChampionController
                 ennemy.effets.Add(gameObject.AddComponent<Stun>());
             }
         }
+        videUltime();
     }
 }

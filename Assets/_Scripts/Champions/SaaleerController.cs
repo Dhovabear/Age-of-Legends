@@ -63,23 +63,27 @@ public class SaaleerController : ChampionController
         foreach (ChampionController ally in allies)
         {
             ally.Pouvoir = ally.Pouvoir * 1.2f;
+            chargeUltime(5);
         }
     }
 
-    public void spell2(ChampionController champion)
+    public override void spell2(ChampionController champion)
     {
         float degats = 50f + Pouvoir * 1.2f;
         if (degats - champion.Defense > 0)
         {
             champion.Hp = Hp - (degats - champion.Defense);
         }
+        chargeUltime((int)degats/200);
+
     }
 
-    public void ultimate()
+    public override void ultimate(ChampionController champion)
     {
         foreach (ChampionController ally in allies)
         {
             ally.Ultime = ally.Ultime + 40;
         }
+        videUltime();
     }
 }

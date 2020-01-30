@@ -44,13 +44,13 @@ public class DisplayController : MonoBehaviour
     
     public Button button;
     
-    public Button spell1;
+    /*public Button spell1;
     public Button spell2;
     public Button ult;
     
     public Button enemy1;
     public Button enemy2;
-    public Button enemy3;
+    public Button enemy3;*/
 
     public int currentSpell = 0;
 
@@ -98,10 +98,11 @@ public class DisplayController : MonoBehaviour
     Slider[] rightChampsHealth = new Slider[3];
     Slider[] rightChampsUlt = new Slider[3];
 
-
+    private Text spellDescriptionText;
     void Start()
     {
         aideText = GameObject.Find("aideText");
+        spellDescriptionText = GameObject.Find("SpellDescriptionText").GetComponent<Text>();
         aideText.SetActive(false);
         champ4Name.text = "";
         champions = fightmanager.champions;
@@ -208,7 +209,6 @@ public class DisplayController : MonoBehaviour
 
     private void nextTurn()
     {
-
         if (fightmanager.getIndiceChampionCourant() < 5)
         {
             fightmanager.setIndiceChampionCourant(fightmanager.getIndiceChampionCourant()+1);
@@ -218,7 +218,14 @@ public class DisplayController : MonoBehaviour
             fightmanager.setIndiceChampionCourant(0);
             fightmanager.champions.Sort(Comparer<ChampionController>.Default);
         }
+        if (fightmanager.champions[fightmanager.getIndiceChampionCourant()].Hp <= 0)
+        {
+            nextTurn();
+            print("skip");
+        }
         updateInfos();
+
+        
     }
 
     private void updateInfos()
@@ -233,8 +240,11 @@ public class DisplayController : MonoBehaviour
         {
             //leftChampsHealth[i].value = fightmanager.getTeam1()[i].Hp;
             leftChampsHealth[i].value = fightmanager.getTeam1()[i].Hp;
+            leftChampsUlt[i].value = fightmanager.getTeam1()[i].Ultime;
 
             rightChampsHealth[i].value = fightmanager.getTeam2()[i].Hp;
+            rightChampsUlt[i].value = fightmanager.getTeam2()[i].Ultime;
+
         }
 
         #region ancien code
@@ -318,22 +328,24 @@ public class DisplayController : MonoBehaviour
         paneEnnemy.SetActive(true);
         waitingForClick = true;
         aideText.SetActive(true);
+        spellDescriptionText.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].descSpell[currentSpell];
+
     }
 
 
-  
+
 
 
     IEnumerator hitEffect()
     {
         
-        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+        //Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
         //yield on a new YieldInstruction that waits for 5 seconds.
         yield return new WaitForSeconds(0.8f);
 
         //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         animEnemy.SetTrigger("hurt");
         yield return new WaitForSeconds(1.2f);
         nextTurn();
@@ -341,7 +353,7 @@ public class DisplayController : MonoBehaviour
         attackUi.SetActive(true);
     }
 
-    public void launchSpell(int id)
+    /*public void launchSpell(int id)
     {
         String name = fightmanager.champions[fightmanager.getIndiceChampionCourant()].name;
         String targetName;
@@ -378,7 +390,7 @@ public class DisplayController : MonoBehaviour
 
         attackUi.SetActive(false);
         paneEnnemy.SetActive(false);
-    }
+    }*/
 
     private Boolean checkCurrentTeam()
     {
@@ -411,7 +423,11 @@ public class DisplayController : MonoBehaviour
                     if (waitingForClick)
                     {
                         target = hit.collider.gameObject.GetComponent<ChampionController>();
-                        launchSpellV2(target);
+                        if(target.Hp > 0)
+                        {
+                            launchSpellV2(target);
+
+                        }
                     }
                     
                 }
@@ -424,7 +440,30 @@ public class DisplayController : MonoBehaviour
     {
         String name = fightmanager.champions[fightmanager.getIndiceChampionCourant()].name;
         String targetName = cc.gameObject.name;
-        switch (currentSpell)
+        String spellTarget = fightmanager.champions[fightmanager.getIndiceChampionCourant()].spellsTarget[currentSpell];
+        switch (spellTarget)
+        {
+            case "Enemy":
+                if (!isSameTeam(cc))
+                {
+                    characterAttack(cc);
+                }
+                break;
+
+            case "Ally":
+                if (isSameTeam(cc))
+                {
+                    characterAttack(cc);
+                }
+                break;
+
+            case "Everyone":
+                characterAttack(cc);
+                break;
+        }
+
+
+        /*switch (currentSpell)
         {
             case 0:
                 if (currentChamp.gameObject.tag == "team1" && cc.gameObject.tag=="team2" ||
@@ -439,31 +478,47 @@ public class DisplayController : MonoBehaviour
             case 1:
 
                 break;
-        }
+        }*/
 
         
     }
 
+    public bool isSameTeam(ChampionController cc)
+    {
+        if (currentChamp.gameObject.tag == "team1" && cc.gameObject.tag == "team2" ||
+                    currentChamp.gameObject.tag == "team2" && cc.gameObject.tag == "team1")
+        {
+            return false;
+        }
+        return true;
+            
+    }
     public void characterAttack(ChampionController cc)
     {
 
-        /*switch (currentSpell)
+        switch (currentSpell)
         {
             case 0:
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
-
+                champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
+                                  " a lancé son sort 1 sur " + cc.Name;
                 break;
-            case 1:
+           case 1:
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell2(cc);
+                champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
+                                  " a lancé son sort 2 sur " + cc.Name;
 
                 break;
             case 2:
+                if (fightmanager.champions[fightmanager.getIndiceChampionCourant()].Ultime < 100) return;
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].ultimate(cc);
+                champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
+                                  " a lancé son ultime sur " + cc.Name;
                 break;
-        }*/
-        fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
+        }
+        //fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
 
-        fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
+        //fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
         anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
         anim.SetTrigger("launch_spell");
         animEnemy = cc.GetComponent<Animator>();

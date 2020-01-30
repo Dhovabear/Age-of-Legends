@@ -1898,8 +1898,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8591809192668237706}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 5, y: 0, z: 5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 8591809192668074528}
@@ -1907,7 +1907,7 @@ Transform:
   - {fileID: 8591809192668074536}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8591809192660860352
 Animator:
   serializedVersion: 3
@@ -1983,10 +1983,16 @@ MonoBehaviour:
   Ultime: 0
   effets: []
   Marques: 0
-  peutJouerCeTour: 1
-  aJoue: 0
   team1: []
   team2: []
+  spellsTarget:
+  - Ally
+  - Ally
+  - Enemy
+  descSpell:
+  - "Heal un alli\xE9 "
+  - "Augmente la vitesse des alli\xE9s "
+  - Stun un ennemi
   allies: []
   ennemies: []
 --- !u!1 &8591809192668237728

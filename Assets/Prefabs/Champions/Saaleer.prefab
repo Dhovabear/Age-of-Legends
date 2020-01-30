@@ -152,8 +152,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4754163892271552200}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4754163892271319906}
@@ -161,7 +161,7 @@ Transform:
   - {fileID: 4754163892271319914}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4754163892262069378
 Animator:
   serializedVersion: 3
@@ -237,10 +237,16 @@ MonoBehaviour:
   Ultime: 0
   effets: []
   Marques: 0
-  peutJouerCeTour: 1
-  aJoue: 0
   team1: []
   team2: []
+  spellsTarget:
+  - Ally
+  - Enemy
+  - Ally
+  descSpell:
+  - "Augmente le pouvoir des alli\xE9s"
+  - Attaque un ennemi faiblement
+  - "Augmente la charge d'ultime des alli\xE9s"
   allies: []
   ennemies: []
 --- !u!1 &4754163892271552202

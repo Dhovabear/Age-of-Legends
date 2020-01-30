@@ -59,21 +59,30 @@ public class UkkirasController : ChampionController
 
     public override void spell1(ChampionController champion)
     {
-        float dégats = Attaque * 2.1f - champion.Defense;
-        champion.Hp = champion.Hp - dégats;
+        //float degats = Attaque * 2.1f - champion.Defense;
+
+        float degats = Attaque * 0.8f - champion.Defense;
+        champion.Hp = champion.Hp - degats;
+        chargeUltime((int)degats/100);
     }
 
-    public void spell2()
+    public override void spell2(ChampionController champion)
     {
         foreach (ChampionController ennemy in ennemies)
         {
             ennemy.Hp = ennemy.Hp - (Attaque * 1.7f - ennemy.Defense);
+            Debug.Log("ennemy : "+ennemy);
+            Debug.Log("ennemies : "+ennemies);
+
         }
+        chargeUltime(5);
+
     }
 
-    public void ultimate(ChampionController champion)
+    public override void ultimate(ChampionController champion)
     {
-        float dégats = Attaque * 4f - champion.Defense;
-        champion.Hp = champion.Hp - dégats;
+        float degats = Attaque * 4f - champion.Defense;
+        champion.Hp = champion.Hp - degats;
+        videUltime();
     }
 }

@@ -2271,8 +2271,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4828998999848412514}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4828998999848122568}
@@ -2280,7 +2280,7 @@ Transform:
   - {fileID: 4828998999848122560}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4828998999841117992
 Animator:
   serializedVersion: 3
@@ -2356,10 +2356,16 @@ MonoBehaviour:
   Ultime: 0
   effets: []
   Marques: 0
-  peutJouerCeTour: 1
-  aJoue: 0
   team1: []
   team2: []
+  spellsTarget:
+  - Enemy
+  - Ally
+  - Enemy
+  descSpell:
+  - "R\xE9duit la d\xE9fense d'un ennemi"
+  - "Augmente la d\xE9fense des alli\xE9s"
+  - "A 35% de chance de stun les ennemis (chaque ennemi a un tirage diff\xE9rent)"
   allies: []
   ennemies: []
 --- !u!1 &4828998999848412520

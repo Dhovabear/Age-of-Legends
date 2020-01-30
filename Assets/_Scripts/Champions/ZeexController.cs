@@ -61,16 +61,18 @@ public class ZeexController : ChampionController
     public override void spell1(ChampionController champion)
     {
 
+        chargeUltime(10);
     }
 
-    public void spell2()
+    public override void spell2(ChampionController champion)
     {
+        chargeUltime(10);
 
     }
 
-    public void ultimate()
+    public override void ultimate(ChampionController champion)
     {
-
+        videUltime();
     }
 }
 

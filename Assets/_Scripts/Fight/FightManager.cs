@@ -13,11 +13,40 @@ public class FightManager : MonoBehaviour
 
     [SerializeField] public int indiceChampionCourant;
 
+    private GameObject[] leftInstanciatePlace = new GameObject[3];
+    private GameObject[] rightInstanciatePlace = new GameObject[3];
+
+
+    private void instantiatePlayers()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            
+            leftInstanciatePlace[i] = GameObject.Find("/ChampionPlaces/leftTeam/champ" + (i+1));
+            rightInstanciatePlace[i] = GameObject.Find("/ChampionPlaces/rightTeam/champ" + (i+1));
+
+            GameObject ally = Instantiate(team1[i], leftInstanciatePlace[i].transform);
+            GameObject ennemy = Instantiate(team2[i], rightInstanciatePlace[i].transform);
+
+
+            team1[i] = ally;
+            team2[i] = ennemy;
+
+            team1[i].tag = "team1";
+            team2[i].tag = "team2";
+
+        }
+    }
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        instantiatePlayers();
+    }
     void Start()
     {
-        team1 = GameObject.FindGameObjectsWithTag("team1");
-        team2 = GameObject.FindGameObjectsWithTag("team2");
+        //team1 = GameObject.FindGameObjectsWithTag("team1");
+        //team2 = GameObject.FindGameObjectsWithTag("team2");
 
         foreach (GameObject champion in team1)
         {

@@ -185,8 +185,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7627243771484992090}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -5, y: 0, z: 5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 7627243771484958704}
@@ -194,7 +194,7 @@ Transform:
   - {fileID: 7627243771484958712}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7627243771477688336
 Animator:
   serializedVersion: 3
@@ -270,10 +270,17 @@ MonoBehaviour:
   Ultime: 0
   effets: []
   Marques: 0
-  peutJouerCeTour: 1
-  aJoue: 0
   team1: []
   team2: []
+  spellsTarget:
+  - Enemy
+  - Enemy
+  - Everyone
+  descSpell:
+  - "Attaque un ennemi et met al\xE9atoirement sois une marque(?) \xE0 l'ennemi attaqu\xE9
+    ou a un alli\xE9 "
+  - Attaque un ennemi et lui met une marque(?)
+  - "Rend invincible tout les alli\xE9s et tue tout les ennemis (lol)"
   allies: []
   ennemies: []
 --- !u!1 &7627243771484992096
