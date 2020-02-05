@@ -48,4 +48,9 @@ public class UISelectionChampion : MonoBehaviour
         sp.checkValidate();
 
     }
+
+    public void disableCanvas(GameObject o)
+    {
+        o.SetActive(!o.activeSelf);
+    }
 }

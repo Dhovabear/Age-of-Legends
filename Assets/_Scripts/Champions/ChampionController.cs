@@ -26,9 +26,11 @@ public abstract class ChampionController : MonoBehaviour, IComparable
     // Start is called before the first frame update
     void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         team1 = GameObject.FindGameObjectsWithTag("team1");
         team2 = GameObject.FindGameObjectsWithTag("team2");
     }
+
 
     // Update is called once per frame
     void Update()

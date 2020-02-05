@@ -22,27 +22,28 @@ public class SelectionPersonnage : MonoBehaviour
     void Start()
     {
         getTeams();
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
     {
         
     }
-
+    
     private void getTeams()
     {
         team1 = GameObject.FindGameObjectsWithTag("team1");
         team2 = GameObject.FindGameObjectsWithTag("team2");
         for(int i = 1; i < 6; i++)
         {
-            Text leftButtonText = GameObject.Find("/Canvas/Panel/LeftTeam/buttons/ButtonChamp"+i+"/Text").GetComponent<Text>();
-            Text rightButtonText = GameObject.Find("/Canvas/Panel/RightTeam/buttons/ButtonChamp" + i + "/Text").GetComponent<Text>();
+            Text leftButtonText = GameObject.Find("/CanvasSelectionChampionCombat/Panel/LeftTeam/buttons/ButtonChamp" + i+"/Text").GetComponent<Text>();
+            Text rightButtonText = GameObject.Find("/CanvasSelectionChampionCombat/Panel/RightTeam/buttons/ButtonChamp" + i + "/Text").GetComponent<Text>();
 
             //on fait ce test puisque les cases 4 et 5 des tableaux sont vides
             if (i < 4)
             {
-                textSelectedTeam1[i-1] = GameObject.Find("/Canvas/Panel/LeftTeam/SelectedChampText/SelectedChamp" + i).GetComponent<Text>();
-                textSelectedTeam2[i-1] = GameObject.Find("/Canvas/Panel/RightTeam/SelectedChampText/SelectedChamp" + i).GetComponent<Text>();
+                textSelectedTeam1[i-1] = GameObject.Find("/CanvasSelectionChampionCombat/Panel/LeftTeam/SelectedChampText/SelectedChamp" + i).GetComponent<Text>();
+                textSelectedTeam2[i-1] = GameObject.Find("/CanvasSelectionChampionCombat/Panel/RightTeam/SelectedChampText/SelectedChamp" + i).GetComponent<Text>();
 
                 textSelectedTeam1[i - 1].text = "pas encore selectionné";
                 textSelectedTeam2[i - 1].text = "pas encore selectionné";
@@ -147,6 +148,16 @@ public class SelectionPersonnage : MonoBehaviour
         {
             SceneManager.LoadScene("FightScene");
         }
+    }
+
+
+    public GameObject[] getTeam1()
+    {
+        return selectedChampionTeam1;
+    }
+    public GameObject[] getTeam2()
+    {
+        return selectedChampionTeam2;
     }
 
 }

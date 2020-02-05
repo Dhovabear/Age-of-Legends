@@ -16,18 +16,29 @@ public class FightManager : MonoBehaviour
     private GameObject[] leftInstanciatePlace = new GameObject[3];
     private GameObject[] rightInstanciatePlace = new GameObject[3];
 
+    private SelectionPersonnage sp;
+
+
+    private List<GameObject> tempPlayerList;
+
 
     private void instantiatePlayers()
     {
         for (int i = 0; i < 3; i++)
         {
-            
+            team1 = sp.getTeam1();
+            team2 = sp.getTeam2();
+
             leftInstanciatePlace[i] = GameObject.Find("/ChampionPlaces/leftTeam/champ" + (i+1));
             rightInstanciatePlace[i] = GameObject.Find("/ChampionPlaces/rightTeam/champ" + (i+1));
+            
 
-            GameObject ally = Instantiate(team1[i], leftInstanciatePlace[i].transform);
-            GameObject ennemy = Instantiate(team2[i], rightInstanciatePlace[i].transform);
 
+            GameObject ally = Instantiate(team1[i], leftInstanciatePlace[i].transform.position, leftInstanciatePlace[i].transform.rotation);
+            GameObject ennemy = Instantiate(team2[i], rightInstanciatePlace[i].transform.position, rightInstanciatePlace[i].transform.rotation);
+
+            //ally.transform.position = leftInstanciatePlace[i].transform.position;
+            //ennemy.transform.position = Vector3.zero;
 
             team1[i] = ally;
             team2[i] = ennemy;
@@ -41,7 +52,25 @@ public class FightManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        sp = GameObject.Find("SelectionPersonnage").GetComponent<SelectionPersonnage>();
+        sp.getTeam1();
+        sp.getTeam2();
         instantiatePlayers();
+        string[] tags = { "team1", "team2" };
+        for (int i = 0; i < 2; i++)
+        {
+
+            GameObject[] tempPlayers = GameObject.FindGameObjectsWithTag(tags[i]);
+            
+
+            for (int j = 0; j < 3; j++)
+            {
+                tempPlayers[j].SetActive(false);
+
+            }
+        }
+        
+
     }
     void Start()
     {
