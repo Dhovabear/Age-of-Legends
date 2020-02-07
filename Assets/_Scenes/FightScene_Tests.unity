@@ -201,10 +201,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 100000, guid: 73c27d058f5decf4b8f69041c692ea98, type: 3}
-      propertyPath: m_Name
-      value: Crystal
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 73c27d058f5decf4b8f69041c692ea98, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -260,6 +256,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 73c27d058f5decf4b8f69041c692ea98, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 73c27d058f5decf4b8f69041c692ea98, type: 3}
+      propertyPath: m_Name
+      value: Crystal
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 73c27d058f5decf4b8f69041c692ea98, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -917,13 +917,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   champions: []
   team1:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1291956269124764236, guid: f5fb0e1b22b3dbf468452cb74b2ef75e, type: 3}
+  - {fileID: 4754163892271552200, guid: d1375668ece7aa041926e39657a25eb0, type: 3}
+  - {fileID: 7627243771484992090, guid: dbede506d95162d428f8c003c79997a4, type: 3}
   team2:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8591809192668237706, guid: f501ad02b4b7a0a4cbcda85cec97c4f8, type: 3}
+  - {fileID: 4828998999848412514, guid: 5e5840a116fa114479d63caad9020577, type: 3}
+  - {fileID: 4194907043372004664, guid: 0590d653475cd3141ae23a680feed303, type: 3}
   indiceChampionCourant: 0
 --- !u!4 &195355451
 Transform:
@@ -1235,10 +1235,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 577892834}
     m_Modifications:
-    - target: {fileID: 1652476061409828, guid: ed72ab3dedc1da442b83540ab860da2c, type: 3}
-      propertyPath: m_Name
-      value: champ1HealthSlider
-      objectReference: {fileID: 0}
     - target: {fileID: 224605109079863476, guid: ed72ab3dedc1da442b83540ab860da2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1343,6 +1339,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652476061409828, guid: ed72ab3dedc1da442b83540ab860da2c, type: 3}
+      propertyPath: m_Name
+      value: champ1HealthSlider
       objectReference: {fileID: 0}
     - target: {fileID: 224284673132238710, guid: ed72ab3dedc1da442b83540ab860da2c,
         type: 3}
@@ -3989,10 +3989,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 577892834}
     m_Modifications:
-    - target: {fileID: 1456326344296516, guid: 72c8e2f7d5ca96d4f9a1da1a3eba239c, type: 3}
-      propertyPath: m_Name
-      value: champ1UltimateSlider
-      objectReference: {fileID: 0}
     - target: {fileID: 224168211070037804, guid: 72c8e2f7d5ca96d4f9a1da1a3eba239c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4097,6 +4093,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456326344296516, guid: 72c8e2f7d5ca96d4f9a1da1a3eba239c, type: 3}
+      propertyPath: m_Name
+      value: champ1UltimateSlider
       objectReference: {fileID: 0}
     - target: {fileID: 224433695350967924, guid: 72c8e2f7d5ca96d4f9a1da1a3eba239c,
         type: 3}

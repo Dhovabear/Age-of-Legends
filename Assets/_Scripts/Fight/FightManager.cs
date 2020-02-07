@@ -26,8 +26,8 @@ public class FightManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            team1 = sp.getTeam1();
-            team2 = sp.getTeam2();
+            //team1 = sp.getTeam1();
+            //team2 = sp.getTeam2();
 
             leftInstanciatePlace[i] = GameObject.Find("/ChampionPlaces/leftTeam/champ" + (i+1));
             rightInstanciatePlace[i] = GameObject.Find("/ChampionPlaces/rightTeam/champ" + (i+1));
@@ -52,24 +52,42 @@ public class FightManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        sp = GameObject.Find("SelectionPersonnage").GetComponent<SelectionPersonnage>();
-        sp.getTeam1();
-        sp.getTeam2();
-        instantiatePlayers();
-        string[] tags = { "team1", "team2" };
-        for (int i = 0; i < 2; i++)
-        {
-
-            GameObject[] tempPlayers = GameObject.FindGameObjectsWithTag(tags[i]);
-            
-
-            for (int j = 0; j < 3; j++)
-            {
-                tempPlayers[j].SetActive(false);
-
-            }
-        }
+        initSelectionPerso();
         
+
+    }
+
+    private void initSelectionPerso()
+    {
+        if (team1[2] == null && team2[2] == null)
+        {
+            sp = GameObject.Find("SelectionPersonnage").GetComponent<SelectionPersonnage>();
+            //sp.getTeam1();
+            //sp.getTeam2();
+            team1 = sp.getTeam1();
+            team2 = sp.getTeam2();
+            instantiatePlayers();
+            string[] tags = { "team1", "team2" };
+            for (int i = 0; i < 2; i++)
+            {
+
+                GameObject[] tempPlayers = GameObject.FindGameObjectsWithTag(tags[i]);
+
+
+                for (int j = 0; j < 3; j++)
+                {
+                    tempPlayers[j].SetActive(false);
+
+                }
+            }
+            team1 = sp.getTeam1();
+            team2 = sp.getTeam2();
+        }
+        else
+        {
+            instantiatePlayers();
+
+        }
 
     }
     void Start()
