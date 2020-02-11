@@ -1,0 +1,98 @@
+# Exported from Fuse 1.3.0
+
+newmtl Body
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd ukirass_Body_diffuse.png
+map_Ks ukirass_Body_specular.png
+bump ukirass_Body_normal.png
+map_Ns ukirass_Body_gloss.png
+
+newmtl Top
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd ukirass_Top_diffuse.png
+map_Ks ukirass_Top_specular.png
+bump ukirass_Top_normal.png
+map_Ns ukirass_Top_gloss.png
+
+newmtl Beard
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd ukirass_Beard_diffuse.png
+map_Ks ukirass_Beard_specular.png
+bump ukirass_Beard_normal.png
+map_Ns ukirass_Beard_gloss.png
+
+newmtl Shoes
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd ukirass_Shoes_diffuse.png
+map_Ks ukirass_Shoes_specular.png
+bump ukirass_Shoes_normal.png
+map_Ns ukirass_Shoes_gloss.png
+
+newmtl Hair
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd ukirass_Hair_diffuse.png
+map_Ks ukirass_Hair_specular.png
+bump ukirass_Hair_normal.png
+map_Ns ukirass_Hair_gloss.png
+
+newmtl Bottom
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd ukirass_Bottom_diffuse.png
+map_Ks ukirass_Bottom_specular.png
+bump ukirass_Bottom_normal.png
+map_Ns ukirass_Bottom_gloss.png
+
+newmtl Eyewear
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd ukirass_Eyewear_diffuse.png
+map_Ks ukirass_Eyewear_specular.png
+bump ukirass_Eyewear_normal.png
+map_Ns ukirass_Eyewear_gloss.png
+
+newmtl Glove
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd ukirass_Glove_diffuse.png
+map_Ks ukirass_Glove_specular.png
+bump ukirass_Glove_normal.png
+map_Ns ukirass_Glove_gloss.png
+
