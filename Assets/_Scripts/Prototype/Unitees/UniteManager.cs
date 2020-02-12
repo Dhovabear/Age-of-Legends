@@ -63,7 +63,7 @@ namespace Prototype.Unitees
 
             if (Input.GetMouseButtonUp(0))
             {
-                CameraMover.currentInstance.canMove = true;
+                CameraMover.currentInstance.resumeCameraMovement();
                 SourisMaintenu = false;
                 UIselectionSquare.SetActive(false);
                 if (Time.time - clickTime <= clickDelay)
@@ -119,7 +119,7 @@ namespace Prototype.Unitees
             if (SourisMaintenu)
             {
                 RectTransform rt = UIselectionSquare.GetComponent<RectTransform>();
-                CameraMover.currentInstance.canMove = false;
+                CameraMover.currentInstance.stopCameraMovement();
                 UISelSquareLastPos = Input.mousePosition;
                 
                 //On cherche dabord le millieu du rectangle

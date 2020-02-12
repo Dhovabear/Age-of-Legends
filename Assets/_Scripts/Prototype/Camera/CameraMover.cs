@@ -26,7 +26,7 @@ namespace Prototype.Camera
          */
         public int deadZone;
         
-        public bool canMove = true;
+        
         
         
         #endregion
@@ -37,7 +37,9 @@ namespace Prototype.Camera
         private CinemachineVirtualCamera _camera;
         private CinemachineFramingTransposer _transposer;
         private bool isFocusSomething = false;
-
+        private bool canMove = true;
+        private bool isInUi; //Variable de débug qui va blocer le déblocage de la caméra si on est dans un UI
+        
         #endregion
 
         #region MonoBehaviour Callbacks
@@ -78,11 +80,11 @@ namespace Prototype.Camera
             
             if (isFocusSomething)
             {
-                FocusZoom();
+                FocusZoom();//calcul du zoom de focus (le mouvement est gérer par CM )
             }
             else
             { 
-                FreeMove();
+                FreeMove(); //calcul du prochain mouvement
             }
         }
 
@@ -148,6 +150,40 @@ namespace Prototype.Camera
             isFocusSomething = false;
             _camera.Follow = null;
         }
+
+        //Les 4 fonctions qui vont suivre sont uniquement présente pour corriger un petit bug
+        //Elles ajoutent plus ou moins le fait de ajouter une fonction qui gère le blocage de la camera
+        //de facon prioritaire, c'est a dire que startUIComportment va bloquer la caméra mais si on ne la débloque pas 
+        //a l'aide de la fonction stopUIComportment, alors on ne pourra pas la faire bouger a nouveau c'est une sorte de lock
+        //NOTE: seuls les interfaces doivent utiliser cette fonction, en aucun cas un autre élément doir s'en servir!!!!!
+        
+        //stop bêtement les mouvements de la caméra
+        public void stopCameraMovement()
+        {
+            canMove = false;
+        }
+
+        //Fait a nouveau bouger la caméra si on est pas dans un UI-lock
+        public void resumeCameraMovement()
+        {
+            if (isInUi) return;
+            canMove = true;
+        }
+
+        //Débute le UI-lock de la caméra
+        public void startUIComportement()
+        {
+            isInUi = true;
+            stopCameraMovement();
+        }
+
+        //Met fin au UI-lock
+        public void stopUIComportement()
+        {
+            isInUi = false;
+            resumeCameraMovement();
+        }
+
         #endregion
     }
 }
