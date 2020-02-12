@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Fight;
 using UnityEngine;
 
 public class FightManager : MonoBehaviour
@@ -22,36 +23,40 @@ public class FightManager : MonoBehaviour
         foreach (GameObject champion in team1)
         {
             ChampionController champ = champion.GetComponent<ChampionController>();
-            bool isStunned = false;
-            foreach (Effect effet in champ.effets)
+            if (champ.Hp > 0)
             {
-                if (effet.Equals(gameObject.GetComponent<Stun>()))
+                bool isStunned = false;
+                foreach (Effect effet in champ.effets)
                 {
-                    isStunned = true;
+                    if (effet.Equals(gameObject.GetComponent<Stun>()))
+                    {
+                        isStunned = true;
+                    }
                 }
-            }
-            if (!isStunned)
-            {
-                champions.Add(champion.GetComponent<ChampionController>());
-
+                if (!isStunned)
+                {
+                    champions.Add(champion.GetComponent<ChampionController>());
+                }
             }
         }
         foreach (GameObject champion in team2)
         {
             ChampionController champ = champion.GetComponent<ChampionController>();
-            bool isStunned = false;
-            foreach (Effect effet in champ.effets)
+            if (champ.Hp > 0)
             {
-                if (effet.Equals(gameObject.GetComponent<Stun>()))
+                bool isStunned = false;
+                foreach (Effect effet in champ.effets)
                 {
-                    isStunned = true;
+                    if (effet.Equals(gameObject.GetComponent<Stun>()))
+                    {
+                        isStunned = true;
+                    }
+                }
+                if (!isStunned)
+                {
+                    champions.Add(champion.GetComponent<ChampionController>());
                 }
             }
-            if (!isStunned)
-            {
-                champions.Add(champion.GetComponent<ChampionController>());
-
-            }        
         }
         champions.Sort(Comparer<ChampionController>.Default);
         indiceChampionCourant = 0;
@@ -64,6 +69,7 @@ public class FightManager : MonoBehaviour
         {
             listTeam1.Add(champion.GetComponent<ChampionController>());
         }
+
         return listTeam1;
     }
 

@@ -1,18 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Effect : MonoBehaviour
+namespace Fight
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Effect : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField] public string name;
+        [SerializeField] public int durability;
+
+
+        public Effect()
+        {
+            name = "Effet";
+            durability = 1;
+        }
     }
 }

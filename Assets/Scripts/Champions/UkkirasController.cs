@@ -10,9 +10,11 @@ public class UkkirasController : ChampionController
     void Start()
     {
         Name = "Ukkiras";
-        Hp = 600;
-        Attaque = 600;
-        Defense = 200;
+        Hp = 26000;
+        MaxHp = Hp;
+        Attaque = 2000;
+        Armure = 2800;
+        ResistanceMagique = 2600;
         Pouvoir = 50;
         Vitesse = 800;
         Heal = 50;
@@ -59,21 +61,28 @@ public class UkkirasController : ChampionController
 
     public override void spell1(ChampionController champion)
     {
-        float dégats = Attaque * 2.1f - champion.Defense;
-        champion.Hp = champion.Hp - dégats;
+        if (Attaque * 4f > champion.Armure)
+        {
+            champion.Hp = champion.Hp - (Attaque * 4f - champion.Armure);
+        }
     }
 
     public void spell2()
     {
         foreach (ChampionController ennemy in ennemies)
         {
-            ennemy.Hp = ennemy.Hp - (Attaque * 1.7f - ennemy.Defense);
+            if (Attaque * 3f > ennemy.Armure)
+            {
+                ennemy.Hp = ennemy.Hp - (Attaque * 3f - ennemy.Armure);
+            }
         }
     }
 
     public void ultimate(ChampionController champion)
     {
-        float dégats = Attaque * 4f - champion.Defense;
-        champion.Hp = champion.Hp - dégats;
+        if (Attaque * 6f > champion.Armure)
+        {
+            champion.Hp = champion.Hp - (Attaque * 6f - champion.Armure);
+        }
     }
 }

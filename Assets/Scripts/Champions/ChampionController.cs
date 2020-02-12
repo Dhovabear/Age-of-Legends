@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using Fight;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class ChampionController : MonoBehaviour, IComparable
 {
 
     [SerializeField] public string Name;
     [SerializeField] public float Hp;
+    [SerializeField] public float MaxHp;
     [SerializeField] public float Attaque;
+    [SerializeField] public float Armure;
+    [SerializeField] public float ResistanceMagique;
     [SerializeField] public float Defense;
     [SerializeField] public float Pouvoir;
     [SerializeField] public float Vitesse;
@@ -50,4 +55,8 @@ public abstract class ChampionController : MonoBehaviour, IComparable
 
     public abstract void spell1(ChampionController champion);
 
+    public void autoAttack(ChampionController champion)
+    {
+        champion.Hp = champion.Hp - (Attaque - champion.Defense);
+    }
 }

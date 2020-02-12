@@ -11,10 +11,12 @@ public class SaaleerController : ChampionController
     void Start()
     {
         Name = "Saaleer";
-        Hp = 400;
+        Hp = 18000;
+        MaxHp = Hp;
         Attaque = 50;
-        Defense = 200;
-        Pouvoir = 600;
+        Armure = 2300;
+        ResistanceMagique = 2100;
+        Pouvoir = 3200;
         Vitesse = 300;
         Heal = 50;
         Ultime = 0;
@@ -60,18 +62,18 @@ public class SaaleerController : ChampionController
 
     public override void spell1(ChampionController champion)
     {
-        foreach (ChampionController ally in allies)
+        float degats = Pouvoir * 2f;
+        if (degats - champion.ResistanceMagique > 0)
         {
-            ally.Pouvoir = ally.Pouvoir * 1.2f;
+            champion.Hp = Hp - (degats - champion.ResistanceMagique);
         }
     }
 
     public void spell2(ChampionController champion)
     {
-        float degats = 50f + Pouvoir * 1.2f;
-        if (degats - champion.Defense > 0)
+        foreach (ChampionController ally in allies)
         {
-            champion.Hp = Hp - (degats - champion.Defense);
+            ally.Pouvoir = ally.Pouvoir * 1.2f;
         }
     }
 

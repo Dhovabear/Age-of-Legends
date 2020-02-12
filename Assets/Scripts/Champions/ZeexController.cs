@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Fight;
 using UnityEngine;
 
 public class ZeexController : ChampionController
@@ -10,10 +11,12 @@ public class ZeexController : ChampionController
     void Start()
     {
         Name = "Zeex";
-        Hp = 600;
+        Hp = 19000;
+        MaxHp = Hp;
         Attaque = 50;
-        Defense = 200;
-        Pouvoir = 800;
+        Armure = 2200;
+        ResistanceMagique = 2000;
+        Pouvoir = 3500;
         Vitesse = 600;
         Heal = 50;
         Ultime = 0;
@@ -60,17 +63,32 @@ public class ZeexController : ChampionController
 
     public override void spell1(ChampionController champion)
     {
-
+        if (Pouvoir * 2f > champion.ResistanceMagique)
+        {
+            champion.Hp = champion.Hp - (Pouvoir* 2f - champion.ResistanceMagique);
+        }
+        champion.effets.Add(gameObject.AddComponent<Inferno>());
     }
 
     public void spell2()
     {
-
+        Ultime += 40;
     }
 
     public void ultimate()
     {
-
+        foreach (ChampionController champion in ennemies)
+        {
+            int count = 0;
+            foreach (Effect effet in champion.effets)
+            {
+                if (effet.Equals(gameObject.GetComponent<Inferno>()))
+                {
+                    count++;
+                }
+            }
+            champion.Hp = champion.Hp - (count * 3000);
+        }
     }
 }
 

@@ -11,9 +11,11 @@ public class AshaarjController : ChampionController
     void Start()
     {
         Name = "Ashaarj";
-        Hp = 1000;
+        Hp = 53000;
+        MaxHp = Hp;
         Attaque = 200;
-        Defense = 700;
+        Armure = 5500;
+        ResistanceMagique = 5200;
         Pouvoir = 50;
         Vitesse = 200;
         Heal = 50;
@@ -53,27 +55,63 @@ public class AshaarjController : ChampionController
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public override void spell1(ChampionController target)
     {
-        target.Defense = target.Defense * 0.9f;
+        target.Armure = target.Armure * 0.92f;
+        target.ResistanceMagique = target.ResistanceMagique * 0.92f;
     }
-
     public void spell2()
     {
         foreach (ChampionController ally in allies)
         {
-            ally.Defense = ally.Defense * 1.2f;
+            if (ally.Armure<2000)
+            {
+                ally.Armure = ally.Armure * 1.15f;
+            }
+            else if (ally.Armure<3000)
+            {
+                ally.Armure = ally.Armure * 1.12f;
+            }
+            else if (ally.Armure<4000)
+            {
+                ally.Armure = ally.Armure * 1.10f;
+            }
+            else if (ally.Armure<5000)
+            {
+                ally.Armure = ally.Armure * 1.07f;
+            }
+            else
+            {
+                ally.Armure = ally.Armure * 1.03f;
+            }
+            
+            
+            if (ally.ResistanceMagique<2000)
+            {
+                ally.ResistanceMagique = ally.ResistanceMagique * 1.15f;
+            }
+            else if (ally.ResistanceMagique<3000)
+            {
+                ally.ResistanceMagique = ally.ResistanceMagique * 1.12f;
+            }
+            else if (ally.ResistanceMagique<4000)
+            {
+                ally.ResistanceMagique = ally.ResistanceMagique * 1.10f;
+            }
+            else if (ally.ResistanceMagique<5000)
+            {
+                ally.ResistanceMagique = ally.ResistanceMagique * 1.07f;
+            }
+            else
+            {
+                ally.ResistanceMagique = ally.ResistanceMagique * 1.03f;
+            }
         }
     }
 
     public void ultimate()
     {
-        int stunProbability = 7;
+        int stunProbability = 4;
         int chance; 
         
         foreach (ChampionController ennemy in ennemies)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Fight;
 using UnityEngine;
 
 public class DohmaController : ChampionController
@@ -10,11 +11,13 @@ public class DohmaController : ChampionController
     void Start()
     {
         Name = "Dohma";
-        Hp = 800;
-        Attaque = 800;
-        Defense = 500;
+        Hp = 32000;
+        MaxHp = Hp;
+        Attaque = 3500;
+        Armure = 3500;
+        ResistanceMagique = 3250;
         Pouvoir = 50;
-        Vitesse = 300;
+        Vitesse = 500;
         Heal = 200;
         Ultime = 0;
          
@@ -59,7 +62,10 @@ public class DohmaController : ChampionController
 
     public override void spell1(ChampionController target)
     {
-        target.Hp = target.Hp - (Attaque * 1.3f - target.Defense);
+        if (Attaque * 1.8f > target.Armure)
+        {
+            target.Hp = target.Hp - (Attaque * 2f - target.Armure);
+        }
         int choice = Random.Range(0, 2);
         if (choice == 2)
         {
@@ -73,7 +79,10 @@ public class DohmaController : ChampionController
 
     public void spell2(ChampionController target)
     {
-        target.Hp = target.Hp - (Attaque* 2.8f - target.Defense);
+        if (Attaque * 2f > target.Armure)
+        {
+            target.Hp = target.Hp - (Attaque* 2f - target.Armure);
+        }
         target.Marques++;
     }
 
@@ -86,12 +95,12 @@ public class DohmaController : ChampionController
                 if (target == champion)
                 {
                     champion.effets.Add(gameObject.AddComponent<Invulnerability>());
+                    champion.Marques -= 3;
                 }
-
-                if (target == this)
-                {
-                    this.effets.Add(gameObject.AddComponent<Invulnerability>());
-                }
+            }
+            if (target == this)
+            {
+                effets.Add(gameObject.AddComponent<Invulnerability>());
             }
 
             foreach (ChampionController champion in ennemies)
