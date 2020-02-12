@@ -33,6 +33,8 @@ public class Builder : Container
         //check si il créer la liste donc wola
         
         builderList.Add(this);
+
+        Bar = GetComponentsInChildren<Image>()[0];
         
         buildPercent = 0f;
         Bar.fillAmount = buildPercent;

@@ -132,7 +132,7 @@ namespace CollectPhase
          * - CristalRepo: 0
          * - ManaRepo: 1
          */
-        public void BuildStorage(int buildId)
+        public void Build(int buildId)
         {
             idToBuild = buildId;
             wantToBuild = true;
