@@ -106,9 +106,11 @@ public class FightManager : MonoBehaviour
                 }
                 if (!isStunned)
                 {
-                    champions.Add(champion.GetComponent<ChampionController>());
+                    //on passe pas ici bizarement
+                    //champions.Add(champion.GetComponent<ChampionController>());
                 }
             }
+            champions.Add(champ);
         }
         foreach (GameObject champion in team2)
         {
@@ -125,9 +127,12 @@ public class FightManager : MonoBehaviour
                 }
                 if (!isStunned)
                 {
-                    champions.Add(champion.GetComponent<ChampionController>());
+                    //on passe pas ici bizarement
+                    //champions.Add(champion.GetComponent<ChampionController>());
                 }
             }
+            champions.Add(champ);
+
         }
         champions.Sort(Comparer<ChampionController>.Default);
         indiceChampionCourant = 0;

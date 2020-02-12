@@ -201,6 +201,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100000, guid: 73c27d058f5decf4b8f69041c692ea98, type: 3}
+      propertyPath: m_Name
+      value: Crystal
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 73c27d058f5decf4b8f69041c692ea98, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -256,10 +260,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 73c27d058f5decf4b8f69041c692ea98, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 73c27d058f5decf4b8f69041c692ea98, type: 3}
-      propertyPath: m_Name
-      value: Crystal
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 73c27d058f5decf4b8f69041c692ea98, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1235,6 +1235,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 577892834}
     m_Modifications:
+    - target: {fileID: 1652476061409828, guid: ed72ab3dedc1da442b83540ab860da2c, type: 3}
+      propertyPath: m_Name
+      value: champ1HealthSlider
+      objectReference: {fileID: 0}
     - target: {fileID: 224605109079863476, guid: ed72ab3dedc1da442b83540ab860da2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1339,10 +1343,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1652476061409828, guid: ed72ab3dedc1da442b83540ab860da2c, type: 3}
-      propertyPath: m_Name
-      value: champ1HealthSlider
       objectReference: {fileID: 0}
     - target: {fileID: 224284673132238710, guid: ed72ab3dedc1da442b83540ab860da2c,
         type: 3}
@@ -3989,6 +3989,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 577892834}
     m_Modifications:
+    - target: {fileID: 1456326344296516, guid: 72c8e2f7d5ca96d4f9a1da1a3eba239c, type: 3}
+      propertyPath: m_Name
+      value: champ1UltimateSlider
+      objectReference: {fileID: 0}
     - target: {fileID: 224168211070037804, guid: 72c8e2f7d5ca96d4f9a1da1a3eba239c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4093,10 +4097,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1456326344296516, guid: 72c8e2f7d5ca96d4f9a1da1a3eba239c, type: 3}
-      propertyPath: m_Name
-      value: champ1UltimateSlider
       objectReference: {fileID: 0}
     - target: {fileID: 224433695350967924, guid: 72c8e2f7d5ca96d4f9a1da1a3eba239c,
         type: 3}
@@ -5008,6 +5008,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1061827992}
+    - target: {fileID: 1434981667942897735, guid: 27a3ac33410fe6249ab7a1f0c81e489c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: attack
+      objectReference: {fileID: 0}
     - target: {fileID: 1434981667948106373, guid: 27a3ac33410fe6249ab7a1f0c81e489c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
