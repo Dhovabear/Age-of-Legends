@@ -75,20 +75,20 @@ public class DohmaController : ChampionController
         {
             allies[choice].Marques++;
         }
-        chargeUltime((Attaque * 1.3f - target.Defense)/100);
+        chargeUltime((int)((Attaque * 1.3f - target.Defense)/100));
     }
 
-    public void spell2(ChampionController target)
+    public override void spell2(ChampionController target)
     {
         if (Attaque * 2.2f > target.Armure)
         {
             target.Hp = target.Hp - (Attaque* 2.2f - target.Armure);
         }
         target.Marques++;
-         chargeUltime((Attaque * 2.2f - target.Defense)/100);
+         chargeUltime((int)((Attaque * 2.2f - target.Defense)/100));
     }
 
-    public void ultimate(ChampionController target)
+    public override void ultimate(ChampionController target)
     {
         if (target.Marques >= 3)
         {

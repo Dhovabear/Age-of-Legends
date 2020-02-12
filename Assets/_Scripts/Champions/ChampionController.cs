@@ -66,9 +66,9 @@ public abstract class ChampionController : MonoBehaviour, IComparable
         Ultime = 0;
     }
 
-    // public abstract void spell1(ChampionController champion);
-    // public abstract void spell2(ChampionController champion);
-    // public abstract void ultimate(ChampionController champion);
+    public abstract void spell1(ChampionController champion);
+    public abstract void spell2(ChampionController champion);
+    public abstract void ultimate(ChampionController champion);
 
     public void autoAttack(ChampionController champion)
     {

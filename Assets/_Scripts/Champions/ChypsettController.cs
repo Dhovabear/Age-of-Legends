@@ -70,10 +70,10 @@ public class ChypsettController : ChampionController
         {
             champion.Hp = champion.Hp + Heal;
         }
-        chargeUltime(Heal/100);
+        chargeUltime((int)(Heal/100));
     }
 
-    public void spell2()
+    public override void spell2(ChampionController champion)
     {
         foreach (ChampionController ally in allies)
         {
@@ -82,7 +82,7 @@ public class ChypsettController : ChampionController
         chargeUltime(20);
     }
 
-    public void ultimate(ChampionController champion)
+    public override void ultimate(ChampionController champion)
     {
         champion.effets.Add(gameObject.AddComponent<Stun>());
         champion.effets.Add(gameObject.AddComponent<Stun>());

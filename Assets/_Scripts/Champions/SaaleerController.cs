@@ -69,7 +69,7 @@ public class SaaleerController : ChampionController
         }
     }
 
-    public void spell2(ChampionController champion)
+    public override void spell2(ChampionController champion)
     {
         foreach (ChampionController ally in allies)
         {
@@ -77,7 +77,7 @@ public class SaaleerController : ChampionController
         }
     }
 
-    public void ultimate()
+    public override void ultimate(ChampionController champion)
     {
         foreach (ChampionController ally in allies)
         {

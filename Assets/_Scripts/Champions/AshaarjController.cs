@@ -62,7 +62,7 @@ public class AshaarjController : ChampionController
         chargeUltime((int)Defense / 200);
     }
 
-    public void spell2()
+    public override void spell2(ChampionController champion)
     {
         foreach (ChampionController ally in allies)
         {
@@ -112,7 +112,7 @@ public class AshaarjController : ChampionController
         chargeUltime(15);
     }
 
-    public void ultimate()
+    public override void ultimate(ChampionController champion)
     {
         int stunProbability = 4;
         int chance; 

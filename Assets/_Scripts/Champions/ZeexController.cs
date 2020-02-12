@@ -66,17 +66,17 @@ public class ZeexController : ChampionController
         if (Pouvoir * 2f > champion.ResistanceMagique)
         {
             champion.Hp = champion.Hp - (Pouvoir* 2f - champion.ResistanceMagique);
-            chargeUltime((Pouvoir* 2f - champion.ResistanceMagique)/100);
+            chargeUltime((int)((Pouvoir* 2f - champion.ResistanceMagique)/100));
         }
         champion.effets.Add(gameObject.AddComponent<Inferno>());
     }
 
-    public void spell2()
+    public override void spell2(ChampionController champion)
     {
         chargeUltime(45);
     }
 
-    public void ultimate()
+    public override void ultimate(ChampionController champ)
     {
         foreach (ChampionController champion in ennemies)
         {

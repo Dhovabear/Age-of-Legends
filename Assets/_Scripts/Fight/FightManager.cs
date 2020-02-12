@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Fight;
 using UnityEngine;
 
 public class FightManager : MonoBehaviour
@@ -53,7 +54,6 @@ public class FightManager : MonoBehaviour
     private void Awake()
     {
         initSelectionPerso();
-
     }
 
     private void initSelectionPerso()

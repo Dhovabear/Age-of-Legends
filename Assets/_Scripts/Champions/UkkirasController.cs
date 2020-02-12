@@ -64,23 +64,23 @@ public class UkkirasController : ChampionController
         if (Attaque * 4f > champion.Armure)
         {
             champion.Hp = champion.Hp - (Attaque * 4f - champion.Armure);
-            chargeUltime((Attaque * 4f > champion.Armure)/100)
+            chargeUltime((int)(Attaque * 4f - champion.Armure) / 100);
         }
     }
 
-    public void spell2()
+    public override void spell2(ChampionController champion)
     {
         foreach (ChampionController ennemy in ennemies)
         {
             if (Attaque * 3f > ennemy.Armure)
             {
                 ennemy.Hp = ennemy.Hp - (Attaque * 3f - ennemy.Armure);
-                chargeUltime((Attaque * 3f > ennemy.Armure)/100)
+                chargeUltime((int)(Attaque * 3f - ennemy.Armure) / 100);
             }
         }
     }
 
-    public void ultimate(ChampionController champion)
+    public override void ultimate(ChampionController champion)
     {
         if (Attaque * 6f > champion.Armure)
         {
