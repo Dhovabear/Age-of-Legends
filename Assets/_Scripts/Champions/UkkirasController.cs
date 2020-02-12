@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UkkirasController : ChampionController
@@ -10,9 +10,11 @@ public class UkkirasController : ChampionController
     void Start()
     {
         Name = "Ukkiras";
-        Hp = 600;
-        Attaque = 600;
-        Defense = 200;
+        Hp = 26000;
+        MaxHp = Hp;
+        Attaque = 2000;
+        Armure = 2800;
+        ResistanceMagique = 2600;
         Pouvoir = 50;
         Vitesse = 800;
         Heal = 50;
@@ -59,30 +61,31 @@ public class UkkirasController : ChampionController
 
     public override void spell1(ChampionController champion)
     {
-        //float degats = Attaque * 2.1f - champion.Defense;
-
-        float degats = Attaque * 0.8f - champion.Defense;
-        champion.Hp = champion.Hp - degats;
-        chargeUltime((int)degats/100);
+        if (Attaque * 4f > champion.Armure)
+        {
+            champion.Hp = champion.Hp - (Attaque * 4f - champion.Armure);
+            chargeUltime((Attaque * 4f > champion.Armure)/100)
+        }
     }
 
-    public override void spell2(ChampionController champion)
+    public void spell2()
     {
         foreach (ChampionController ennemy in ennemies)
         {
-            ennemy.Hp = ennemy.Hp - (Attaque * 1.7f - ennemy.Defense);
-            Debug.Log("ennemy : "+ennemy);
-            Debug.Log("ennemies : "+ennemies);
-
+            if (Attaque * 3f > ennemy.Armure)
+            {
+                ennemy.Hp = ennemy.Hp - (Attaque * 3f - ennemy.Armure);
+                chargeUltime((Attaque * 3f > ennemy.Armure)/100)
+            }
         }
-        chargeUltime(5);
-
     }
 
-    public override void ultimate(ChampionController champion)
+    public void ultimate(ChampionController champion)
     {
-        float degats = Attaque * 4f - champion.Defense;
-        champion.Hp = champion.Hp - degats;
+        if (Attaque * 6f > champion.Armure)
+        {
+            champion.Hp = champion.Hp - (Attaque * 6f - champion.Armure);
+        }
         videUltime();
     }
 }

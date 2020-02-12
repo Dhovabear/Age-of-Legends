@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ChypsettController : ChampionController
@@ -11,12 +11,14 @@ public class ChypsettController : ChampionController
     void Start()
     {
         Name = "Chypsett";
-        Hp = 300;
+        Hp = 16000;
+        MaxHp = Hp;
         Attaque = 50;
-        Defense = 200;
+        Armure = 2000;
+        ResistanceMagique = 1800;
         Pouvoir = 400;
         Vitesse = 400;
-        Heal = 700;
+        Heal = 3000;
         Ultime = 0;
         
         allies = new List<ChampionController>();
@@ -60,21 +62,27 @@ public class ChypsettController : ChampionController
     
     public override void spell1(ChampionController champion)
     {
-        champion.Hp = champion.Hp + Heal;
-
-        chargeUltime(30);
+        if (champion.Hp + Heal >= champion.MaxHp)
+        {
+            champion.Hp = champion.MaxHp;
+        }
+        else
+        {
+            champion.Hp = champion.Hp + Heal;
+        }
+        chargeUltime(Heal/100);
     }
 
-    public override void spell2(ChampionController champion)
+    public void spell2()
     {
         foreach (ChampionController ally in allies)
         {
-            ally.Vitesse = ally.Vitesse * 1.2f;
+            ally.Vitesse = ally.Vitesse * 1.8f;
         }
-        chargeUltime(40);
+        chargeUltime(20);
     }
 
-    public override void ultimate(ChampionController champion)
+    public void ultimate(ChampionController champion)
     {
         champion.effets.Add(gameObject.AddComponent<Stun>());
         champion.effets.Add(gameObject.AddComponent<Stun>());
