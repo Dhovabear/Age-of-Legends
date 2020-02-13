@@ -75,4 +75,13 @@ public class RessourcesStorage : Container
         return (ResCount < MaxRessources);
     }
 
+    //retire et retourne le nombre de ressources qui n'ont pas pu être retiré
+    //surant l'opération (ex: on a 10 cristaux on veut en prendre 11 , la fonction renverra 1)
+    public int takeRessources(int amount)
+    {
+        int amountToLose = Math.Min(ResCount, amount);
+        ResCount -= amountToLose;
+        Debug.Log(transform.name + " a normalement perdu " + amountToLose + "ressources");
+        return amount - amountToLose;
+    }
 }
