@@ -230,9 +230,7 @@ public class DisplayController : MonoBehaviour
 
     private void updateInfos()
     {
-
     	currentChamp = fightmanager.champions[fightmanager.getIndiceChampionCourant()];
-
         playerPointer.transform.position = currentChamp.gameObject.transform.position +
                                            Vector3.up * currentChamp.gameObject.transform.localScale.y * 2.1f;
         //UPDATE DES SLIDER DE VIE DE TOUT LE MONDE 
