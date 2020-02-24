@@ -2348,7 +2348,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Hp: 0
+  MaxHp: 0
   Attaque: 0
+  Armure: 0
+  ResistanceMagique: 0
   Defense: 0
   Pouvoir: 0
   Vitesse: 0
@@ -2360,9 +2363,11 @@ MonoBehaviour:
   team2: []
   spellsTarget:
   - Enemy
+  - Enemy
   - Ally
   - Enemy
   descSpell:
+  - Attaque de base
   - "R\xE9duit la d\xE9fense d'un ennemi"
   - "Augmente la d\xE9fense des alli\xE9s"
   - "A 35% de chance de stun les ennemis (chaque ennemi a un tirage diff\xE9rent)"

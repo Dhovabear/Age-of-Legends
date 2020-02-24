@@ -25,8 +25,8 @@ public abstract class ChampionController : MonoBehaviour, IComparable
     [SerializeField] protected GameObject[] team1;
     [SerializeField] protected GameObject[] team2;
 
-    public String[] spellsTarget = new String[3];
-    public String[] descSpell = new String[3];
+    public String[] spellsTarget = new String[4];
+    public String[] descSpell = new String[4];
 
     // Start is called before the first frame update
     void Awake()

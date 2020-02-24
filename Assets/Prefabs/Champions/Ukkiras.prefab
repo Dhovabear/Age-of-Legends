@@ -229,7 +229,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Hp: 0
+  MaxHp: 0
   Attaque: 0
+  Armure: 0
+  ResistanceMagique: 0
   Defense: 0
   Pouvoir: 0
   Vitesse: 0
@@ -243,7 +246,9 @@ MonoBehaviour:
   - Enemy
   - Enemy
   - Enemy
+  - Enemy
   descSpell:
+  - Attaque de base
   - Attaque un ennemi
   - Attaque tout les ennemis
   - Met une grosse tarte a un ennemi
