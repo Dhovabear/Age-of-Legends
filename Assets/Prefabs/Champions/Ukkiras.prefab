@@ -1985,9 +1985,9 @@ GameObject:
   - component: {fileID: 6208836930404163990}
   - component: {fileID: 54268623729902840}
   - component: {fileID: 143034611696483934}
-  - component: {fileID: 114525165324533846}
+  - component: {fileID: 114768676357102422}
   m_Layer: 0
-  m_Name: ukirass
+  m_Name: Ukkiras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2071,7 +2071,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &114525165324533846
+--- !u!114 &114768676357102422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2099,15 +2099,15 @@ MonoBehaviour:
   team1: []
   team2: []
   spellsTarget:
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Enemy
+  - Enemy
+  - Enemy
   descSpell:
-  - 
-  - 
-  - 
-  - 
+  - Attaque de base
+  - Attaque un ennemi
+  - Attaque tout les ennemis
+  - Met une grosse tarte a un ennemi
   allies: []
   ennemies: []
 --- !u!1 &6208836930411451330

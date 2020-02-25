@@ -493,6 +493,7 @@ public class DisplayController : MonoBehaviour
     }
     public void characterAttack(ChampionController cc)
     {
+        anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
 
         switch (currentSpell)
         {
@@ -500,16 +501,19 @@ public class DisplayController : MonoBehaviour
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].autoAttack(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son sort attaque de base sur " + cc.Name;
+                anim.SetTrigger("auto_attack");
                 break;
             case 1:
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son sort 1 sur " + cc.Name;
+                anim.SetTrigger("launch_spell");
                 break;
            case 2:
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell2(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son sort 2 sur " + cc.Name;
+                anim.SetTrigger("launch_spell");
 
                 break;
             case 3:
@@ -522,8 +526,8 @@ public class DisplayController : MonoBehaviour
         //fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
 
         //fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
-        anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
-        anim.SetTrigger("launch_spell");
+        
+        
         animEnemy = cc.GetComponent<Animator>();
         StartCoroutine(hitEffect());
 
