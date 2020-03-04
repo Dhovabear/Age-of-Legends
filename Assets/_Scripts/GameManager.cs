@@ -48,10 +48,16 @@ public class GameManager : MonoBehaviour
 
             if(RessourcesContainer.instances == null){
                 Debug.Log("Test");
+                continue;
             }
             
             foreach(RessourcesContainer rc in RessourcesContainer.instances){
                 rc.UpdateRessourcesV2();
+            }
+            
+            if(RessourcesStorage.instances == null){
+                Debug.Log("Test");
+                continue;
             }
 
             foreach (RessourcesStorage rs in RessourcesStorage.instances)
