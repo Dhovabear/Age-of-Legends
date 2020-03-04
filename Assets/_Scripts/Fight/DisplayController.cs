@@ -493,21 +493,30 @@ public class DisplayController : MonoBehaviour
     }
     public void characterAttack(ChampionController cc)
     {
+        anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
 
         switch (currentSpell)
         {
             case 0:
+                fightmanager.champions[fightmanager.getIndiceChampionCourant()].autoAttack(cc);
+                champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
+                                  " a lancé son sort attaque de base sur " + cc.Name;
+                anim.SetTrigger("auto_attack");
+                break;
+            case 1:
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son sort 1 sur " + cc.Name;
+                anim.SetTrigger("launch_spell");
                 break;
-           case 1:
+           case 2:
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell2(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son sort 2 sur " + cc.Name;
+                anim.SetTrigger("launch_spell");
 
                 break;
-            case 2:
+            case 3:
                 if (fightmanager.champions[fightmanager.getIndiceChampionCourant()].Ultime < 100) return;
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].ultimate(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
@@ -517,8 +526,8 @@ public class DisplayController : MonoBehaviour
         //fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
 
         //fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
-        anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
-        anim.SetTrigger("launch_spell");
+        
+        
         animEnemy = cc.GetComponent<Animator>();
         StartCoroutine(hitEffect());
 

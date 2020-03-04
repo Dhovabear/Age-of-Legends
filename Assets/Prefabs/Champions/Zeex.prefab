@@ -2383,7 +2383,7 @@ Animator:
   m_GameObject: {fileID: 4194907043372004664}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 6fec03487eaecf948bee053d3ef11527, type: 3}
-  m_Controller: {fileID: 9100000, guid: 86aee1c1e87a86549b70a49be9f36847, type: 2}
+  m_Controller: {fileID: 9100000, guid: b8a2d18589ce64848b12152e7e7e90c8, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2440,7 +2440,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Hp: 0
+  MaxHp: 0
   Attaque: 0
+  Armure: 0
+  ResistanceMagique: 0
   Defense: 0
   Pouvoir: 0
   Vitesse: 0
@@ -2454,7 +2457,9 @@ MonoBehaviour:
   - Enemy
   - Enemy
   - Enemy
+  - Enemy
   descSpell:
+  - Attaque de base
   - (rien pour l'instant)
   - (rien pour l'instant)
   - (rien pour l'instant)
