@@ -12,7 +12,7 @@ public class MenuController : MonoBehaviour
     Slider volumeSlider;
     public void playGame() {
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     public void quitGame() {
