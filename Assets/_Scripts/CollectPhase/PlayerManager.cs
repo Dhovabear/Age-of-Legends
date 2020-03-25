@@ -59,7 +59,13 @@ namespace CollectPhase
                 Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out res, 1000f);
                 buildIndicator.transform.position = res.point;
             }
-            
+
+            if (wantToBuild && Input.GetButton("Cancel"))
+            {
+                wantToBuild = false;
+                buildIndicator.transform.position = new Vector3(500f,500f,0f);
+            }
+
             if (wantToBuild && Input.GetMouseButtonDown(0))
             {
                 RaycastHit res;
