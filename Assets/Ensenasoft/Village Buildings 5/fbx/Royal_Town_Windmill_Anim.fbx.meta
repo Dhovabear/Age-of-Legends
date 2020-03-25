@@ -1,0 +1,489 @@
+fileFormatVersion: 2
+guid: 6193f2d5990699247a0d9a4b146e31a1
+timeCreated: 1523596491
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: cosas:polySurface111
+    100002: group
+    100004: group1
+    100006: pCube75
+    100008: pCube81
+    100010: polySurface1
+    100012: polySurface1 1
+    100014: polySurface111
+    100016: polySurface112
+    100018: polySurface113
+    100020: polySurface114
+    100022: polySurface119
+    100024: polySurface12
+    100026: polySurface13
+    100028: polySurface14
+    100030: polySurface15
+    100032: polySurface16
+    100034: polySurface17
+    100036: polySurface18
+    100038: polySurface19
+    100040: polySurface2
+    100042: polySurface20
+    100044: polySurface21
+    100046: polySurface22
+    100048: polySurface23
+    100050: polySurface24
+    100052: polySurface26
+    100054: polySurface27
+    100056: polySurface28
+    100058: polySurface3
+    100060: polySurface30
+    100062: polySurface31
+    100064: polySurface32
+    100066: polySurface33
+    100068: polySurface34
+    100070: polySurface35
+    100072: polySurface36
+    100074: polySurface37
+    100076: polySurface38
+    100078: polySurface39
+    100080: polySurface4
+    100082: polySurface40
+    100084: polySurface41
+    100086: polySurface42
+    100088: polySurface5
+    100090: polySurface6
+    100092: polySurface7
+    100094: polySurface8
+    100096: polySurface9
+    100098: //RootNode
+    100100: transform100
+    100102: transform101
+    100104: transform102
+    100106: transform103
+    100108: transform104
+    100110: transform105
+    100112: transform106
+    100114: transform107
+    100116: transform108
+    100118: transform109
+    100120: transform110
+    100122: transform111
+    100124: transform112
+    100126: transform69
+    100128: transform70
+    100130: transform71
+    100132: transform72
+    100134: transform73
+    100136: transform74
+    100138: transform75
+    100140: transform76
+    100142: transform77
+    100144: transform78
+    100146: transform79
+    100148: transform80
+    100150: transform81
+    100152: transform82
+    100154: transform83
+    100156: transform84
+    100158: transform85
+    100160: transform86
+    100162: transform87
+    100164: transform88
+    100166: transform89
+    100168: transform90
+    100170: transform91
+    100172: transform92
+    100174: transform93
+    100176: transform94
+    100178: transform95
+    100180: transform96
+    100182: transform97
+    100184: transform98
+    100186: transform99
+    400000: cosas:polySurface111
+    400002: group
+    400004: group1
+    400006: pCube75
+    400008: pCube81
+    400010: polySurface1
+    400012: polySurface1 1
+    400014: polySurface111
+    400016: polySurface112
+    400018: polySurface113
+    400020: polySurface114
+    400022: polySurface119
+    400024: polySurface12
+    400026: polySurface13
+    400028: polySurface14
+    400030: polySurface15
+    400032: polySurface16
+    400034: polySurface17
+    400036: polySurface18
+    400038: polySurface19
+    400040: polySurface2
+    400042: polySurface20
+    400044: polySurface21
+    400046: polySurface22
+    400048: polySurface23
+    400050: polySurface24
+    400052: polySurface26
+    400054: polySurface27
+    400056: polySurface28
+    400058: polySurface3
+    400060: polySurface30
+    400062: polySurface31
+    400064: polySurface32
+    400066: polySurface33
+    400068: polySurface34
+    400070: polySurface35
+    400072: polySurface36
+    400074: polySurface37
+    400076: polySurface38
+    400078: polySurface39
+    400080: polySurface4
+    400082: polySurface40
+    400084: polySurface41
+    400086: polySurface42
+    400088: polySurface5
+    400090: polySurface6
+    400092: polySurface7
+    400094: polySurface8
+    400096: polySurface9
+    400098: //RootNode
+    400100: transform100
+    400102: transform101
+    400104: transform102
+    400106: transform103
+    400108: transform104
+    400110: transform105
+    400112: transform106
+    400114: transform107
+    400116: transform108
+    400118: transform109
+    400120: transform110
+    400122: transform111
+    400124: transform112
+    400126: transform69
+    400128: transform70
+    400130: transform71
+    400132: transform72
+    400134: transform73
+    400136: transform74
+    400138: transform75
+    400140: transform76
+    400142: transform77
+    400144: transform78
+    400146: transform79
+    400148: transform80
+    400150: transform81
+    400152: transform82
+    400154: transform83
+    400156: transform84
+    400158: transform85
+    400160: transform86
+    400162: transform87
+    400164: transform88
+    400166: transform89
+    400168: transform90
+    400170: transform91
+    400172: transform92
+    400174: transform93
+    400176: transform94
+    400178: transform95
+    400180: transform96
+    400182: transform97
+    400184: transform98
+    400186: transform99
+    2300000: pCube75
+    2300002: polySurface1
+    3300000: pCube75
+    3300002: polySurface1
+    4300000: pCube75
+    4300002: polySurface1
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: group
+        weight: 1
+      - path: group/pCube75
+        weight: 1
+      - path: group/pCube81
+        weight: 1
+      - path: group/pCube81/polySurface1 1
+        weight: 1
+      - path: group/pCube81/polySurface1 1/transform112
+        weight: 1
+      - path: group/pCube81/polySurface2
+        weight: 1
+      - path: group/pCube81/polySurface2/transform111
+        weight: 1
+      - path: group/pCube81/polySurface3
+        weight: 1
+      - path: group/pCube81/polySurface3/transform110
+        weight: 1
+      - path: group/pCube81/polySurface4
+        weight: 1
+      - path: group/pCube81/polySurface4/transform109
+        weight: 1
+      - path: group/pCube81/polySurface5
+        weight: 1
+      - path: group/pCube81/polySurface5/transform108
+        weight: 1
+      - path: group/pCube81/polySurface6
+        weight: 1
+      - path: group/pCube81/polySurface6/transform107
+        weight: 1
+      - path: group/pCube81/polySurface7
+        weight: 1
+      - path: group/pCube81/polySurface7/transform106
+        weight: 1
+      - path: group/pCube81/polySurface8
+        weight: 1
+      - path: group/pCube81/polySurface8/transform105
+        weight: 1
+      - path: group/pCube81/polySurface9
+        weight: 1
+      - path: group/pCube81/polySurface9/transform104
+        weight: 1
+      - path: group/pCube81/polySurface12
+        weight: 1
+      - path: group/pCube81/polySurface12/transform103
+        weight: 1
+      - path: group/pCube81/polySurface13
+        weight: 1
+      - path: group/pCube81/polySurface13/transform102
+        weight: 1
+      - path: group/pCube81/polySurface14
+        weight: 1
+      - path: group/pCube81/polySurface14/transform101
+        weight: 1
+      - path: group/pCube81/polySurface15
+        weight: 1
+      - path: group/pCube81/polySurface15/transform100
+        weight: 1
+      - path: group/pCube81/polySurface16
+        weight: 1
+      - path: group/pCube81/polySurface16/transform99
+        weight: 1
+      - path: group/pCube81/polySurface17
+        weight: 1
+      - path: group/pCube81/polySurface17/transform98
+        weight: 1
+      - path: group/pCube81/polySurface18
+        weight: 1
+      - path: group/pCube81/polySurface18/transform97
+        weight: 1
+      - path: group/pCube81/polySurface19
+        weight: 1
+      - path: group/pCube81/polySurface19/transform96
+        weight: 1
+      - path: group/pCube81/polySurface20
+        weight: 1
+      - path: group/pCube81/polySurface20/transform95
+        weight: 1
+      - path: group/pCube81/polySurface21
+        weight: 1
+      - path: group/pCube81/polySurface21/transform94
+        weight: 1
+      - path: group/pCube81/polySurface22
+        weight: 1
+      - path: group/pCube81/polySurface22/transform93
+        weight: 1
+      - path: group/pCube81/polySurface23
+        weight: 1
+      - path: group/pCube81/polySurface23/transform92
+        weight: 1
+      - path: group/pCube81/polySurface24
+        weight: 1
+      - path: group/pCube81/polySurface24/transform91
+        weight: 1
+      - path: group/pCube81/polySurface26
+        weight: 1
+      - path: group/pCube81/polySurface26/transform90
+        weight: 1
+      - path: group/pCube81/polySurface27
+        weight: 1
+      - path: group/pCube81/polySurface27/transform89
+        weight: 1
+      - path: group/pCube81/polySurface28
+        weight: 1
+      - path: group/pCube81/polySurface28/transform88
+        weight: 1
+      - path: group/pCube81/polySurface30
+        weight: 1
+      - path: group/pCube81/polySurface30/transform87
+        weight: 1
+      - path: group/pCube81/polySurface31
+        weight: 1
+      - path: group/pCube81/polySurface31/transform86
+        weight: 1
+      - path: group/pCube81/polySurface32
+        weight: 1
+      - path: group/pCube81/polySurface32/transform85
+        weight: 1
+      - path: group/pCube81/polySurface33
+        weight: 1
+      - path: group/pCube81/polySurface33/transform84
+        weight: 1
+      - path: group/pCube81/polySurface34
+        weight: 1
+      - path: group/pCube81/polySurface34/transform83
+        weight: 1
+      - path: group/pCube81/polySurface35
+        weight: 1
+      - path: group/pCube81/polySurface35/transform82
+        weight: 1
+      - path: group/pCube81/polySurface36
+        weight: 1
+      - path: group/pCube81/polySurface36/transform81
+        weight: 1
+      - path: group/pCube81/polySurface37
+        weight: 1
+      - path: group/pCube81/polySurface37/transform80
+        weight: 1
+      - path: group/pCube81/polySurface38
+        weight: 1
+      - path: group/pCube81/polySurface38/transform79
+        weight: 1
+      - path: group/pCube81/polySurface39
+        weight: 1
+      - path: group/pCube81/polySurface39/transform78
+        weight: 1
+      - path: group/pCube81/polySurface40
+        weight: 1
+      - path: group/pCube81/polySurface40/transform77
+        weight: 1
+      - path: group/pCube81/polySurface41
+        weight: 1
+      - path: group/pCube81/polySurface41/transform76
+        weight: 1
+      - path: group/pCube81/polySurface42
+        weight: 1
+      - path: group/pCube81/polySurface42/transform75
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/cosas:polySurface111
+        weight: 1
+      - path: group1/cosas:polySurface111/transform74
+        weight: 1
+      - path: group1/polySurface111
+        weight: 1
+      - path: group1/polySurface111/transform73
+        weight: 1
+      - path: group1/polySurface112
+        weight: 1
+      - path: group1/polySurface112/transform72
+        weight: 1
+      - path: group1/polySurface113
+        weight: 1
+      - path: group1/polySurface113/transform71
+        weight: 1
+      - path: group1/polySurface114
+        weight: 1
+      - path: group1/polySurface114/transform70
+        weight: 1
+      - path: polySurface1
+        weight: 1
+      - path: polySurface119
+        weight: 1
+      - path: polySurface119/transform69
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
