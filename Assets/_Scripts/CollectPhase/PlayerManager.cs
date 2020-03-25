@@ -21,6 +21,9 @@ namespace CollectPhase
         
         public GameObject buildPrefab;
         private CinemachineClearShot cl;
+        
+        private GameObject buildIndicator;
+        
         #region MonobehaviourCallbacks
         public void Awake()
         {
@@ -32,6 +35,7 @@ namespace CollectPhase
             cristIndic = GameObject.Find("cristauxLine").GetComponentInChildren<Text>();
             manaIndic = GameObject.Find("manaLine").GetComponentInChildren<Text>();
             Builder.initLists();
+            buildIndicator = GameObject.Find("buildIndic");
         }
 
         private void Update()
@@ -49,6 +53,13 @@ namespace CollectPhase
             string manaTxt = (pd.mana >= 1000)?pd.mana/1000 + "," + (pd.mana % 1000) / 100 + "k" : pd.mana.ToString();
             manaIndic.text = "x " + manaTxt;
 
+            if (wantToBuild)
+            {
+                RaycastHit res;
+                Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out res, 1000f);
+                buildIndicator.transform.position = res.point;
+            }
+            
             if (wantToBuild && Input.GetMouseButtonDown(0))
             {
                 RaycastHit res;
