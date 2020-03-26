@@ -65,8 +65,10 @@ namespace CollectPhase
                 {
                     wantToBuild = false;
                     buildIndicator.transform.position = new Vector3(500f,500f,0f);
+                    Disclaimer.current.displayTime("Fonds insuffisants !",Color.red,2);
                     return;
                 }
+                Disclaimer.current.display("Choisissez ou construire votre "+BuildingCost.coutsBuilds[idToBuild].buildingName,Color.yellow);
                 RaycastHit res;
                 Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out res, 1000f);
                 buildIndicator.transform.position = res.point;
@@ -76,6 +78,7 @@ namespace CollectPhase
             {
                 wantToBuild = false;
                 buildIndicator.transform.position = new Vector3(500f,500f,0f);
+                Disclaimer.current.hide();
             }
 
             if (wantToBuild && Input.GetMouseButtonDown(0))
@@ -91,6 +94,7 @@ namespace CollectPhase
                 Pay(BuildingCost.coutsBuilds[idToBuild].manaCosts, TypeRes.Mana);
                 Pay(BuildingCost.coutsBuilds[idToBuild].cristalCosts, TypeRes.Cristaux);
                 wantToBuild = false;
+                Disclaimer.current.hide();
                 
             }
         }
