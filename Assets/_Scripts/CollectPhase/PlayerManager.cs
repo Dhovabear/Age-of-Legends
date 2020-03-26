@@ -26,6 +26,7 @@ namespace CollectPhase
 
         public bool canInteract = true;
         
+        
         #region MonobehaviourCallbacks
         public void Awake()
         {
@@ -43,6 +44,7 @@ namespace CollectPhase
         private void Update()
         {
             if (!canInteract) return;
+            
             //on obtient le joueur local
             PlayerData pd = GetCurrentPlayer();
             
@@ -58,6 +60,13 @@ namespace CollectPhase
 
             if (wantToBuild)
             {
+                if (_joueurs[_currentPlayer].cristaux < BuildingCost.coutsBuilds[idToBuild].cristalCosts ||
+                    _joueurs[_currentPlayer].mana < BuildingCost.coutsBuilds[idToBuild].manaCosts)
+                {
+                    wantToBuild = false;
+                    buildIndicator.transform.position = new Vector3(500f,500f,0f);
+                    return;
+                }
                 RaycastHit res;
                 Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out res, 1000f);
                 buildIndicator.transform.position = res.point;
@@ -78,6 +87,9 @@ namespace CollectPhase
                 buildPoint.transform.position = res.point;
                 buildPoint.GetComponent<Builder>().setBuildingID(idToBuild);
                 //buildPoint.transform.Translate(0,5f,0);
+                buildIndicator.transform.position = new Vector3(500f,500f,0f);
+                Pay(BuildingCost.coutsBuilds[idToBuild].manaCosts, TypeRes.Mana);
+                Pay(BuildingCost.coutsBuilds[idToBuild].cristalCosts, TypeRes.Cristaux);
                 wantToBuild = false;
                 
             }
