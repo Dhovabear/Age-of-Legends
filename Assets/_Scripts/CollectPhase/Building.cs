@@ -10,7 +10,7 @@ public class BuildingCost
         new BuildingCost(300, 0,"Dépot de cristal"),
         new BuildingCost(0,300,"Dépot de mana"),
         new BuildingCost(1500,500,"Temple"),
-        new BuildingCost(2000,1000,"Armurerie"),
+        new BuildingCost(1000,2000,"Armurerie"),
         new BuildingCost(2000,2000,"Hotel des finances")
     };
 
