@@ -23,6 +23,8 @@ namespace CollectPhase
         private CinemachineClearShot cl;
         
         private GameObject buildIndicator;
+
+        public bool canInteract = true;
         
         #region MonobehaviourCallbacks
         public void Awake()
@@ -40,6 +42,7 @@ namespace CollectPhase
 
         private void Update()
         {
+            if (!canInteract) return;
             //on obtient le joueur local
             PlayerData pd = GetCurrentPlayer();
             

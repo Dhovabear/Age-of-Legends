@@ -31,7 +31,8 @@ namespace Prototype.Unitees
         public GameObject indTR;
         public GameObject indBR;
         public GameObject indBL;
-        
+
+        public bool canInsteract = true;
         private void Start()
         {
             selectedUnites = new List<Unite>();
@@ -42,6 +43,8 @@ namespace Prototype.Unitees
 
         public void Update()
         {
+            if (!canInsteract) return;
+            
             RaycastHit hit;
             if (Input.GetMouseButtonDown(0))
             {
