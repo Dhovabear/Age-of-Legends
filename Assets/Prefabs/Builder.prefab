@@ -399,6 +399,8 @@ MonoBehaviour:
   buildingList:
   - {fileID: 957437213550553111, guid: 639ae9bd67a43244ba21acc8e0d5c8aa, type: 3}
   - {fileID: 7415191954807977929, guid: 593fe69e7becc8949a19f6c2a046b08a, type: 3}
+  - {fileID: 7415191954807977929, guid: 593fe69e7becc8949a19f6c2a046b08a, type: 3}
+  - {fileID: 6836156670085575523, guid: fb43278b1ac063342b2ac295a47f3f66, type: 3}
 --- !u!208 &3580976360231585341
 NavMeshObstacle:
   m_ObjectHideFlags: 0
