@@ -13,6 +13,13 @@ public class PeasentAnimUpdater : MonoBehaviour
     private Unite _unite;
 
     private Animator _animator;
+
+    [SerializeField]
+    private GameObject cristalVisu;
+
+    [SerializeField]
+    private GameObject manaVisu;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,5 +34,24 @@ public class PeasentAnimUpdater : MonoBehaviour
     {
         _animator.SetBool("Collecting",_unite.collecting);
         _animator.SetFloat("Move_speed",_agent.velocity.magnitude);
+    }
+
+
+    public void showCristal()
+    {
+        manaVisu.SetActive(false);
+        cristalVisu.SetActive(true);
+    }
+
+    public void showMana()
+    {
+        manaVisu.SetActive(true);
+        cristalVisu.SetActive(false);
+    }
+
+    public void hideAll()
+    {
+        manaVisu.SetActive(false);
+        cristalVisu.SetActive(false);
     }
 }
