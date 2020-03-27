@@ -124,8 +124,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7415191954807977929}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.226, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children:
   - {fileID: 7415191955046553323}
   - {fileID: 7415191954796613135}
@@ -148,7 +148,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7415191954807977929}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -202,7 +202,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.49, y: 1.5, z: 1.59}
+  m_Size: {x: 1.9, y: 1.5, z: 1.16}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7415191954807977925
 MonoBehaviour:
@@ -256,9 +256,9 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 1.245, y: 1, z: 0.795}
+  m_Extents: {x: 1.005, y: 1, z: 0.65}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4528136448529416, guid: a5e3d09aa51ee9e4887e10a5c9d0c482, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.463
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4528136448529416, guid: a5e3d09aa51ee9e4887e10a5c9d0c482, type: 3}
       propertyPath: m_LocalPosition.z
