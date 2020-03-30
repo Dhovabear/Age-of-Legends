@@ -20,6 +20,9 @@ public abstract class ChampionController : MonoBehaviour, IComparable
     [Range(0,100)] [SerializeField] public int Ultime;
     [SerializeField] public List<Effect> effets;
     [SerializeField] public int Marques = 0;
+    
+    [SerializeField] public bool isAttackOver = false;
+    [SerializeField] public bool isHurtOver = false;
 
 
     [SerializeField] protected GameObject[] team1;
@@ -72,6 +75,18 @@ public abstract class ChampionController : MonoBehaviour, IComparable
 
     public void autoAttack(ChampionController champion)
     {
+        Animator anim = GetComponent<Animator>();
         champion.Hp = champion.Hp - (Attaque - champion.Defense);
+        anim.SetTrigger("auto_attack");
+    }
+
+    public void finishAttack()
+    {
+        isAttackOver = true;
+    }
+
+    public void finishHurt()
+    {
+        isHurtOver = true;
     }
 }
