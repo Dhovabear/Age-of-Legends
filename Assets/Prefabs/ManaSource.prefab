@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 9194146518871429044}
   - component: {fileID: 9194146518871429045}
   - component: {fileID: 9194146518871429043}
+  - component: {fileID: 6675378217955402140}
   m_Layer: 0
   m_Name: ManaSource
   m_TagString: Untagged
@@ -299,8 +300,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.26, z: 1}
+  m_Center: {x: 0, y: 1.14, z: 0}
 --- !u!114 &9194146518871429044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +347,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!208 &6675378217955402140
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194146518871429066}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.64, y: 2.395, z: 0.64}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &7238379154761326322
 PrefabInstance:
   m_ObjectHideFlags: 0
