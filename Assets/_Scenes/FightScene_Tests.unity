@@ -923,7 +923,7 @@ MonoBehaviour:
   team2:
   - {fileID: 8591809192668237706, guid: f501ad02b4b7a0a4cbcda85cec97c4f8, type: 3}
   - {fileID: 7970237648341608853, guid: eea4ae49c46511e43b09086fd653a6dc, type: 3}
-  - {fileID: 4194907043372004664, guid: 0590d653475cd3141ae23a680feed303, type: 3}
+  - {fileID: 9034293748671228354, guid: 1e612244c29bfbc4ab32d6348add67bc, type: 3}
   indiceChampionCourant: 0
 --- !u!4 &195355451
 Transform:
