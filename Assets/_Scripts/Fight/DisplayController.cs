@@ -356,6 +356,7 @@ public class DisplayController : MonoBehaviour
         nextTurn();
         updateInfos();
         attackUi.SetActive(true);
+        fightmanager.champions[fightmanager.getIndiceChampionCourant()].isAttackOver = false;
     }
 
     /*public void launchSpell(int id)
