@@ -48,13 +48,13 @@ namespace Mirror
                 if (!NetworkClient.active)
                 {
                     // LAN Host
-                    if (Application.platform != RuntimePlatform.WebGLPlayer)
+                    /*if (Application.platform != RuntimePlatform.WebGLPlayer)
                     {
                         if (GUILayout.Button("LAN Host"))
                         {
                             manager.StartHost();
                         }
-                    }
+                    }*/
 
                     // LAN Client + IP
                     GUILayout.BeginHorizontal();
