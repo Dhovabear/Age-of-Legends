@@ -1564,7 +1564,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 55d2d961ae1df9e48af77209466a05fe, type: 3}
+  m_Texture: {fileID: 2800000, guid: 4a44583546c1f7648a4ee03b5d56302f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -2120,7 +2120,7 @@ MonoBehaviour:
         m_MethodName: selectChampion
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1291956269124764236, guid: f5fb0e1b22b3dbf468452cb74b2ef75e,
+          m_ObjectArgument: {fileID: 6208836930411451328, guid: 269ac63e2b3c59a4fa7e1bf54ac0f882,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
@@ -4849,7 +4849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 4a44583546c1f7648a4ee03b5d56302f, type: 3}
+  m_Texture: {fileID: 2800000, guid: 55d2d961ae1df9e48af77209466a05fe, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -6178,7 +6178,7 @@ MonoBehaviour:
         m_MethodName: selectChampion
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4754163892271552200, guid: d1375668ece7aa041926e39657a25eb0,
+          m_ObjectArgument: {fileID: 6725890662641566119, guid: 5948fc2c2f9ddba43b6591ff2a20a6b3,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
