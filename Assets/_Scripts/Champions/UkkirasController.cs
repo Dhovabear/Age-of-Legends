@@ -5,7 +5,7 @@ public class UkkirasController : ChampionController
 {
     [SerializeField] private List<ChampionController> allies;
     [SerializeField] private List<ChampionController> ennemies;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,11 +61,13 @@ public class UkkirasController : ChampionController
 
     public override void spell1(ChampionController champion)
     {
+        Animator anim = GetComponent<Animator>();
         if (Attaque * 4f > champion.Armure)
         {
             champion.Hp = champion.Hp - (Attaque * 4f - champion.Armure);
             chargeUltime((int)(Attaque * 4f - champion.Armure) / 100);
         }
+        anim.SetTrigger("launch_spell");
     }
 
     public override void spell2(ChampionController champion)

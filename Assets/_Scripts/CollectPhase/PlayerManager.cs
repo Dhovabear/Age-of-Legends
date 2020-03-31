@@ -21,6 +21,12 @@ namespace CollectPhase
         
         public GameObject buildPrefab;
         private CinemachineClearShot cl;
+        
+        private GameObject buildIndicator;
+
+        public bool canInteract = true;
+        
+        
         #region MonobehaviourCallbacks
         public void Awake()
         {
@@ -32,10 +38,13 @@ namespace CollectPhase
             cristIndic = GameObject.Find("cristauxLine").GetComponentInChildren<Text>();
             manaIndic = GameObject.Find("manaLine").GetComponentInChildren<Text>();
             Builder.initLists();
+            buildIndicator = GameObject.Find("buildIndic");
         }
 
         private void Update()
         {
+            if (!canInteract) return;
+            
             //on obtient le joueur local
             PlayerData pd = GetCurrentPlayer();
             
@@ -49,6 +58,29 @@ namespace CollectPhase
             string manaTxt = (pd.mana >= 1000)?pd.mana/1000 + "," + (pd.mana % 1000) / 100 + "k" : pd.mana.ToString();
             manaIndic.text = "x " + manaTxt;
 
+            if (wantToBuild)
+            {
+                if (_joueurs[_currentPlayer].cristaux < BuildingCost.coutsBuilds[idToBuild].cristalCosts ||
+                    _joueurs[_currentPlayer].mana < BuildingCost.coutsBuilds[idToBuild].manaCosts)
+                {
+                    wantToBuild = false;
+                    buildIndicator.transform.position = new Vector3(500f,500f,0f);
+                    Disclaimer.current.displayTime("Fonds insuffisants !",Color.red,2);
+                    return;
+                }
+                Disclaimer.current.display("Choisissez ou construire votre "+BuildingCost.coutsBuilds[idToBuild].buildingName,Color.yellow);
+                RaycastHit res;
+                Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out res, 1000f);
+                buildIndicator.transform.position = res.point;
+            }
+
+            if (wantToBuild && Input.GetButton("Cancel"))
+            {
+                wantToBuild = false;
+                buildIndicator.transform.position = new Vector3(500f,500f,0f);
+                Disclaimer.current.hide();
+            }
+
             if (wantToBuild && Input.GetMouseButtonDown(0))
             {
                 RaycastHit res;
@@ -58,7 +90,11 @@ namespace CollectPhase
                 buildPoint.transform.position = res.point;
                 buildPoint.GetComponent<Builder>().setBuildingID(idToBuild);
                 //buildPoint.transform.Translate(0,5f,0);
+                buildIndicator.transform.position = new Vector3(500f,500f,0f);
+                Pay(BuildingCost.coutsBuilds[idToBuild].manaCosts, TypeRes.Mana);
+                Pay(BuildingCost.coutsBuilds[idToBuild].cristalCosts, TypeRes.Cristaux);
                 wantToBuild = false;
+                Disclaimer.current.hide();
                 
             }
         }

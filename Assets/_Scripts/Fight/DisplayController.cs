@@ -340,7 +340,13 @@ public class DisplayController : MonoBehaviour
         //Debug.Log("Started Coroutine at timestamp : " + Time.time);
 
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(0.8f);
+        //yield return new WaitForSeconds(0.8f);
+        
+        while (true)
+        {
+            if (fightmanager.champions[fightmanager.getIndiceChampionCourant()].isAttackOver) break;
+            yield return null;
+        }
 
         //After we have waited 5 seconds print the time again.
         //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
@@ -498,16 +504,16 @@ public class DisplayController : MonoBehaviour
         switch (currentSpell)
         {
             case 0:
+                fightmanager.champions[fightmanager.getIndiceChampionCourant()].isAttackOver = false;
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].autoAttack(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son sort attaque de base sur " + cc.Name;
-                anim.SetTrigger("auto_attack");
                 break;
             case 1:
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son sort 1 sur " + cc.Name;
-                anim.SetTrigger("launch_spell");
+                //anim.SetTrigger("launch_spell");
                 break;
            case 2:
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell2(cc);

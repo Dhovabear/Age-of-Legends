@@ -38,9 +38,11 @@ public class RessourcesStorage : Container
             
             u.CheckIfImFull();
 
-            if(u.GetResType() != type){
+            if(u.GetResType() != type && u.GetResCount() > 0){
                 return;
             }
+            
+            u.SetTypeRes(type);
             
             int resToGain = Math.Min( (MaxRessources - ResCount),Math.Min(resPerSec , u.GetResCount()));
             Debug.Log("resto gain: " + resToGain);

@@ -104,7 +104,7 @@ namespace Prototype.Unitees
     
 
         public void EarnRessources(bool isCristal,int amount){
-            if(type == null) type = (isCristal)? TypeRes.Cristaux : TypeRes.Mana;
+            //if(type == null) type = (isCristal)? TypeRes.Cristaux : TypeRes.Mana;
 
             if(resCount + amount > maxRes){
                 return;
@@ -116,6 +116,18 @@ namespace Prototype.Unitees
 
             if(!isCristal && type == TypeRes.Mana){
                 resCount += amount;
+            }
+
+            if (isCristal && resCount > 0)
+            {
+                GetComponent<PeasentAnimUpdater>().showCristal();
+            }else if (!isCristal && resCount > 0)
+            {
+                GetComponent<PeasentAnimUpdater>().showMana();
+            }
+            else
+            {
+                GetComponent<PeasentAnimUpdater>().hideAll();
             }
 
         }

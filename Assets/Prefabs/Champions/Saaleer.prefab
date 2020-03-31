@@ -2653,6 +2653,8 @@ MonoBehaviour:
   Ultime: 0
   effets: []
   Marques: 0
+  isAttackOver: 0
+  isHurtOver: 0
   team1: []
   team2: []
   spellsTarget:
@@ -2661,10 +2663,10 @@ MonoBehaviour:
   - Enemy
   - Ally
   descSpell:
-  - Attaque de base
-  - "Augmente le pouvoir des alli\xE9s"
-  - Attaque un ennemi faiblement
-  - "Augmente la charge d'ultime des alli\xE9s"
+  - Saaler attaque un adversaire
+  - "Saaler augmente le pouvoir de ses alli\xE9s"
+  - Saaler attaque un aversaire avec son argent
+  - "Saaler charge la barre d'ultime des alli\xE9s"
   allies: []
   ennemies: []
 --- !u!1 &6725890662641566129
@@ -3199,10 +3201,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6725890662641277959}
     m_Modifications:
-    - target: {fileID: 108390, guid: db1c94431d2a64a068f8c904090cee66, type: 3}
-      propertyPath: m_Name
-      value: Potion_Berserk
-      objectReference: {fileID: 0}
     - target: {fileID: 456368, guid: db1c94431d2a64a068f8c904090cee66, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0469
@@ -3259,6 +3257,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 108390, guid: db1c94431d2a64a068f8c904090cee66, type: 3}
+      propertyPath: m_Name
+      value: Potion_Berserk
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db1c94431d2a64a068f8c904090cee66, type: 3}
 --- !u!4 &4357549192157161843 stripped
@@ -3274,10 +3276,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6725890662641277959}
     m_Modifications:
-    - target: {fileID: 197236, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
-      propertyPath: m_Name
-      value: Potion_Mana
-      objectReference: {fileID: 0}
     - target: {fileID: 431974, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.014
@@ -3334,6 +3332,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 197236, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
+      propertyPath: m_Name
+      value: Potion_Mana
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
 --- !u!4 &5810353534283562866 stripped
@@ -3349,10 +3351,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6725890662641277959}
     m_Modifications:
-    - target: {fileID: 173500, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
-      propertyPath: m_Name
-      value: Potion_Health
-      objectReference: {fileID: 0}
     - target: {fileID: 464830, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0451
@@ -3408,6 +3406,10 @@ PrefabInstance:
     - target: {fileID: 464830, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 173500, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}
+      propertyPath: m_Name
+      value: Potion_Health
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb5a9652227c545d98a413cd73b80b69, type: 3}

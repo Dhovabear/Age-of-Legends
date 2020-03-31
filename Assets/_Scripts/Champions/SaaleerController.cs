@@ -62,11 +62,13 @@ public class SaaleerController : ChampionController
 
     public override void spell1(ChampionController champion)
     {
+        Animator anim = GetComponent<Animator>();
         float degats = Pouvoir * 2f;
         if (degats - champion.ResistanceMagique > 0)
         {
             champion.Hp = Hp - (degats - champion.ResistanceMagique);
         }
+        anim.SetTrigger("launch_spell");
     }
 
     public override void spell2(ChampionController champion)
