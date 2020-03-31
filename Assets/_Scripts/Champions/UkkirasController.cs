@@ -67,7 +67,6 @@ public class UkkirasController : ChampionController
             champion.Hp = champion.Hp - (Attaque * 4f - champion.Armure);
             chargeUltime((int)(Attaque * 4f - champion.Armure) / 100);
         }
-        anim.SetTrigger("launch_spell");
     }
 
     public override void spell2(ChampionController champion)

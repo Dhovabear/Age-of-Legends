@@ -513,13 +513,13 @@ public class DisplayController : MonoBehaviour
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son sort 1 sur " + cc.Name;
-                //anim.SetTrigger("launch_spell");
+                anim.SetTrigger("launch_spell");
                 break;
            case 2:
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell2(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son sort 2 sur " + cc.Name;
-                anim.SetTrigger("launch_spell");
+                anim.SetTrigger("launch_spell2");
 
                 break;
             case 3:
@@ -527,6 +527,7 @@ public class DisplayController : MonoBehaviour
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].ultimate(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son ultime sur " + cc.Name;
+                anim.SetTrigger("launch_ult");
                 break;
         }
         //fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
