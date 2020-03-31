@@ -273,6 +273,8 @@ MonoBehaviour:
   Ultime: 0
   effets: []
   Marques: 0
+  isAttackOver: 0
+  isHurtOver: 0
   team1: []
   team2: []
   spellsTarget:
@@ -281,11 +283,12 @@ MonoBehaviour:
   - Enemy
   - Everyone
   descSpell:
-  - Attaque de base
-  - "Attaque un ennemi et met al\xE9atoirement sois une marque(?) \xE0 l'ennemi attaqu\xE9
-    ou a un alli\xE9 "
-  - Attaque un ennemi et lui met une marque(?)
-  - "Rend invincible tout les alli\xE9s et tue tout les ennemis (lol)"
+  - Dohma attaque un adversaire
+  - "Dohma attaque un ennemi et appose une marque des enferts \xE0 l'ennemi attaqu\xE9
+    ou une marque du paradis \xE0 un alli\xE9 al\xE9toire"
+  - Dohma attaque un ennemi et lui appose une marque des enfers
+  - "Dohma rend invincible pour un tour tous les alli\xE9s marqu\xE9s 3 fois et tue
+    tous les ennemis marqu\xE9s 3 fois"
   allies: []
   ennemies: []
 --- !u!1 &7627243771484992096

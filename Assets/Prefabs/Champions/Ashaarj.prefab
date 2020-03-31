@@ -1478,15 +1478,15 @@ MonoBehaviour:
   team1: []
   team2: []
   spellsTarget:
-  - 
-  - 
-  - 
-  - 
+  - Ennemy
+  - Ennemy
+  - Ally
+  - Ennemy
   descSpell:
-  - 
-  - 
-  - 
-  - 
+  - Ashaarj attaque un adversaire
+  - "Ashaarj crie sur un adversaire et r\xE9duit ses r\xE9sistances"
+  - "Ashaarj augmente la r\xE9sistance de ses alli\xE9s"
+  - "Pour chaque ennemi Ashaarj \xE0 une chance de l'\xE9tourdir"
   allies: []
   ennemies: []
 --- !u!1 &7970237648341608855

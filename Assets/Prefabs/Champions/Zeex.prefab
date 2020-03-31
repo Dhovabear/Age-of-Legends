@@ -1917,15 +1917,16 @@ MonoBehaviour:
   team1: []
   team2: []
   spellsTarget:
-  - 
-  - 
-  - 
-  - 
+  - Ennemy
+  - Ennemy
+  - Ally
+  - Ennemy
   descSpell:
-  - 
-  - 
-  - 
-  - 
+  - Zeex attaque un adversaire
+  - "Zeex br\xFBle un adversaire et lui applique une stack d'inferno. 3 stacks cumul\xE9es
+    se consomment pour infliger des d\xE9g\xE2ts suppl\xE9mentaires"
+  - Zeex remplit un peu sa barre d'ultime
+  - "Zeex br\xFBle tous les ennemis marqu\xE9s par inferno"
   allies: []
   ennemies: []
 --- !u!1 &9034293748671228368
@@ -2883,10 +2884,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9034293748671132704}
     m_Modifications:
-    - target: {fileID: 164894, guid: af9661a118d78d34498796cfeae92dfb, type: 3}
-      propertyPath: m_Name
-      value: wand05_red
-      objectReference: {fileID: 0}
     - target: {fileID: 419080, guid: af9661a118d78d34498796cfeae92dfb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.47375032
@@ -2942,6 +2939,10 @@ PrefabInstance:
     - target: {fileID: 419080, guid: af9661a118d78d34498796cfeae92dfb, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.5000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 164894, guid: af9661a118d78d34498796cfeae92dfb, type: 3}
+      propertyPath: m_Name
+      value: wand05_red
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af9661a118d78d34498796cfeae92dfb, type: 3}

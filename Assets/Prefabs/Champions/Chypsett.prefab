@@ -1986,18 +1986,20 @@ MonoBehaviour:
   Ultime: 0
   effets: []
   Marques: 0
+  isAttackOver: 0
+  isHurtOver: 0
   team1: []
   team2: []
   spellsTarget:
   - Enemy
-  - Enemy
+  - Ally
   - Ally
   - Enemy
   descSpell:
-  - Attaque de base
-  - "Heal un alli\xE9 "
-  - "Augmente la vitesse des alli\xE9s"
-  - Stun un ennemi
+  - Chypsett attaque un adversaire
+  - "Chypsett soigne un alli\xE9 "
+  - "Chypsett augmente la vitesse des alli\xE9s"
+  - "Chypsett \xE9toudrit un ennemi"
   allies: []
   ennemies: []
 --- !u!1 &8591809192668237728

@@ -2096,6 +2096,8 @@ MonoBehaviour:
   Ultime: 0
   effets: []
   Marques: 0
+  isAttackOver: 0
+  isHurtOver: 0
   team1: []
   team2: []
   spellsTarget:
@@ -2104,10 +2106,10 @@ MonoBehaviour:
   - Enemy
   - Enemy
   descSpell:
-  - Attaque de base
-  - Attaque un ennemi
-  - Attaque tout les ennemis
-  - Met une grosse tarte a un ennemi
+  - Ukkiras attaque un adversaire
+  - Ukkiras attaque 3 fois un adversaire
+  - Ukkiras attaque une fois tous les adversairees
+  - "Ukkiras inflige de lourds d\xE9g\xE2ts \xE0 un aversaire"
   allies: []
   ennemies: []
 --- !u!1 &6208836930411451330
