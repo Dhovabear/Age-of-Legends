@@ -68,11 +68,11 @@ public class SaaleerController : ChampionController
         {
             champion.Hp = Hp - (degats - champion.ResistanceMagique);
         }
-        anim.SetTrigger("launch_spell");
     }
 
     public override void spell2(ChampionController champion)
     {
+        Animator anim = GetComponent<Animator>();
         foreach (ChampionController ally in allies)
         {
             ally.Pouvoir = ally.Pouvoir * 1.2f;
@@ -81,6 +81,7 @@ public class SaaleerController : ChampionController
 
     public override void ultimate(ChampionController champion)
     {
+        Animator anim = GetComponent<Animator>();
         foreach (ChampionController ally in allies)
         {
             ally.Ultime = ally.Ultime + 40;

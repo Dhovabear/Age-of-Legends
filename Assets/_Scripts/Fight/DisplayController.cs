@@ -334,14 +334,8 @@ public class DisplayController : MonoBehaviour
 
 
 
-    IEnumerator hitEffect()
+    IEnumerator hitEffect(String attackType)
     {
-        
-        //Debug.Log("Started Coroutine at timestamp : " + Time.time);
-
-        //yield on a new YieldInstruction that waits for 5 seconds.
-        //yield return new WaitForSeconds(0.8f);
-        
         while (true)
         {
             if (fightmanager.champions[fightmanager.getIndiceChampionCourant()].isAttackOver) break;
@@ -350,11 +344,19 @@ public class DisplayController : MonoBehaviour
 
         //After we have waited 5 seconds print the time again.
         //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
-        animEnemy.SetTrigger("hurt");
+        if (attackType == "Enemy")
+        {
+            animEnemy.SetTrigger("hurt");
+        }
+        else if (attackType == "Ally")
+        {
+            animEnemy.SetTrigger("buff");
+        }
         yield return new WaitForSeconds(1.2f);
         nextTurn();
         updateInfos();
         attackUi.SetActive(true);
+        fightmanager.champions[fightmanager.getIndiceChampionCourant()].isAttackOver = false;
     }
 
     /*public void launchSpell(int id)
@@ -450,19 +452,19 @@ public class DisplayController : MonoBehaviour
             case "Enemy":
                 if (!isSameTeam(cc))
                 {
-                    characterAttack(cc);
+                    characterAttack(cc,"Enemy");
                 }
                 break;
 
             case "Ally":
                 if (isSameTeam(cc))
                 {
-                    characterAttack(cc);
+                    characterAttack(cc, "Ally");
                 }
                 break;
 
             case "Everyone":
-                characterAttack(cc);
+                characterAttack(cc, "Everyone");
                 break;
         }
 
@@ -497,7 +499,7 @@ public class DisplayController : MonoBehaviour
         return true;
             
     }
-    public void characterAttack(ChampionController cc)
+    public void characterAttack(ChampionController cc, String attackType)
     {
         anim = fightmanager.champions[fightmanager.getIndiceChampionCourant()].GetComponent<Animator>();
 
@@ -513,13 +515,13 @@ public class DisplayController : MonoBehaviour
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son sort 1 sur " + cc.Name;
-                //anim.SetTrigger("launch_spell");
+                anim.SetTrigger("launch_spell");
                 break;
            case 2:
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell2(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son sort 2 sur " + cc.Name;
-                anim.SetTrigger("launch_spell");
+                anim.SetTrigger("launch_spell2");
 
                 break;
             case 3:
@@ -527,6 +529,7 @@ public class DisplayController : MonoBehaviour
                 fightmanager.champions[fightmanager.getIndiceChampionCourant()].ultimate(cc);
                 champ4Name.text = fightmanager.champions[fightmanager.getIndiceChampionCourant()].Name +
                                   " a lancé son ultime sur " + cc.Name;
+                anim.SetTrigger("launch_ult");
                 break;
         }
         //fightmanager.champions[fightmanager.getIndiceChampionCourant()].spell1(cc);
@@ -535,7 +538,9 @@ public class DisplayController : MonoBehaviour
         
         
         animEnemy = cc.GetComponent<Animator>();
-        StartCoroutine(hitEffect());
+        StartCoroutine(hitEffect(attackType));
+
+        
 
         attackUi.SetActive(false);
         paneEnnemy.SetActive(false);
