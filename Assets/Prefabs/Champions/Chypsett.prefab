@@ -1209,9 +1209,9 @@ GameObject:
   - component: {fileID: 8521466293784078070}
   - component: {fileID: 1581569234816950473}
   - component: {fileID: 6205744658676747647}
-  - component: {fileID: 4081372472696453206}
+  - component: {fileID: 114100402205428852}
   m_Layer: 0
-  m_Name: Chypsett 1
+  m_Name: Chypsett
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1291,7 +1291,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &4081372472696453206
+--- !u!114 &114100402205428852
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1321,15 +1321,15 @@ MonoBehaviour:
   team1: []
   team2: []
   spellsTarget:
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Ally
+  - Ally
+  - Enemy
   descSpell:
-  - 
-  - 
-  - 
-  - 
+  - Chypsett attaque un adversaire
+  - "Chypsett soigne un alli\xE9 "
+  - "Chypsett augmente la vitesse des alli\xE9s"
+  - "Chypsett \xE9toudrit un ennemi"
   allies: []
   ennemies: []
 --- !u!1 &8521466293791462708

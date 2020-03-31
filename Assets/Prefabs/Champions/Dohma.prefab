@@ -1627,7 +1627,7 @@ GameObject:
   - component: {fileID: 1415204318554929980}
   - component: {fileID: 9095412942070502573}
   - component: {fileID: 7012524433253210002}
-  - component: {fileID: 6624058134536743211}
+  - component: {fileID: 114249591951297538}
   m_Layer: 0
   m_Name: Dohma
   m_TagString: Untagged
@@ -1711,7 +1711,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &6624058134536743211
+--- !u!114 &114249591951297538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1741,15 +1741,17 @@ MonoBehaviour:
   team1: []
   team2: []
   spellsTarget:
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Enemy
+  - Enemy
+  - Everyone
   descSpell:
-  - 
-  - 
-  - 
-  - 
+  - Dohma attaque un adversaire
+  - "Dohma attaque un ennemi et appose une marque des enferts \xE0 l'ennemi attaqu\xE9
+    ou une marque du paradis \xE0 un alli\xE9 al\xE9toire"
+  - Dohma attaque un ennemi et lui appose une marque des enfers
+  - "Dohma rend invincible pour un tour tous les alli\xE9s marqu\xE9s 3 fois et tue
+    tous les ennemis marqu\xE9s 3 fois"
   allies: []
   ennemies: []
 --- !u!1 &1415204318562339068
