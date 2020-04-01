@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7dfbbae691b8b4aaedafb9f35c410f, type: 3}
+  m_Name: Def++
+  m_EditorClassIdentifier: 
+  logo: {fileID: 21300000, guid: ff2761821d7b7e74f9c075c2a5ad75e8, type: 3}
+  nom: Endurer la souffrance
+  description: 'Par la puissance de shutterstock vos troupes gagne + 20 en defense '
+  uniteCost: 0
+  uniteSpeed: 0
+  uniteCapacity: 0
+  HeroDamageBonus: 0
+  HeroLifeBonus: 0
+  HeroDefenseBonus: 20
+  HeroUltiBonus: 0
+  mana: 0
+  cristaux: 0
+  tempPriere: 2000

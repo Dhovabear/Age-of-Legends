@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logo: {fileID: 21300000, guid: c6f537cecf37ae64790e245de953a0e7, type: 3}
   nom: Rage de thomas
-  description: "le train du destin vous d\xE9fie"
+  description: "Vos h\xE9ros ont + 10 en attaque"
   uniteCost: 0
   uniteSpeed: 0
   uniteCapacity: 0
-  HeroDamageBonus: 5
+  HeroDamageBonus: 10
   HeroLifeBonus: 0
   HeroDefenseBonus: 0
   HeroUltiBonus: 0
