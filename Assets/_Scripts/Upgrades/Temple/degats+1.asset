@@ -24,4 +24,4 @@ MonoBehaviour:
   HeroUltiBonus: 0
   mana: 0
   cristaux: 0
-  "tempPri\xE8re": 10
+  tempPriere: 1000
