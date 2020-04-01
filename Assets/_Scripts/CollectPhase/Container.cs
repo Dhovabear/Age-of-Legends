@@ -23,9 +23,7 @@ public abstract class Container : MonoBehaviour , IFocusable
         initialise();
     }
 
-    void Update(){
 
-    }
     #endregion
 
     public abstract void initialise();
@@ -53,15 +51,15 @@ public abstract class Container : MonoBehaviour , IFocusable
 
     #region OnMouse callbacks
 
-    void OnMouseEnter(){
+    protected void OnMouseEnter(){
         infoDisp.gameObject.SetActive(true);
     }
 
-    void OnMouseOver(){
+    protected void OnMouseOver(){
         displayInfo(infoDisp);
     }
 
-    void OnMouseExit(){
+    protected void OnMouseExit(){
         infoDisp.gameObject.SetActive(false);
     }
 

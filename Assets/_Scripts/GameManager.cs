@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
         
         //on lance la boucle d'update du jeu
         StartCoroutine(TimeLoop());
+        
+        TipsText.init();
     }
 
     // Update is called once per frame
@@ -63,6 +65,11 @@ public class GameManager : MonoBehaviour
             foreach (RessourcesStorage rs in RessourcesStorage.instances)
             {
                 rs.UpdateRessources();
+            }
+
+            if (TempleBuilding.current != null)
+            {
+                TempleBuilding.current.updatePrieres();
             }
 
             //zone de debug quand on supprime un builder
