@@ -7,21 +7,21 @@ using UnityEngine.SceneManagement;
 public class SelectionPersonnage : MonoBehaviour
 {
 
-    private GameObject[] team1 = new GameObject[5];
-    private GameObject[] team2 = new GameObject[5];
+    public GameObject[] team1 = new GameObject[5];
+    public GameObject[] team2 = new GameObject[5];
 
     private Text[] textSelectedTeam1 = new Text[3];
     private Text[] textSelectedTeam2 = new Text[3];
 
-    private GameObject[] selectedChampionTeam1 = new GameObject[3];
-    private GameObject[] selectedChampionTeam2 = new GameObject[3];
+    public GameObject[] selectedChampionTeam1 = new GameObject[3];
+    public GameObject[] selectedChampionTeam2 = new GameObject[3];
 
     private bool isValidateTeam1 = false;
     private bool isValidateTeam2 = false;
 
     void Start()
     {
-        getTeams();
+        //getTeams();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -30,15 +30,15 @@ public class SelectionPersonnage : MonoBehaviour
         
     }
     
-    private void getTeams()
+    public void getTeams()
     {
-        team1 = GameObject.FindGameObjectsWithTag("team1");
-        team2 = GameObject.FindGameObjectsWithTag("team2");
+        /*team1 = GameObject.FindGameObjectsWithTag("team1");
+        team2 = GameObject.FindGameObjectsWithTag("team2");*/
         for(int i = 1; i < 6; i++)
         {
-            Text leftButtonText = GameObject.Find("/CanvasSelectionChampionCombat/Panel/LeftTeam/buttons/ButtonChamp" + i+"/Text").GetComponent<Text>();
-            Text rightButtonText = GameObject.Find("/CanvasSelectionChampionCombat/Panel/RightTeam/buttons/ButtonChamp" + i + "/Text").GetComponent<Text>();
-
+            Text leftButtonText = GameObject.Find("CanvasSelectionChampionCombat/Panel/LeftTeam/buttons/ButtonChamp" + i+"/Text").GetComponent<Text>();
+            Text rightButtonText = GameObject.Find("CanvasSelectionChampionCombat/Panel/RightTeam/buttons/ButtonChamp" + i + "/Text").GetComponent<Text>();
+            
             //on fait ce test puisque les cases 4 et 5 des tableaux sont vides
             if (i < 4)
             {
@@ -48,9 +48,10 @@ public class SelectionPersonnage : MonoBehaviour
                 textSelectedTeam1[i - 1].text = "pas encore selectionné";
                 textSelectedTeam2[i - 1].text = "pas encore selectionné";
 
-                leftButtonText.text = team1[i - 1].name;
-                rightButtonText.text = team2[i - 1].name;
+                
             }
+            leftButtonText.text = team1[i - 1].name;
+            rightButtonText.text = team2[i - 1].name;
 
         }
     }
@@ -146,6 +147,8 @@ public class SelectionPersonnage : MonoBehaviour
     {
         if(isValidateTeam1 && isValidateTeam2)
         {
+            DontDestroyOnLoad(gameObject);
+
             SceneManager.LoadScene("FightScene");
         }
     }

@@ -10,9 +10,9 @@ public class MenuController : MonoBehaviour
     private float volume = 0.5f;
 
     Slider volumeSlider;
-    public void playGame() {
+    public void playGame(int index) {
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(index);
     }
 
     public void quitGame() {

@@ -59,6 +59,10 @@ public class UISelectionGame : MonoBehaviour
     {
         if(tc.player1.getIsValidateTeam() && tc.player2.getIsValidateTeam())
         {
+            tc.selectedChampionTeam1 = tc.player1.getSelectedChampion();
+            tc.selectedChampionTeam2 = tc.player2.getSelectedChampion();
+            DontDestroyOnLoad(tc.gameObject);
+
             SceneManager.LoadScene("CollectPhaseScene");
         }
     }

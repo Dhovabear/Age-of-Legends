@@ -60,17 +60,17 @@ public class FightManager : MonoBehaviour
     {
         if (team1[2] == null && team2[2] == null)
         {
-            //sp = GameObject.Find("SelectionPersonnage").GetComponent<SelectionPersonnage>();
+            sp = GameObject.Find("SelectionPersonnage").GetComponent<SelectionPersonnage>();
             //sp.getTeam1();
             //sp.getTeam2();
-            /* team1 = sp.getTeam1();
-             team2 = sp.getTeam2();*/
-            team1 = GameObject.FindGameObjectsWithTag("team1");
+            team1 = sp.getTeam1();
+            team2 = sp.getTeam2();
+            /*team1 = GameObject.FindGameObjectsWithTag("team1");
             team2 = GameObject.FindGameObjectsWithTag("team2");
-
+            */
             instantiatePlayers();
 
-            string[] tags = { "team1", "team2" };
+            /*string[] tags = { "team1", "team2" };
             for (int i = 0; i < 2; i++)
             {
 
@@ -82,7 +82,8 @@ public class FightManager : MonoBehaviour
                     tempPlayers[j].SetActive(false);
 
                 }
-            }
+            }*/
+
             /*team1 = sp.getTeam1();
             team2 = sp.getTeam2();*/
 

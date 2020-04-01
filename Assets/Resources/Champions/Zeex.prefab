@@ -1819,8 +1819,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9034293748671228354}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 5, y: 0.78, z: -5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 9034293748671132786}
@@ -1833,7 +1833,7 @@ Transform:
   - {fileID: 9034293748671133180}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9034293748678646674
 Animator:
   serializedVersion: 3
@@ -2809,6 +2809,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9034293748671132792}
     m_Modifications:
+    - target: {fileID: 100012, guid: 0a9c23f4003ac2b42be2c09c95254430, type: 3}
+      propertyPath: m_Name
+      value: model
+      objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: 0a9c23f4003ac2b42be2c09c95254430, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0030258654
@@ -2865,10 +2869,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.25000027
       objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: 0a9c23f4003ac2b42be2c09c95254430, type: 3}
-      propertyPath: m_Name
-      value: model
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a9c23f4003ac2b42be2c09c95254430, type: 3}
 --- !u!4 &558044363786100132 stripped
@@ -2884,6 +2884,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9034293748671132704}
     m_Modifications:
+    - target: {fileID: 164894, guid: af9661a118d78d34498796cfeae92dfb, type: 3}
+      propertyPath: m_Name
+      value: wand05_red
+      objectReference: {fileID: 0}
     - target: {fileID: 419080, guid: af9661a118d78d34498796cfeae92dfb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.47375032
@@ -2939,10 +2943,6 @@ PrefabInstance:
     - target: {fileID: 419080, guid: af9661a118d78d34498796cfeae92dfb, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.5000015
-      objectReference: {fileID: 0}
-    - target: {fileID: 164894, guid: af9661a118d78d34498796cfeae92dfb, type: 3}
-      propertyPath: m_Name
-      value: wand05_red
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af9661a118d78d34498796cfeae92dfb, type: 3}

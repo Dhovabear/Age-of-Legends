@@ -131,4 +131,9 @@ public class SelectionGame : MonoBehaviour
     {
         return isValidateTeam;
     }
+
+    public GameObject[] getSelectedChampion()
+    {
+        return selectedChampionTeam;
+    }
 }
