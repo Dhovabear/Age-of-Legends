@@ -1,7 +1,7 @@
 #Pour monsieur Salomon :
 chemin vers les scripts : Assets/_Scripts
 
-# Age-of-Legends
+## Age-of-Legends
 
 Voila le github du projet ! je vais mettre ici deux trois liens qui peuvent aider pour certains plugins etc...
 Si vous avez vous aussi des liens utiles ou des infos à partager écrivez les ici.
