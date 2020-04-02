@@ -2558,7 +2558,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6725890662641566119}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
@@ -2574,7 +2574,7 @@ Transform:
   - {fileID: 6725890662641278339}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!95 &6725890662632223735
 Animator:
   serializedVersion: 3
@@ -2659,13 +2659,13 @@ MonoBehaviour:
   team2: []
   spellsTarget:
   - Enemy
-  - Ally
   - Enemy
+  - EveryAlly
   - Ally
   descSpell:
   - Saaler attaque un adversaire
-  - "Saaler augmente le pouvoir de ses alli\xE9s"
   - Saaler attaque un aversaire avec son argent
+  - "Saaler augmente le pouvoir de ses alli\xE9s"
   - "Saaler charge la barre d'ultime des alli\xE9s"
   allies: []
   ennemies: []

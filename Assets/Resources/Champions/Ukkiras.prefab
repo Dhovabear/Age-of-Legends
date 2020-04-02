@@ -2000,7 +2000,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6208836930411451328}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.9416044, z: -0, w: 0.33672115}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
@@ -2017,7 +2017,7 @@ Transform:
   - {fileID: 6208836930411941858}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 140.64601, z: 0}
 --- !u!95 &6208836930404163990
 Animator:
   serializedVersion: 3
@@ -2103,7 +2103,7 @@ MonoBehaviour:
   spellsTarget:
   - Enemy
   - Enemy
-  - Enemy
+  - EveryEnemy
   - Enemy
   descSpell:
   - Ukkiras attaque un adversaire

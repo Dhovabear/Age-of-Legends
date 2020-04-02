@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class DisplayController : MonoBehaviour
 {
+    //gngn
     public Text champ1Name;
     private Slider champ1Slider;
    /* public Text champ1Health;

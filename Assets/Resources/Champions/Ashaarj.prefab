@@ -1379,8 +1379,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7970237648341608853}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 5, y: 0.76, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 7970237648342037943}
@@ -1394,7 +1394,7 @@ Transform:
   - {fileID: 7970237648342037543}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!95 &7970237648332249685
 Animator:
   serializedVersion: 3
@@ -1480,8 +1480,8 @@ MonoBehaviour:
   spellsTarget:
   - Enemy
   - Enemy
-  - Ally
-  - Enemy
+  - EveryAlly
+  - EveryEnemy
   descSpell:
   - Ashaarj attaque un adversaire
   - "Ashaarj crie sur un adversaire et r\xE9duit ses r\xE9sistances"
