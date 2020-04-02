@@ -1323,7 +1323,7 @@ MonoBehaviour:
   spellsTarget:
   - Enemy
   - Ally
-  - Ally
+  - EveryAlly
   - Enemy
   descSpell:
   - Chypsett attaque un adversaire

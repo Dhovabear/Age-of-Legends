@@ -1480,8 +1480,8 @@ MonoBehaviour:
   spellsTarget:
   - Enemy
   - Enemy
-  - Ally
-  - Enemy
+  - EveryAlly
+  - EveryEnemy
   descSpell:
   - Ashaarj attaque un adversaire
   - "Ashaarj crie sur un adversaire et r\xE9duit ses r\xE9sistances"

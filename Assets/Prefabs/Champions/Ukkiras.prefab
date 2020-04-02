@@ -2103,7 +2103,7 @@ MonoBehaviour:
   spellsTarget:
   - Enemy
   - Enemy
-  - Enemy
+  - EveryEnemy
   - Enemy
   descSpell:
   - Ukkiras attaque un adversaire

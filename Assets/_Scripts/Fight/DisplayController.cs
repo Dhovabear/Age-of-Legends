@@ -336,6 +336,8 @@ public class DisplayController : MonoBehaviour
 
     IEnumerator hitEffect(String attackType)
     {
+
+        List<ChampionController> currentTeam;
         while (true)
         {
             if (fightmanager.champions[fightmanager.getIndiceChampionCourant()].isAttackOver) break;
@@ -348,9 +350,50 @@ public class DisplayController : MonoBehaviour
         {
             animEnemy.SetTrigger("hurt");
         }
+        
+        else if (attackType == "EveryEnemy")
+        {
+            if (checkCurrentTeam())
+            {
+                currentTeam = fightmanager.getTeam2();
+            }
+            else
+            {
+                currentTeam = fightmanager.getTeam1();
+            }
+
+            foreach (ChampionController champ in currentTeam)
+            {
+                Animator animChamp = champ.GetComponent<Animator>();
+                animChamp.SetTrigger("hurt");
+            }
+        }
+        
         else if (attackType == "Ally")
         {
             animEnemy.SetTrigger("buff");
+        }
+        
+        else if (attackType == "EveryAlly")
+        {
+            if (checkCurrentTeam())
+            {
+                currentTeam = fightmanager.getTeam1();
+            }
+            else
+            {
+                currentTeam = fightmanager.getTeam2();
+            }
+
+            foreach (ChampionController champ in currentTeam)
+            {
+                Animator animChamp = champ.GetComponent<Animator>();
+                if (!champ.Equals(fightmanager.champions[fightmanager.getIndiceChampionCourant()]))
+                {
+                    animChamp.SetTrigger("buff");
+                }
+                
+            }
         }
         yield return new WaitForSeconds(1.2f);
         nextTurn();
@@ -462,7 +505,21 @@ public class DisplayController : MonoBehaviour
                     characterAttack(cc, "Ally");
                 }
                 break;
+            
+            case "EveryAlly":
+                if (isSameTeam(cc))
+                {
+                    characterAttack(cc, "EveryAlly");
+                }
+                break;
 
+            case "EveryEnemy":
+                if (!isSameTeam(cc))
+                {
+                    characterAttack(cc, "EveryEnemy");
+                }
+                break;
+            
             case "Everyone":
                 characterAttack(cc, "Everyone");
                 break;
